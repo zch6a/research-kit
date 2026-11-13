@@ -14,6 +14,7 @@ import os
 import re
 import sys
 import urllib.request
+from collections.abc import Callable
 from pathlib import Path
 
 import yaml
@@ -30,16 +31,16 @@ def get(url: str) -> bytes:
         return bytes(r.read())
 
 
-def main() -> int:
-    market = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
-    problems = []
+def check(market: dict, fetch: Callable[[str], bytes] = get, out: Callable[[str], None] = print) -> list[str]:
+    """The problems of the marketplace's skills (each fetched with `fetch`); a line per plugin goes to `out`."""
+    problems: list[str] = []
     for p in market["plugins"]:
         src = p["source"]
         repo, path, ref = src["url"], src["path"], src["ref"]
         raw = f"https://raw.githubusercontent.com/{repo}/{ref}/{path}"
         try:
-            manifest = json.loads(get(f"{raw}/.claude-plugin/plugin.json"))
-            listing = json.loads(get(f"https://api.github.com/repos/{repo}/contents/{path}/skills?ref={ref}"))
+            manifest = json.loads(fetch(f"{raw}/.claude-plugin/plugin.json"))
+            listing = json.loads(fetch(f"https://api.github.com/repos/{repo}/contents/{path}/skills?ref={ref}"))
         except Exception as e:  # noqa: BLE001
             problems.append(f"{p['name']}: could not read {repo}@{ref}/{path} ({e})")
             continue
@@ -50,7 +51,7 @@ def main() -> int:
             problems.append(f"{p['name']}: no skill in {path}/skills")
         for skill in skills:
             try:
-                text = get(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8").replace("\r\n", "\n")
+                text = fetch(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8").replace("\r\n", "\n")
             except Exception as e:  # noqa: BLE001
                 problems.append(f"{p['name']}/{skill}: could not read its SKILL.md ({e})")
                 continue
@@ -69,7 +70,13 @@ def main() -> int:
             if len(desc) < 80 or "use when" not in desc.lower():
                 problems.append(f"{p['name']}/{skill}: the description does not say when to use it")
         mine = [x for x in problems if x.startswith((f"{p['name']}:", f"{p['name']}/"))]
-        print(f"{p['name']}: {', '.join(skills)} ok" if not mine else f"{p['name']}: {len(mine)} problem(s)")
+        out(f"{p['name']}: {', '.join(skills)} ok" if not mine else f"{p['name']}: {len(mine)} problem(s)")
+    return problems
+
+
+def main() -> int:
+    market = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+    problems = check(market)
     for x in problems:
         print("  " + x, file=sys.stderr)
     return 1 if problems else 0

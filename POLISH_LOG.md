@@ -89,3 +89,20 @@ before its licence pointing to research-kit and its site (two of them had no too
 pushed in each repository with a line in its POLISH_LOG; CI passed in all thirteen.
 
 Next: polishing round 4.
+
+### 2026-11-14 — polishing round 4
+
+**Tests for the two scripts** (`tests/test_scripts.py`, offline): `render.load` takes a path, so made-up lists check
+that a command not at `@v0`, an unknown stage, a missing language, a non-https site and a tool listed twice are each
+refused; the marketplace entry is a `git-subdir` source at `v0`; a stage without tools is left out of the README and
+the site; the page escapes the text; `fill` refuses a README without its markers; and the committed files are what
+`tools.json` gives. `check_skills.check` takes the fetcher, so a made-up GitHub checks a good skill, CRLF line ends,
+an unquoted description containing ": " (the YAML bug of six tools' 0.1.0), a description that does not say when, a
+skill or plugin name that differs, and one unreadable SKILL.md (reported, not a crash). A message naming the tool
+used `t['name']` where the loop had `name`; fixed.
+
+**CI**: ruff (pinned 0.15.0; `ruff.toml`, long prose lines in the page template allowed) and the tests run before the
+render and skill checks. The workflows were read again: read-only token, actions pinned, Pages publishes only after
+`render.py --check` passes and its deploy job runs no project code.
+
+Next: polishing round 5.

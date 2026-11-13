@@ -18,8 +18,9 @@ OWNER = "zch6a"
 START, END = "<!-- tools:start -->", "<!-- tools:end -->"
 
 
-def load() -> dict:
-    doc = json.loads((ROOT / "tools.json").read_text(encoding="utf-8"))
+def load(path: Path | None = None) -> dict:
+    """tools.json, checked: SystemExit naming every problem when an entry is incomplete or wrong."""
+    doc = json.loads((path or ROOT / "tools.json").read_text(encoding="utf-8"))
     stages = {s.get("key") for s in doc.get("stages", [])}
     names = [t.get("name", "?") for t in doc.get("tools", [])]
     problems = [f"{n}: listed twice" for n in set(names) if names.count(n) > 1]
@@ -35,7 +36,7 @@ def load() -> dict:
             problems.append(f"{name}: the command does not run {OWNER}/{name} at v0")
         t.setdefault("site", "")
         if t.get("site") and not t["site"].startswith("https://"):
-            problems.append(f"{t['name']}: the site is not an https link")
+            problems.append(f"{name}: the site is not an https link")
     if problems:
         raise SystemExit("tools.json: " + "; ".join(problems))
     return doc
@@ -102,7 +103,7 @@ def site(doc: dict) -> str:
                 if t["site"]:
                     links.append(f'<a href="{e(t["site"])}">{"site" if lang == "en" else "网站"}</a>')
                 items.append(
-                    f'<article><h3>{e(t["name"])}</h3><p>{e(t[lang])}</p><pre><code>{e(t["command"])}</code></pre>'
+                    f"<article><h3>{e(t['name'])}</h3><p>{e(t[lang])}</p><pre><code>{e(t['command'])}</code></pre>"
                     f'<p class="links">{" · ".join(links)}</p></article>'
                 )
             cards[lang].append(f'<section id="{lang}-{s["key"]}"><h2>{e(s[lang])}</h2><div class="grid">{"".join(items)}</div></section>')

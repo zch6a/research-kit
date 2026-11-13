@@ -19,6 +19,12 @@ jobs:
         with:
           persist-credentials: false
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3; it has no moving major tag
+      - name: Lint and format (ruff)
+        run: |
+          uvx ruff@0.15.0 check scripts tests
+          uvx ruff@0.15.0 format --check scripts tests
+      - name: Tests of the two scripts (offline)
+        run: uv run --no-project --python 3.12 --with pytest==9.0.2 --with pyyaml==6.0.3 python -m pytest -q tests
       - name: The marketplace, the READMEs' tool sections and the site are up to date
         run: uv run --no-project python scripts/render.py --check
       - name: Every tool's skill at v0 parses, with its name and a description
