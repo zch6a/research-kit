@@ -2,9 +2,10 @@
 
 # research-kit
 
-**Open tools for research work, from reading papers to after publication.** Each is a command (no account, no API
-key), an agent skill, and some a site. Rules and published data, not a language model: what they report says where it
-comes from.
+**Open tools for research work, from reading papers to after publication.** Each is a command (no account; no API
+key, though paper-impact goes faster with a free one), an agent skill, and some a site. Rules and published data, no
+large language model (venue-atlas places papers with a small embedding model): what they report says where it comes
+from.
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
 <img alt="13 tools" src="https://img.shields.io/badge/tools-13-2ea44f">
@@ -15,18 +16,23 @@ comes from.
 
 ---
 
-## All the skills, from one marketplace
+## Use them
 
-In Claude Code:
+**On their own**, each tool is the command under it below. They need [uv](https://docs.astral.sh/uv/) (it fetches
+Python 3.10+ if needed); gpu-budget needs Node 22+. `@v0` in a command is the tool's latest release: a tag that moves
+with each release (put a commit there instead for a fixed version).
+
+**As agent skills**, in Claude Code: add the marketplace once, then install the tools you want by name (any of the
+thirteen below):
 
 ```text
 /plugin marketplace add zch6a/research-kit
 /plugin install table-trace@research-kit
+/plugin install paper-proof@research-kit
 ```
 
-Each plugin is one tool's skill, taken from that tool's repository at its latest release (`v0`): the agent runs the
-tool with `uvx` (or `npx`) and quotes what it found, with where it found it. Any tool also runs on its own, from the
-command below it.
+Each plugin is one tool's skill, from that tool's repository at `v0`: the agent runs the tool and quotes what it
+found, with where it found it. Claude Code is only needed for the skills, not for the tools.
 
 ## The tools, in the order of the work
 
@@ -36,13 +42,15 @@ command below it.
 **[venue-atlas](https://github.com/zch6a/venue-atlas)** · [site](https://zch6a.github.io/venue-atlas/) — What a conference was about, year by year: 60,000 papers of seven venues on maps by meaning, named topics with their trends, search by meaning in the browser.
 
 ```bash
+uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas model    # the model, 30 MB, once
 uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas build iclr icml --out site
 ```
 
-**[paper-impact](https://github.com/zch6a/paper-impact)** · [site](https://zch6a.github.io/paper-impact/) — Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers.
+**[paper-impact](https://github.com/zch6a/paper-impact)** · [site](https://zch6a.github.io/paper-impact/) — Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers. A free OpenAlex key makes a full build days, not months.
 
 ```bash
-uvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/
+curl -LO https://raw.githubusercontent.com/zch6a/paper-impact/v0/venues.json
+uvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/ --years 2024
 ```
 
 **[table-trace](https://github.com/zch6a/table-trace)** — Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side.
@@ -125,7 +133,8 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **Checked against something real.** Each tool was tried on real papers, repositories or published data before its
   release, and the numbers in its README come from those runs; its POLISH_LOG says what was tried and what broke.
 - **Nothing kept that is not yours.** Papers' sources and datasets are read where they are, or downloaded to a
-  temporary folder and deleted; the sites publish counts, titles and links, never abstracts or reviewers.
+  temporary folder and deleted; the sites publish counts, titles, links and scores, never other papers' abstracts
+  and never who a reviewer is (paper-page's page shows your own paper's abstract).
 - **The same shape.** Python 3.10+ (gpu-budget: Node), installable with `uvx` from GitHub, MIT licensed, a test suite
   that needs no network, CI on Linux, macOS and Windows, actions pinned to commits, read-only tokens but for the job
   that makes a release (which runs nothing of the project).

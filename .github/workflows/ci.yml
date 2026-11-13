@@ -1,6 +1,7 @@
 name: CI
 # The generated files are what tools.json says, and every tool's skill, as the marketplace installs it (its repository's
-# v0 tag), parses. Weekly too: a tool's new release could break its skill without a change here.
+# v0 tag), parses. Weekly too: a tool's new release could break its skill without a change here (GitHub stops a
+# scheduled workflow after 60 days without activity in the repository; a push starts it again).
 on:
   push:
   pull_request:
@@ -21,4 +22,6 @@ jobs:
       - name: The marketplace, the READMEs' tool sections and the site are up to date
         run: uv run --no-project python scripts/render.py --check
       - name: Every tool's skill at v0 parses, with its name and a description
+        env:
+          GITHUB_TOKEN: ${{ github.token }}   # read-only (contents: read); GitHub's API limit without it is 60 an hour
         run: uv run --no-project --with pyyaml==6.0.3 python scripts/check_skills.py

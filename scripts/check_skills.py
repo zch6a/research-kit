@@ -1,7 +1,8 @@
 """Each tool's skill as the marketplace installs it: plugin/skills/*/SKILL.md and plugin/.claude-plugin/plugin.json at
-the v0 tag of its repository, fetched from GitHub. The frontmatter must parse as YAML (a plain value with ": " inside
-does not, and Claude Code then loads the skill with no description), with the plugin's name and a description that
-says when to use it. Needs PyYAML and the network:
+the v0 tag of its repository, fetched from GitHub. plugin.json must carry the plugin's name; each SKILL.md's frontmatter
+must parse as YAML (a plain value with ": " inside does not, and Claude Code then loads the skill with no description),
+with the skill's folder name as its name and a description that says when to use it. Needs PyYAML and the network;
+GITHUB_TOKEN, when set, is sent to GitHub's API (CI sets it, so that the limit of 60 requests an hour does not apply):
 
     uv run --with pyyaml python scripts/check_skills.py
 """
@@ -9,6 +10,7 @@ says when to use it. Needs PyYAML and the network:
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -21,7 +23,10 @@ UA = {"User-Agent": "research-kit (skill check)"}
 
 
 def get(url: str) -> bytes:
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+    headers = dict(UA)
+    if os.environ.get("GITHUB_TOKEN") and url.startswith("https://api.github.com/"):
+        headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=60) as r:
         return bytes(r.read())
 
 
@@ -44,7 +49,11 @@ def main() -> int:
         if not skills:
             problems.append(f"{p['name']}: no skill in {path}/skills")
         for skill in skills:
-            text = get(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8")
+            try:
+                text = get(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8").replace("\r\n", "\n")
+            except Exception as e:  # noqa: BLE001
+                problems.append(f"{p['name']}/{skill}: could not read its SKILL.md ({e})")
+                continue
             m = re.match(r"---\n(.*?)\n---\n", text, re.S)
             try:
                 front = yaml.safe_load(m.group(1)) if m else None
@@ -59,7 +68,8 @@ def main() -> int:
             desc = str(front.get("description") or "")
             if len(desc) < 80 or "use when" not in desc.lower():
                 problems.append(f"{p['name']}/{skill}: the description does not say when to use it")
-        print(f"{p['name']}: {', '.join(skills)} ok" if not any(x.startswith(p["name"]) for x in problems) else f"{p['name']}: problems")
+        mine = [x for x in problems if x.startswith((f"{p['name']}:", f"{p['name']}/"))]
+        print(f"{p['name']}: {', '.join(skills)} ok" if not mine else f"{p['name']}: {len(mine)} problem(s)")
     for x in problems:
         print("  " + x, file=sys.stderr)
     return 1 if problems else 0

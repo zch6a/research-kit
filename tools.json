@@ -1,115 +1,204 @@
 {
   "stages": [
-    {"key": "read", "en": "Find and read", "zh": "找文献、读论文"},
-    {"key": "experiment", "en": "Run experiments", "zh": "做实验"},
-    {"key": "write", "en": "Write the paper", "zh": "写论文"},
-    {"key": "submit", "en": "Submit", "zh": "投稿"},
-    {"key": "after", "en": "After it is out", "zh": "发表之后"}
+    {
+      "key": "read",
+      "en": "Find and read",
+      "zh": "找文献、读论文"
+    },
+    {
+      "key": "experiment",
+      "en": "Run experiments",
+      "zh": "做实验"
+    },
+    {
+      "key": "write",
+      "en": "Write the paper",
+      "zh": "写论文"
+    },
+    {
+      "key": "submit",
+      "en": "Submit",
+      "zh": "投稿"
+    },
+    {
+      "key": "after",
+      "en": "After it is out",
+      "zh": "发表之后"
+    }
   ],
   "tools": [
     {
-      "name": "venue-atlas", "stage": "read",
+      "name": "venue-atlas",
+      "stage": "read",
       "en": "What a conference was about, year by year: 60,000 papers of seven venues on maps by meaning, named topics with their trends, search by meaning in the browser.",
-      "zh": "一个会议这些年都在研究什么：七个会议的 6 万篇论文按内容画成地图，主题有名字、有逐年趋势，可以在浏览器里按意思搜索。",
-      "command": "uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas build iclr icml --out site",
+      "zh": "一个会议这些年都在研究什么：七个会议的 6 万篇论文按内容画成地图，主题有名字、有逐年趋势，可以在浏览器里按语义搜索。",
+      "command": "uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas model    # the model, 30 MB, once\nuvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas build iclr icml --out site",
       "site": "https://zch6a.github.io/venue-atlas/",
-      "tags": ["papers", "conferences", "topics", "search"]
+      "tags": [
+        "papers",
+        "conferences",
+        "topics",
+        "search"
+      ]
     },
     {
-      "name": "paper-impact", "stage": "read",
-      "en": "Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers.",
-      "zh": "AI 会议里哪些论文真正有影响：NeurIPS、ICML、ICLR、CVPR、ACL 的每篇论文，附 OpenAlex 的引用数和按领域归一化的影响力，并注明 OpenAlex 覆盖了多少。",
-      "command": "uvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/",
+      "name": "paper-impact",
+      "stage": "read",
+      "en": "Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers. A free OpenAlex key makes a full build days, not months.",
+      "zh": "AI 会议里哪些论文真正有影响：NeurIPS、ICML、ICLR、CVPR、ACL 的每篇论文，附 OpenAlex 的引用数和按领域归一化的影响力，并注明 OpenAlex 覆盖了多少。有免费的 OpenAlex key 时，完整构建只要几天而不是几个月。",
+      "command": "curl -LO https://raw.githubusercontent.com/zch6a/paper-impact/v0/venues.json\nuvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/ --years 2024",
       "site": "https://zch6a.github.io/paper-impact/",
-      "tags": ["citations", "openalex", "conferences"]
+      "tags": [
+        "citations",
+        "openalex",
+        "conferences"
+      ]
     },
     {
-      "name": "table-trace", "stage": "read",
+      "name": "table-trace",
+      "stage": "read",
       "en": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side.",
-      "zh": "论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型、同一基准报的数并排列出来。",
+      "zh": "论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型在同一基准上报告的结果并排列出来。",
       "command": "uvx --from git+https://github.com/zch6a/table-trace@v0 table-trace compare 1512.03385 2201.03545 --row ResNet-50 --col top-1 --col acc",
       "site": "",
-      "tags": ["tables", "results", "reproducibility", "arxiv"]
+      "tags": [
+        "tables",
+        "results",
+        "reproducibility",
+        "arxiv"
+      ]
     },
     {
-      "name": "arxiv-diff", "stage": "read",
+      "name": "arxiv-diff",
+      "stage": "read",
       "en": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references.",
       "zh": "论文两个版本之间改了什么：表格里按行列对应的结果数字，以及正文、摘要、作者、图和参考文献。",
       "command": "uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685",
       "site": "",
-      "tags": ["arxiv", "versions", "diff"]
+      "tags": [
+        "arxiv",
+        "versions",
+        "diff"
+      ]
     },
     {
-      "name": "gpu-budget", "stage": "experiment",
+      "name": "gpu-budget",
+      "stage": "experiment",
       "en": "How much GPU memory, time and money training, fine-tuning or serving an LLM takes, each part with its formula (ZeRO/FSDP, parallelism, MoE, LoRA/QLoRA, KV cache), checked against published runs.",
       "zh": "训练、微调或部署一个大模型要多少显存、时间和钱，每一项都给出公式（ZeRO/FSDP、各种并行、MoE、LoRA/QLoRA、KV 缓存），并和公开的训练记录对照过。",
       "command": "npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5",
       "site": "https://zch6a.github.io/gpu-budget/",
-      "tags": ["gpu", "memory", "cost", "llm"]
+      "tags": [
+        "gpu",
+        "memory",
+        "cost",
+        "llm"
+      ]
     },
     {
-      "name": "exp-tables", "stage": "experiment",
+      "name": "exp-tables",
+      "stage": "experiment",
       "en": "Experiment results to your paper's table: mean ± spread over seeds, significance against the best, bold only where the seeds support it; from CSV, wandb, TensorBoard or MLflow.",
-      "zh": "把实验结果变成论文里的表：多个种子的均值 ± 波动、与最好方法的显著性检验，只有种子数据撑得住时才加粗；可读 CSV、wandb、TensorBoard、MLflow。",
+      "zh": "把实验结果变成论文里的表：多个种子的均值 ± 标准差、与最好方法的显著性检验，只有多个种子的结果支持时才加粗；可读 CSV、wandb、TensorBoard、MLflow。",
       "command": "uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --format markdown",
       "site": "",
-      "tags": ["experiments", "tables", "statistics", "latex"]
+      "tags": [
+        "experiments",
+        "tables",
+        "statistics",
+        "latex"
+      ]
     },
     {
-      "name": "repro-score", "stage": "experiment",
+      "name": "repro-score",
+      "stage": "experiment",
       "en": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
       "zh": "别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码。",
       "command": "uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo",
       "site": "",
-      "tags": ["reproducibility", "code", "badge"]
+      "tags": [
+        "reproducibility",
+        "code",
+        "badge"
+      ]
     },
     {
-      "name": "fig-check", "stage": "write",
+      "name": "fig-check",
+      "stage": "write",
       "en": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project.",
       "zh": "按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。",
       "command": "uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/",
       "site": "",
-      "tags": ["figures", "latex", "accessibility"]
+      "tags": [
+        "figures",
+        "latex",
+        "accessibility"
+      ]
     },
     {
-      "name": "paper-proof", "stage": "write",
+      "name": "paper-proof",
+      "stage": "write",
       "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels.",
-      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的引用标签。",
+      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref）。",
       "command": "uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper",
       "site": "",
-      "tags": ["references", "latex", "checks"]
+      "tags": [
+        "references",
+        "latex",
+        "checks"
+      ]
     },
     {
-      "name": "submit-check", "stage": "submit",
+      "name": "submit-check",
+      "stage": "submit",
       "en": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs).",
       "zh": "别因为疏忽被直接拒稿：按会议规定检查 LaTeX 论文（双盲信息泄露、模板模式、页数、必需章节、PDF 字体、残留的 TODO）。",
       "command": "uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/paper",
       "site": "",
-      "tags": ["submission", "double-blind", "latex"]
+      "tags": [
+        "submission",
+        "double-blind",
+        "latex"
+      ]
     },
     {
-      "name": "iclr-scores", "stage": "submit",
+      "name": "iclr-scores",
+      "stage": "submit",
       "en": "What ICLR's review scores led to, 2017-2025: the acceptance rate by mean score, where half the papers got in, what disagreement did, and the odds for your scores.",
-      "zh": "ICLR 2017–2025 年的审稿分数最后换来了什么：按平均分的录用比例、录用一半的位置、审稿人意见分歧的影响，以及你这组分数在往年的录用比例。",
+      "zh": "ICLR 2017–2025 年的审稿分数最后换来了什么：各平均分的录用率、录用率过半的分数线、审稿人意见分歧的影响，以及你这组分数在往年的录用率。",
       "command": "uvx --from git+https://github.com/zch6a/iclr-scores@v0 iclr-scores odds 6 6 8 5 --year 2025",
       "site": "https://zch6a.github.io/iclr-scores/",
-      "tags": ["peer-review", "iclr", "statistics"]
+      "tags": [
+        "peer-review",
+        "iclr",
+        "statistics"
+      ]
     },
     {
-      "name": "paper-page", "stage": "after",
+      "name": "paper-page",
+      "stage": "after",
       "en": "A project page for your paper from its arXiv id: links, teaser, abstract, BibTeX, Google Scholar and link-preview tags, in one static HTML file for GitHub Pages.",
-      "zh": "用 arXiv 编号生成论文项目主页：链接、预览图、摘要、BibTeX、Google Scholar 与链接预览标签，一个静态 HTML 文件，直接放到 GitHub Pages。",
+      "zh": "用 arXiv 编号生成论文项目主页：链接、预览图、摘要、BibTeX、Google Scholar 标签与社交分享预览标签（Open Graph），一个静态 HTML 文件，直接放到 GitHub Pages。",
       "command": "uvx --from git+https://github.com/zch6a/paper-page@v0 paper-page new 2003.08934 -o page/",
       "site": "https://zch6a.github.io/paper-page/",
-      "tags": ["project-page", "github-pages", "arxiv"]
+      "tags": [
+        "project-page",
+        "github-pages",
+        "arxiv"
+      ]
     },
     {
-      "name": "scholar-cards", "stage": "after",
+      "name": "scholar-cards",
+      "stage": "after",
       "en": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key.",
       "zh": "把 OpenAlex 上你的引用数、h 指数和高被引论文做成 SVG 卡片，放进学术主页或 GitHub 个人页，由 GitHub Action 自动更新，不需要 API key。",
       "command": "uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search \"Your Name\"",
       "site": "",
-      "tags": ["citations", "homepage", "openalex"]
+      "tags": [
+        "citations",
+        "homepage",
+        "openalex"
+      ]
     }
   ]
 }

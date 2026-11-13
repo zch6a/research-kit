@@ -2,7 +2,7 @@
 
 # research-kit
 
-**一套开源科研工具，从读论文到论文发表之后。** 每个都是一条命令（不用注册、不用 API key）和一个智能体技能，有的还有网站。靠规则和公开数据，不靠大模型：给出的每个结果都标明出处。
+**一套开源科研工具，从读论文到论文发表之后。** 每个都是一条命令（不用注册；也不用 API key，只是 paper-impact 有免费 key 会快很多）和一个智能体技能，有的还有网站。靠规则和公开数据，不用大语言模型（venue-atlas 用一个小型嵌入模型给论文定位）：给出的每个结果都标明出处。
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
 <img alt="13 tools" src="https://img.shields.io/badge/tools-13-2ea44f">
@@ -13,35 +13,40 @@
 
 ---
 
-## 一个插件市场装上全部技能
+## 使用方法
 
-在 Claude Code 里：
+**单独使用**：每个工具下面的命令就是用法。需要先装 [uv](https://docs.astral.sh/uv/)（需要时它会自动准备 Python 3.10+）；gpu-budget 需要 Node 22+。命令里的 `@v0` 指该工具的最新发布版，这个标签会随每次发布移动（想固定版本就换成某个提交）。
+
+**作为智能体技能**：在 Claude Code 里先添加一次插件市场，再按名字安装需要的工具（下面 13 个都可以）：
 
 ```text
 /plugin marketplace add zch6a/research-kit
 /plugin install table-trace@research-kit
+/plugin install paper-proof@research-kit
 ```
 
-每个插件就是一个工具的技能，取自该工具仓库的最新发布版（`v0`）：智能体用 `uvx`（或 `npx`）运行工具，引用它找到的结果并注明出处。每个工具也可以单独使用，命令就写在它下面。
+每个插件就是一个工具的技能，取自该工具仓库的 `v0`：智能体运行工具，引用它找到的结果并注明出处。只有用技能时才需要 Claude Code，单独用工具不需要。
 
 ## 按科研流程排列的工具
 
 <!-- tools:start -->
 ### 找文献、读论文
 
-**[venue-atlas](https://github.com/zch6a/venue-atlas)** · [网站](https://zch6a.github.io/venue-atlas/) — 一个会议这些年都在研究什么：七个会议的 6 万篇论文按内容画成地图，主题有名字、有逐年趋势，可以在浏览器里按意思搜索。
+**[venue-atlas](https://github.com/zch6a/venue-atlas)** · [网站](https://zch6a.github.io/venue-atlas/) — 一个会议这些年都在研究什么：七个会议的 6 万篇论文按内容画成地图，主题有名字、有逐年趋势，可以在浏览器里按语义搜索。
 
 ```bash
+uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas model    # the model, 30 MB, once
 uvx --from git+https://github.com/zch6a/venue-atlas@v0 venue-atlas build iclr icml --out site
 ```
 
-**[paper-impact](https://github.com/zch6a/paper-impact)** · [网站](https://zch6a.github.io/paper-impact/) — AI 会议里哪些论文真正有影响：NeurIPS、ICML、ICLR、CVPR、ACL 的每篇论文，附 OpenAlex 的引用数和按领域归一化的影响力，并注明 OpenAlex 覆盖了多少。
+**[paper-impact](https://github.com/zch6a/paper-impact)** · [网站](https://zch6a.github.io/paper-impact/) — AI 会议里哪些论文真正有影响：NeurIPS、ICML、ICLR、CVPR、ACL 的每篇论文，附 OpenAlex 的引用数和按领域归一化的影响力，并注明 OpenAlex 覆盖了多少。有免费的 OpenAlex key 时，完整构建只要几天而不是几个月。
 
 ```bash
-uvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/
+curl -LO https://raw.githubusercontent.com/zch6a/paper-impact/v0/venues.json
+uvx --from git+https://github.com/zch6a/paper-impact@v0 paper-impact build venues.json -o site/ --years 2024
 ```
 
-**[table-trace](https://github.com/zch6a/table-trace)** — 论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型、同一基准报的数并排列出来。
+**[table-trace](https://github.com/zch6a/table-trace)** — 论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型在同一基准上报告的结果并排列出来。
 
 ```bash
 uvx --from git+https://github.com/zch6a/table-trace@v0 table-trace compare 1512.03385 2201.03545 --row ResNet-50 --col top-1 --col acc
@@ -61,7 +66,7 @@ uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685
 npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5
 ```
 
-**[exp-tables](https://github.com/zch6a/exp-tables)** — 把实验结果变成论文里的表：多个种子的均值 ± 波动、与最好方法的显著性检验，只有种子数据撑得住时才加粗；可读 CSV、wandb、TensorBoard、MLflow。
+**[exp-tables](https://github.com/zch6a/exp-tables)** — 把实验结果变成论文里的表：多个种子的均值 ± 标准差、与最好方法的显著性检验，只有多个种子的结果支持时才加粗；可读 CSV、wandb、TensorBoard、MLflow。
 
 ```bash
 uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --format markdown
@@ -81,7 +86,7 @@ uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/
 uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
 ```
 
-**[paper-proof](https://github.com/zch6a/paper-proof)** — 赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的引用标签。
+**[paper-proof](https://github.com/zch6a/paper-proof)** — 赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\label/\ref）。
 
 ```bash
 uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper
@@ -95,7 +100,7 @@ uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper
 uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/paper
 ```
 
-**[iclr-scores](https://github.com/zch6a/iclr-scores)** · [网站](https://zch6a.github.io/iclr-scores/) — ICLR 2017–2025 年的审稿分数最后换来了什么：按平均分的录用比例、录用一半的位置、审稿人意见分歧的影响，以及你这组分数在往年的录用比例。
+**[iclr-scores](https://github.com/zch6a/iclr-scores)** · [网站](https://zch6a.github.io/iclr-scores/) — ICLR 2017–2025 年的审稿分数最后换来了什么：各平均分的录用率、录用率过半的分数线、审稿人意见分歧的影响，以及你这组分数在往年的录用率。
 
 ```bash
 uvx --from git+https://github.com/zch6a/iclr-scores@v0 iclr-scores odds 6 6 8 5 --year 2025
@@ -103,7 +108,7 @@ uvx --from git+https://github.com/zch6a/iclr-scores@v0 iclr-scores odds 6 6 8 5 
 
 ### 发表之后
 
-**[paper-page](https://github.com/zch6a/paper-page)** · [网站](https://zch6a.github.io/paper-page/) — 用 arXiv 编号生成论文项目主页：链接、预览图、摘要、BibTeX、Google Scholar 与链接预览标签，一个静态 HTML 文件，直接放到 GitHub Pages。
+**[paper-page](https://github.com/zch6a/paper-page)** · [网站](https://zch6a.github.io/paper-page/) — 用 arXiv 编号生成论文项目主页：链接、预览图、摘要、BibTeX、Google Scholar 标签与社交分享预览标签（Open Graph），一个静态 HTML 文件，直接放到 GitHub Pages。
 
 ```bash
 uvx --from git+https://github.com/zch6a/paper-page@v0 paper-page new 2003.08934 -o page/
@@ -119,7 +124,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 ## 这些工具是怎么做的
 
 - **都用真实材料检验过。** 每个工具发布前都在真实的论文、代码仓库或公开数据上试过，README 里的数字就来自这些实测；各仓库的 POLISH_LOG 记录了试了什么、修了什么。
-- **不保存不属于你的东西。** 论文源码和数据集只在原处读取，或下载到临时目录、读完即删；网站只发布数量、标题和链接，不发布摘要，也不涉及审稿人。
+- **不保存不属于你的东西。** 论文源码和数据集只在原处读取，或下载到临时目录、读完即删；网站只发布数量、标题、链接和分数，不发布别人论文的摘要，也不透露审稿人是谁（paper-page 生成的是你自己论文的主页，会显示你自己的摘要）。
 - **统一的做法。** Python 3.10+（gpu-budget 用 Node），可以用 `uvx` 直接从 GitHub 运行，MIT 许可，测试不联网，CI 覆盖 Linux、macOS 和 Windows，工作流的 action 固定到具体提交，除了创建发布的那一步（它不运行项目代码）之外令牌都是只读的。
 
 ## 参与贡献

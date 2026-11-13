@@ -37,7 +37,7 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers.",
+      "description": "Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers. A free OpenAlex key makes a full build days, not months.",
       "category": "research",
       "tags": [
         "citations",

@@ -20,17 +20,20 @@ START, END = "<!-- tools:start -->", "<!-- tools:end -->"
 
 def load() -> dict:
     doc = json.loads((ROOT / "tools.json").read_text(encoding="utf-8"))
-    stages = {s["key"] for s in doc["stages"]}
-    names = [t["name"] for t in doc["tools"]]
+    stages = {s.get("key") for s in doc.get("stages", [])}
+    names = [t.get("name", "?") for t in doc.get("tools", [])]
     problems = [f"{n}: listed twice" for n in set(names) if names.count(n) > 1]
     for t in doc["tools"]:
         for field in ("name", "stage", "en", "zh", "command", "tags"):
             if not t.get(field):
                 problems.append(f"{t.get('name', '?')}: no {field}")
+        name, command = t.get("name", "?"), t.get("command", "")
         if t.get("stage") not in stages:
-            problems.append(f"{t['name']}: unknown stage {t.get('stage')!r}")
-        if f"github.com/{OWNER}/{t['name']}" not in t["command"] and f"github:{OWNER}/{t['name']}" not in t["command"]:
-            problems.append(f"{t['name']}: the command does not install {OWNER}/{t['name']}")
+            problems.append(f"{name}: unknown stage {t.get('stage')!r}")
+        # the command runs the release the marketplace installs: @v0 from GitHub (or npx from the repository)
+        if f"github.com/{OWNER}/{name}@v0" not in command and f"github:{OWNER}/{name}" not in command:
+            problems.append(f"{name}: the command does not run {OWNER}/{name} at v0")
+        t.setdefault("site", "")
         if t.get("site") and not t["site"].startswith("https://"):
             problems.append(f"{t['name']}: the site is not an https link")
     if problems:
@@ -66,6 +69,8 @@ def readme_section(doc: dict, lang: str) -> str:
     lines = []
     for s in doc["stages"]:
         tools = [t for t in doc["tools"] if t["stage"] == s["key"]]
+        if not tools:
+            continue
         lines += [f"### {s[lang]}", ""]
         for t in tools:
             site = f" · [{'site' if lang == 'en' else '网站'}]({t['site']})" if t["site"] else ""
@@ -86,6 +91,8 @@ def site(doc: dict) -> str:
     cards = {"en": [], "zh": []}
     for lang in ("en", "zh"):
         for s in doc["stages"]:
+            if not any(t["stage"] == s["key"] for t in doc["tools"]):
+                continue
             items = []
             for t in [t for t in doc["tools"] if t["stage"] == s["key"]]:
                 links = [f'<a href="https://github.com/{OWNER}/{t["name"]}">{"code" if lang == "en" else "代码"}</a>']
@@ -110,12 +117,12 @@ def site(doc: dict) -> str:
 <body>
 <header>
   <h1>research-kit</h1>
-  <p class="lead" data-lang="en">{n} open tools for research work, from reading papers to after publication. Each is a command (no account, no API key), an agent skill, and some a site. Rules and published data, not a language model: what they report says where it comes from.</p>
-  <p class="lead" data-lang="zh" hidden>{n} 个开源科研工具，从读论文到论文发表之后。每个都是一条命令（不用注册、不用 API key）和一个智能体技能，有的还有网站。靠规则和公开数据，不靠大模型：给出的每个结果都标明出处。</p>
-  <p><button type="button" id="lang" aria-label="Switch language">中文</button></p>
+  <p class="lead" data-lang="en">{n} open tools for research work, from reading papers to after publication. Each is a command (no account; no API key, though paper-impact goes faster with a free one), an agent skill, and some a site. Rules and published data, no large language model: what they report says where it comes from.</p>
+  <p class="lead" data-lang="zh" hidden>{n} 个开源科研工具，从读论文到论文发表之后。每个都是一条命令（不用注册；也不用 API key，只是 paper-impact 有免费 key 会快很多）和一个智能体技能，有的还有网站。靠规则和公开数据，不用大语言模型：给出的每个结果都标明出处。</p>
+  <p><button type="button" id="lang" lang="zh-CN">中文</button></p>
   <div class="install">
-    <p data-lang="en">All the skills in Claude Code, from one marketplace:</p>
-    <p data-lang="zh" hidden>在 Claude Code 里，从一个插件市场装上全部技能：</p>
+    <p data-lang="en">The commands need <a href="https://docs.astral.sh/uv/">uv</a> (gpu-budget: Node 22+). As agent skills in Claude Code, add the marketplace once, then install the tools you want by name:</p>
+    <p data-lang="zh" hidden>命令需要先装 <a href="https://docs.astral.sh/uv/">uv</a>（gpu-budget 需要 Node 22+）。作为 Claude Code 的技能使用时，先添加一次插件市场，再按名字安装需要的工具：</p>
     <pre><code>/plugin marketplace add {OWNER}/research-kit
 /plugin install table-trace@research-kit</code></pre>
   </div>
@@ -143,7 +150,8 @@ def outputs(doc: dict) -> dict[Path, str]:
 def main() -> int:
     check = "--check" in sys.argv[1:]
     stale = []
-    for path, text in outputs(load()).items():
+    files = outputs(load())
+    for path, text in files.items():
         old = path.read_text(encoding="utf-8") if path.is_file() else None
         if old != text:
             stale.append(path.relative_to(ROOT).as_posix())
@@ -153,7 +161,7 @@ def main() -> int:
     if check and stale:
         print(f"out of date: {', '.join(stale)}; run python scripts/render.py", file=sys.stderr)
         return 1
-    print(("checked" if check else "written") + f": {len(outputs(load()))} files" + (f" ({', '.join(stale)} changed)" if stale and not check else ""))
+    print(("checked" if check else "written") + f": {len(files)} files" + (f" ({', '.join(stale)} changed)" if stale and not check else ""))
     return 0
 
 
