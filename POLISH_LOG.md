@@ -44,3 +44,34 @@ posting (the fourteen social previews, trying the marketplace once in Claude Cod
 comes from a tool's own run. Posting is the owner's.
 
 Next: polishing round 2 (the site and READMEs read by someone else; the marketplace tried end to end if the owner adds it).
+
+### 2026-11-14 — polishing round 2
+
+**Read by someone else** (an independent review of the READMEs, the site and the scripts against the tools' own
+READMEs), and every link checked (35, all answering). Fixed:
+- **Commands that did not work as written**: venue-atlas's `build` needs `venue-atlas model` once first (its error says
+  so), now the first line of its command; paper-impact's `build venues.json` needs a file a newcomer does not have,
+  now fetched first from the tool's `v0` (`curl -LO …/v0/venues.json`), with one year, and its sentence says a free
+  OpenAlex key makes a full build days, not months.
+- **Claims a little too large**: “not a language model” → no large language model (venue-atlas places papers with a
+  small embedding model); “never abstracts or reviewers” → never other papers' abstracts and never who a reviewer is
+  (paper-page's page shows your own abstract; iclr-scores publishes scores); “no API key” notes paper-impact's.
+- **“All the skills, from one marketplace” showed one install**: the section is now “Use them”: each tool on its own
+  (it needs uv; gpu-budget Node 22+), what `@v0` is (the latest release, a tag that moves; a commit pins a version), and
+  as skills — add the marketplace once, install the tools wanted by name; Claude Code is needed only for the skills.
+- **Chinese wording** made precise: 按语义搜索, 在同一基准上报告的结果, 均值 ± 标准差 and 多个种子的结果支持时,
+  失效的交叉引用（\label/\ref）, 社交分享预览标签（Open Graph）, 各平均分的录用率 and 录用率过半的分数线.
+- **Scripts**: `check_skills.py` read a SKILL.md outside its error handling (one missing file stopped the run), called
+  GitHub's API without a token (60 requests an hour, shared on CI's machines: CI now passes its read-only token),
+  did not accept CRLF files, matched a tool's problems by name prefix (a future “paper” would take “paper-page”'s), and
+  its docstring promised a check it did not make; `render.py` raised a bare KeyError for an incomplete entry, rendered
+  empty stages, did not check that a command runs the `v0` the marketplace installs (now it does), and read the list
+  twice. The Pages workflow now runs the render check before publishing; the CI file says that GitHub pauses a weekly
+  workflow after 60 quiet days.
+- **The site**: cards overflowed on 320 px phones (`minmax(min(300px, 100%), 1fr)`); dark mode now tells the browser
+  (`color-scheme`); the language button had an English label while showing 中文, now it carries the language it shows;
+  Back and Forward and an edited `#zh-CN` switch the language too. Checked in the browser.
+
+Not possible here: trying the marketplace end to end means adding it to a Claude Code setup, which is the owner's.
+
+Next: polishing round 3.
