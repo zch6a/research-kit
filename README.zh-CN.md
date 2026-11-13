@@ -13,13 +13,13 @@
 
 ---
 
-<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="research-kit 网站：13 个工具按科研阶段排列，每个都有命令；以及安装技能用的插件市场"></a></p>
+<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="research-kit 网站：各工具按科研阶段排列，每个都有命令；以及安装技能用的插件市场"></a></p>
 
 ## 使用方法
 
 **单独使用**：每个工具下面的命令就是用法。需要先装 [uv](https://docs.astral.sh/uv/)（需要时它会自动准备 Python 3.10+）；gpu-budget 需要 Node 22+。命令里的 `@v0` 指该工具的最新发布版，这个标签会随每次发布移动（想固定版本就换成某个提交）。
 
-**作为智能体技能**：在 Claude Code 里先添加一次插件市场，再按名字安装需要的工具（下面 13 个都可以）：
+**作为智能体技能**：在 Claude Code 里先添加一次插件市场，再按名字安装需要的工具（下面每个都可以）：
 
 ```text
 /plugin marketplace add zch6a/research-kit
@@ -65,7 +65,7 @@ uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685
 **[gpu-budget](https://github.com/zch6a/gpu-budget)** · [网站](https://zch6a.github.io/gpu-budget/) — 训练、微调或部署一个大模型要多少显存、时间和钱，每一项都给出公式（ZeRO/FSDP、各种并行、MoE、LoRA/QLoRA、KV 缓存），并和公开的训练记录对照过。
 
 ```bash
-npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5
+npx github:zch6a/gpu-budget#v0 train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5
 ```
 
 **[exp-tables](https://github.com/zch6a/exp-tables)** — 把实验结果变成论文里的表：多个种子的均值 ± 标准差、与最好方法的显著性检验，只有多个种子的结果支持时才加粗；可读 CSV、wandb、TensorBoard、MLflow。
@@ -131,7 +131,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 
 ## 参与贡献
 
-`tools.json` 是工具清单：每个工具所属的阶段、中英文介绍、命令和网站。`python scripts/render.py` 据此生成插件市场、两份 README 里的工具部分和网站；CI 会检查它们是否最新。各工具的问题请到它自己的仓库提。
+`tools.json` 是工具清单：每个工具所属的阶段、中英文介绍、命令、网站和标签。`python scripts/render.py` 据此生成插件市场、两份 README 里的工具部分和网站；CI 会检查它们是否最新。各工具的问题请到它自己的仓库提。
 
 ## 许可证
 

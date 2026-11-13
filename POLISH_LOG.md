@@ -106,3 +106,30 @@ render and skill checks. The workflows were read again: read-only token, actions
 `render.py --check` passes and its deploy job runs no project code.
 
 Next: polishing round 5.
+
+### 2026-11-14 — polishing round 5
+
+A fresh review of every file, the Chinese text against the AI-tone list, and the site at phone width in dark mode
+(no sideways scroll; both languages).
+
+**gpu-budget's command ran its default branch.** `npx github:zch6a/gpu-budget` has no ref, so the README and site ran
+whatever was on main while the plugin installs v0. It is now `npx github:zch6a/gpu-budget#v0` (tried: it runs), and
+the check asks every command to run the tool at v0 as the program, not in a comment: `@v0 ` for uvx, `#v0 ` for npx.
+
+**The site said less than the README**: its lead still had "no large language model" without the venue-atlas
+exception (a small embedding model) that the README gained in round 2. Both languages now say it.
+
+**Counts and names outside the markers**: the badge is now rewritten with the number of tools; the prose says "the
+ones below" instead of a number; the install example (table-trace) must be in the list.
+
+**Stricter list**: names and stage keys must be lowercase slugs (they go into ids and links as they are), tags a
+list of words, every stage complete and listed once, no line breaks in descriptions and no ``` in a command.
+
+**Skill check**: a `skills` entry that is not a folder (or an error object from the API) is reported instead of
+crashing the run; a SKILL.md with a byte-order mark or nothing after its frontmatter is read.
+
+**Site**: the Chinese parts carry `lang="zh-CN"` in the page itself; the language button is hidden until the
+script runs (without it, it did nothing); the stage pills read "4 tools" to a screen reader. The marketplace's owner
+has only its documented field; `claude plugin validate` passes. The README's contributing note lists tags.
+
+Tests cover each new check. Next: v0.1.0.

@@ -46,16 +46,19 @@ def check(market: dict, fetch: Callable[[str], bytes] = get, out: Callable[[str]
             continue
         if manifest.get("name") != p["name"]:
             problems.append(f"{p['name']}: plugin.json names {manifest.get('name')!r}")
-        skills = [x["name"] for x in listing if x.get("type") == "dir"]
+        if not isinstance(listing, list):  # plugin/skills is a file, or the API answered with an error object
+            problems.append(f"{p['name']}: {path}/skills is not a folder at {ref}")
+            continue
+        skills = [x["name"] for x in listing if isinstance(x, dict) and x.get("type") == "dir"]
         if not skills:
             problems.append(f"{p['name']}: no skill in {path}/skills")
         for skill in skills:
             try:
-                text = fetch(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8").replace("\r\n", "\n")
+                text = fetch(f"{raw}/skills/{skill}/SKILL.md").decode("utf-8-sig").replace("\r\n", "\n")
             except Exception as e:  # noqa: BLE001
                 problems.append(f"{p['name']}/{skill}: could not read its SKILL.md ({e})")
                 continue
-            m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+            m = re.match(r"---\n(.*?)\n---(?:\n|$)", text, re.S)
             try:
                 front = yaml.safe_load(m.group(1)) if m else None
             except yaml.YAMLError as e:

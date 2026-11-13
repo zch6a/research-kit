@@ -86,7 +86,7 @@
       "stage": "experiment",
       "en": "How much GPU memory, time and money training, fine-tuning or serving an LLM takes, each part with its formula (ZeRO/FSDP, parallelism, MoE, LoRA/QLoRA, KV cache), checked against published runs.",
       "zh": "训练、微调或部署一个大模型要多少显存、时间和钱，每一项都给出公式（ZeRO/FSDP、各种并行、MoE、LoRA/QLoRA、KV 缓存），并和公开的训练记录对照过。",
-      "command": "npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5",
+      "command": "npx github:zch6a/gpu-budget#v0 train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5",
       "site": "https://zch6a.github.io/gpu-budget/",
       "tags": [
         "gpu",

@@ -1,5 +1,6 @@
 // The page in English or Chinese: the choice kept in the address (#en, #zh) so that a link, Back and Forward show the same.
 const button = document.getElementById("lang");
+button.hidden = false; // hidden in the page itself: without this script it would do nothing
 function show(lang) {
   for (const el of document.querySelectorAll("[data-lang]")) el.hidden = el.dataset.lang !== lang;
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";

@@ -16,7 +16,7 @@ from.
 
 ---
 
-<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="The research-kit site: thirteen tools by stage, each with its command; the marketplace to install them as skills"></a></p>
+<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="The research-kit site: the tools by stage, each with its command; the marketplace to install them as skills"></a></p>
 
 ## Use them
 
@@ -25,7 +25,7 @@ Python 3.10+ if needed); gpu-budget needs Node 22+. `@v0` in a command is the to
 with each release (put a commit there instead for a fixed version).
 
 **As agent skills**, in Claude Code: add the marketplace once, then install the tools you want by name (any of the
-thirteen below):
+ones below):
 
 ```text
 /plugin marketplace add zch6a/research-kit
@@ -72,7 +72,7 @@ uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685
 **[gpu-budget](https://github.com/zch6a/gpu-budget)** · [site](https://zch6a.github.io/gpu-budget/) — How much GPU memory, time and money training, fine-tuning or serving an LLM takes, each part with its formula (ZeRO/FSDP, parallelism, MoE, LoRA/QLoRA, KV cache), checked against published runs.
 
 ```bash
-npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5
+npx github:zch6a/gpu-budget#v0 train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12 --price 2.5
 ```
 
 **[exp-tables](https://github.com/zch6a/exp-tables)** — Experiment results to your paper's table: mean ± spread over seeds, significance against the best, bold only where the seeds support it; from CSV, wandb, TensorBoard or MLflow.
@@ -143,7 +143,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 
 ## Contributing
 
-`tools.json` is the list: each tool's stage, description in both languages, command and site. `python
+`tools.json` is the list: each tool's stage, description in both languages, command, site and tags. `python
 scripts/render.py` writes the marketplace, the tool sections of both READMEs and the site from it; CI checks they are
 up to date. Each tool's own repository takes its issues.
 

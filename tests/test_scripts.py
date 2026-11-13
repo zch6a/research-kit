@@ -24,8 +24,8 @@ def script(name: str):
 render = script("render")
 check_skills = script("check_skills")
 
-TOOL = {"name": "demo-tool", "stage": "read", "en": "Reads <b>things</b> & more.", "zh": "读东西。",
-        "command": "uvx --from git+https://github.com/zch6a/demo-tool@v0 demo-tool x", "tags": ["a"]}  # fmt: skip
+TOOL = {"name": "table-trace", "stage": "read", "en": "Reads <b>things</b> & more.", "zh": "读东西。",
+        "command": "uvx --from git+https://github.com/zch6a/table-trace@v0 table-trace x", "tags": ["a"]}  # fmt: skip
 STAGES = [{"key": "read", "en": "Read", "zh": "读"}, {"key": "write", "en": "Write", "zh": "写"}]
 
 
@@ -39,29 +39,43 @@ def test_the_list_is_checked(tmp_path: Path) -> None:
     doc = render.load(write_list(tmp_path, [dict(TOOL)]))
     assert doc["tools"][0]["site"] == ""
     for broken, why in [
-        ({**TOOL, "command": "uvx --from git+https://github.com/zch6a/demo-tool demo-tool"}, "at v0"),  # not the release the marketplace installs
+        ({**TOOL, "command": "uvx --from git+https://github.com/zch6a/table-trace table-trace"}, "at v0"),  # not the release the marketplace installs
         ({**TOOL, "stage": "nowhere"}, "unknown stage"),
         ({k: v for k, v in TOOL.items() if k != "zh"}, "no zh"),
         ({**TOOL, "site": "http://x"}, "https link"),
+        ({**TOOL, "command": "table-trace x  # see github.com/zch6a/table-trace@v0 x"}, "at v0"),  # only in a comment
+        ({**TOOL, "name": "Demo Tool"}, "lowercase"),
+        ({**TOOL, "tags": "papers"}, "list of words"),
+        ({**TOOL, "command": TOOL["command"] + " ```"}, "code block"),
     ]:
         with pytest.raises(SystemExit, match=why):
             render.load(write_list(tmp_path, [broken]))
     with pytest.raises(SystemExit, match="listed twice"):
         render.load(write_list(tmp_path, [dict(TOOL), dict(TOOL)]))
-    assert render.load(write_list(tmp_path, [{**TOOL, "command": "npx github:zch6a/demo-tool run"}]))  # npx from the repository
+    assert render.load(write_list(tmp_path, [{**TOOL, "command": "npx github:zch6a/table-trace#v0 run"}]))  # npx at the tag
+    with pytest.raises(SystemExit, match="at v0"):
+        render.load(write_list(tmp_path, [{**TOOL, "command": "npx github:zch6a/table-trace run"}]))  # the default branch
+    bad_stage = tmp_path / "stages.json"
+    bad_stage.write_text(json.dumps({"stages": STAGES + [{"key": "read"}], "tools": [TOOL]}), encoding="utf-8")
+    with pytest.raises(SystemExit, match="stage read: no en.*stage read: listed twice"):
+        render.load(bad_stage)
 
 
 def test_what_is_generated(tmp_path: Path) -> None:
     doc = render.load(write_list(tmp_path, [dict(TOOL)]))
     market = json.loads(render.marketplace(doc))
     (plugin,) = market["plugins"]
-    assert plugin["source"] == {"source": "git-subdir", "url": "zch6a/demo-tool", "path": "plugin", "ref": "v0"}
-    assert market["name"] == "research-kit" and plugin["homepage"] == "https://github.com/zch6a/demo-tool"
+    assert plugin["source"] == {"source": "git-subdir", "url": "zch6a/table-trace", "path": "plugin", "ref": "v0"}
+    assert market["name"] == "research-kit" and plugin["homepage"] == "https://github.com/zch6a/table-trace"
     section = render.readme_section(doc, "en")
     assert "### Read" in section and "### Write" not in section  # a stage without tools is left out
     site = render.site(doc)
     assert "Reads &lt;b&gt;things&lt;/b&gt; &amp; more." in site and "<b>things" not in site  # text is escaped
     assert 'id="en-read"' in site and 'href="#en-read"' in site and 'id="en-write"' not in site
+    assert "/plugin install table-trace@research-kit" in site and '<div data-lang="zh" lang="zh-CN" hidden>' in site
+    assert render.count('<img alt="12 tools" src="https://img.shields.io/badge/tools-12-2ea44f">', 13) == (
+        '<img alt="13 tools" src="https://img.shields.io/badge/tools-13-2ea44f">'
+    )
     readme = tmp_path / "README.md"
     readme.write_text("x\n<!-- tools:start -->\nold\n<!-- tools:end -->\ny\n", encoding="utf-8")
     assert render.fill(readme, "new\n") == "x\n<!-- tools:start -->\nnew\n<!-- tools:end -->\ny\n"
@@ -75,7 +89,7 @@ def test_the_repository_is_up_to_date() -> None:
         assert path.read_text(encoding="utf-8") == text, f"run python scripts/render.py ({path.name} is out of date)"
 
 
-def fake_github(skills: dict[str, str], plugin_name: str = "demo-tool"):
+def fake_github(skills: dict[str, str], plugin_name: str = "table-trace"):
     def fetch(url: str) -> bytes:
         if url.endswith("/.claude-plugin/plugin.json"):
             return json.dumps({"name": plugin_name}).encode()
@@ -91,23 +105,25 @@ def fake_github(skills: dict[str, str], plugin_name: str = "demo-tool"):
     return fetch
 
 
-MARKET = {"plugins": [{"name": "demo-tool", "source": {"source": "git-subdir", "url": "zch6a/demo-tool", "path": "plugin", "ref": "v0"}}]}
-GOOD = '---\nname: demo-tool\ndescription: "Reads things from papers and says where they are. Use when the user asks for things: any of them."\n---\n# x\n'
+MARKET = {"plugins": [{"name": "table-trace", "source": {"source": "git-subdir", "url": "zch6a/table-trace", "path": "plugin", "ref": "v0"}}]}
+GOOD = '---\nname: table-trace\ndescription: "Reads things from papers and says where they are. Use when the user asks for things: any of them."\n---\n# x\n'
 
 
 def test_skills_that_parse_and_skills_that_do_not() -> None:
     lines: list[str] = []
-    assert check_skills.check(MARKET, fake_github({"demo-tool": GOOD}), lines.append) == []
-    assert lines == ["demo-tool: demo-tool ok"]
-    assert check_skills.check(MARKET, fake_github({"demo-tool": GOOD.replace("\n", "\r\n")}), lambda _: None) == []  # CRLF
+    assert check_skills.check(MARKET, fake_github({"table-trace": GOOD}), lines.append) == []
+    assert lines == ["table-trace: table-trace ok"]
+    assert check_skills.check(MARKET, fake_github({"table-trace": GOOD.replace("\n", "\r\n")}), lambda _: None) == []  # CRLF
     # a plain value with ": " inside: YAML reads a new key, so the whole frontmatter fails (the bug of six tools' 0.1.0)
     plain = GOOD.replace('description: "Reads', "description: Reads").replace('them."', "them.")
-    (problem,) = check_skills.check(MARKET, fake_github({"demo-tool": plain}), lambda _: None)
+    (problem,) = check_skills.check(MARKET, fake_github({"table-trace": plain}), lambda _: None)
     assert "not YAML" in problem
-    short = "---\nname: demo-tool\ndescription: Reads things.\n---\n"
-    assert "does not say when" in check_skills.check(MARKET, fake_github({"demo-tool": short}), lambda _: None)[0]
-    other = GOOD.replace("name: demo-tool", "name: other")
-    assert "name is 'other'" in check_skills.check(MARKET, fake_github({"demo-tool": other}), lambda _: None)[0]
-    assert "plugin.json names 'x'" in check_skills.check(MARKET, fake_github({"demo-tool": GOOD}, "x"), lambda _: None)[0]
-    missing = check_skills.check(MARKET, fake_github({"demo-tool": None}), lambda _: None)  # one unreadable file: said, not a crash
+    short = "---\nname: table-trace\ndescription: Reads things.\n---\n"
+    assert "does not say when" in check_skills.check(MARKET, fake_github({"table-trace": short}), lambda _: None)[0]
+    other = GOOD.replace("name: table-trace", "name: other")
+    assert "name is 'other'" in check_skills.check(MARKET, fake_github({"table-trace": other}), lambda _: None)[0]
+    assert "plugin.json names 'x'" in check_skills.check(MARKET, fake_github({"table-trace": GOOD}, "x"), lambda _: None)[0]
+    bom = "\ufeff" + GOOD.rstrip("\n").removesuffix("# x").rstrip("\n")  # a BOM, and nothing after the frontmatter
+    assert check_skills.check(MARKET, fake_github({"table-trace": bom}), lambda _: None) == []
+    missing = check_skills.check(MARKET, fake_github({"table-trace": None}), lambda _: None)  # one unreadable file: said, not a crash
     assert missing and "could not read its SKILL.md" in missing[0]

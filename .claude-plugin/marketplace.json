@@ -2,8 +2,7 @@
   "name": "research-kit",
   "description": "Tools for research work, from reading papers to after publication: one skill each, so that an agent runs the tool and quotes what it found.",
   "owner": {
-    "name": "zch6a",
-    "url": "https://github.com/zch6a"
+    "name": "zch6a"
   },
   "plugins": [
     {
