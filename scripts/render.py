@@ -88,11 +88,14 @@ def fill(path: Path, section: str) -> str:
 
 def site(doc: dict) -> str:
     e = html.escape
-    cards = {"en": [], "zh": []}
+    cards: dict[str, list[str]] = {"en": [], "zh": []}
+    nav: dict[str, list[str]] = {"en": [], "zh": []}
     for lang in ("en", "zh"):
         for s in doc["stages"]:
-            if not any(t["stage"] == s["key"] for t in doc["tools"]):
+            here = [t for t in doc["tools"] if t["stage"] == s["key"]]
+            if not here:
                 continue
+            nav[lang].append(f'<a href="#{lang}-{s["key"]}">{e(s[lang])} <span>{len(here)}</span></a>')
             items = []
             for t in [t for t in doc["tools"] if t["stage"] == s["key"]]:
                 links = [f'<a href="https://github.com/{OWNER}/{t["name"]}">{"code" if lang == "en" else "代码"}</a>']
@@ -102,7 +105,7 @@ def site(doc: dict) -> str:
                     f'<article><h3>{e(t["name"])}</h3><p>{e(t[lang])}</p><pre><code>{e(t["command"])}</code></pre>'
                     f'<p class="links">{" · ".join(links)}</p></article>'
                 )
-            cards[lang].append(f'<section><h2>{e(s[lang])}</h2><div class="grid">{"".join(items)}</div></section>')
+            cards[lang].append(f'<section id="{lang}-{s["key"]}"><h2>{e(s[lang])}</h2><div class="grid">{"".join(items)}</div></section>')
     n = len(doc["tools"])
     return f"""<!doctype html>
 <html lang="en">
@@ -119,6 +122,8 @@ def site(doc: dict) -> str:
   <h1>research-kit</h1>
   <p class="lead" data-lang="en">{n} open tools for research work, from reading papers to after publication. Each is a command (no account; no API key, though paper-impact goes faster with a free one), an agent skill, and some a site. Rules and published data, no large language model: what they report says where it comes from.</p>
   <p class="lead" data-lang="zh" hidden>{n} 个开源科研工具，从读论文到论文发表之后。每个都是一条命令（不用注册；也不用 API key，只是 paper-impact 有免费 key 会快很多）和一个智能体技能，有的还有网站。靠规则和公开数据，不用大语言模型：给出的每个结果都标明出处。</p>
+  <nav aria-label="Stages" data-lang="en" class="stages">{"".join(nav["en"])}</nav>
+  <nav aria-label="阶段" data-lang="zh" class="stages" hidden>{"".join(nav["zh"])}</nav>
   <p><button type="button" id="lang" lang="zh-CN">中文</button></p>
   <div class="install">
     <p data-lang="en">The commands need <a href="https://docs.astral.sh/uv/">uv</a> (gpu-budget: Node 22+). As agent skills in Claude Code, add the marketplace once, then install the tools you want by name:</p>

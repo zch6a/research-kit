@@ -75,3 +75,17 @@ READMEs), and every link checked (35, all answering). Fixed:
 Not possible here: trying the marketplace end to end means adding it to a Claude Code setup, which is the owner's.
 
 Next: polishing round 3.
+
+### 2026-11-14 — polishing round 3
+
+**The site's first screen**: a row of the five stages under the lead, each with how many tools it has, linking to its
+section (`Find and read 4 · Run experiments 3 · …`), in each language. Its first screenshot showed both languages' rows
+at once: a class giving `display: flex` beats the `hidden` attribute, so a page-wide `[hidden] { display: none
+!important; }` now keeps the other language hidden whatever a class says. The README shows that first screen
+(`docs/site.png`, both languages).
+
+**A way back from every tool**: each of the thirteen tools' READMEs, English and Chinese, now has a short section
+before its licence pointing to research-kit and its site (two of them had no toolkit section at all). Committed and
+pushed in each repository with a line in its POLISH_LOG; CI passed in all thirteen.
+
+Next: polishing round 4.

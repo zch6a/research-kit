@@ -16,6 +16,8 @@ from.
 
 ---
 
+<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="The research-kit site: thirteen tools by stage, each with its command; the marketplace to install them as skills"></a></p>
+
 ## Use them
 
 **On their own**, each tool is the command under it below. They need [uv](https://docs.astral.sh/uv/) (it fetches

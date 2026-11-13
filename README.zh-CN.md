@@ -13,6 +13,8 @@
 
 ---
 
+<p align="center"><a href="https://zch6a.github.io/research-kit/"><img src="docs/site.png" width="760" alt="research-kit 网站：13 个工具按科研阶段排列，每个都有命令；以及安装技能用的插件市场"></a></p>
+
 ## 使用方法
 
 **单独使用**：每个工具下面的命令就是用法。需要先装 [uv](https://docs.astral.sh/uv/)（需要时它会自动准备 Python 3.10+）；gpu-budget 需要 Node 22+。命令里的 `@v0` 指该工具的最新发布版，这个标签会随每次发布移动（想固定版本就换成某个提交）。
