@@ -1,0 +1,300 @@
+{
+  "name": "research-kit",
+  "description": "Tools for research work, from reading papers to after publication: one skill each, so that an agent runs the tool and quotes what it found.",
+  "owner": {
+    "name": "zch6a",
+    "url": "https://github.com/zch6a"
+  },
+  "plugins": [
+    {
+      "name": "venue-atlas",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/venue-atlas",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "What a conference was about, year by year: 60,000 papers of seven venues on maps by meaning, named topics with their trends, search by meaning in the browser.",
+      "category": "research",
+      "tags": [
+        "papers",
+        "conferences",
+        "topics",
+        "search"
+      ],
+      "homepage": "https://zch6a.github.io/venue-atlas/",
+      "repository": "https://github.com/zch6a/venue-atlas",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "paper-impact",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/paper-impact",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Which papers at AI venues mattered: every NeurIPS, ICML, ICLR, CVPR and ACL paper with its citations and field-normalized impact from OpenAlex, and how much OpenAlex covers.",
+      "category": "research",
+      "tags": [
+        "citations",
+        "openalex",
+        "conferences"
+      ],
+      "homepage": "https://zch6a.github.io/paper-impact/",
+      "repository": "https://github.com/zch6a/paper-impact",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "table-trace",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/table-trace",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side.",
+      "category": "research",
+      "tags": [
+        "tables",
+        "results",
+        "reproducibility",
+        "arxiv"
+      ],
+      "homepage": "https://github.com/zch6a/table-trace",
+      "repository": "https://github.com/zch6a/table-trace",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "arxiv-diff",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/arxiv-diff",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references.",
+      "category": "research",
+      "tags": [
+        "arxiv",
+        "versions",
+        "diff"
+      ],
+      "homepage": "https://github.com/zch6a/arxiv-diff",
+      "repository": "https://github.com/zch6a/arxiv-diff",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "gpu-budget",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/gpu-budget",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "How much GPU memory, time and money training, fine-tuning or serving an LLM takes, each part with its formula (ZeRO/FSDP, parallelism, MoE, LoRA/QLoRA, KV cache), checked against published runs.",
+      "category": "research",
+      "tags": [
+        "gpu",
+        "memory",
+        "cost",
+        "llm"
+      ],
+      "homepage": "https://zch6a.github.io/gpu-budget/",
+      "repository": "https://github.com/zch6a/gpu-budget",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "exp-tables",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/exp-tables",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Experiment results to your paper's table: mean ± spread over seeds, significance against the best, bold only where the seeds support it; from CSV, wandb, TensorBoard or MLflow.",
+      "category": "research",
+      "tags": [
+        "experiments",
+        "tables",
+        "statistics",
+        "latex"
+      ],
+      "homepage": "https://github.com/zch6a/exp-tables",
+      "repository": "https://github.com/zch6a/exp-tables",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "repro-score",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/repro-score",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Can someone reproduce your paper from your code? A score for a research code repository, item by item with evidence, read from the files with nothing run.",
+      "category": "research",
+      "tags": [
+        "reproducibility",
+        "code",
+        "badge"
+      ],
+      "homepage": "https://github.com/zch6a/repro-score",
+      "repository": "https://github.com/zch6a/repro-score",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "fig-check",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/fig-check",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project.",
+      "category": "research",
+      "tags": [
+        "figures",
+        "latex",
+        "accessibility"
+      ],
+      "homepage": "https://github.com/zch6a/fig-check",
+      "repository": "https://github.com/zch6a/fig-check",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "paper-proof",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/paper-proof",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels.",
+      "category": "research",
+      "tags": [
+        "references",
+        "latex",
+        "checks"
+      ],
+      "homepage": "https://github.com/zch6a/paper-proof",
+      "repository": "https://github.com/zch6a/paper-proof",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "submit-check",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/submit-check",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs).",
+      "category": "research",
+      "tags": [
+        "submission",
+        "double-blind",
+        "latex"
+      ],
+      "homepage": "https://github.com/zch6a/submit-check",
+      "repository": "https://github.com/zch6a/submit-check",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "iclr-scores",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/iclr-scores",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "What ICLR's review scores led to, 2017-2025: the acceptance rate by mean score, where half the papers got in, what disagreement did, and the odds for your scores.",
+      "category": "research",
+      "tags": [
+        "peer-review",
+        "iclr",
+        "statistics"
+      ],
+      "homepage": "https://zch6a.github.io/iclr-scores/",
+      "repository": "https://github.com/zch6a/iclr-scores",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "paper-page",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/paper-page",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "A project page for your paper from its arXiv id: links, teaser, abstract, BibTeX, Google Scholar and link-preview tags, in one static HTML file for GitHub Pages.",
+      "category": "research",
+      "tags": [
+        "project-page",
+        "github-pages",
+        "arxiv"
+      ],
+      "homepage": "https://zch6a.github.io/paper-page/",
+      "repository": "https://github.com/zch6a/paper-page",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    },
+    {
+      "name": "scholar-cards",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/scholar-cards",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key.",
+      "category": "research",
+      "tags": [
+        "citations",
+        "homepage",
+        "openalex"
+      ],
+      "homepage": "https://github.com/zch6a/scholar-cards",
+      "repository": "https://github.com/zch6a/scholar-cards",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
+    }
+  ]
+}
