@@ -67,7 +67,7 @@ npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12
 uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --format markdown
 ```
 
-**[repro-score](https://github.com/zch6a/repro-score)** — 别人能不能用你的代码复现论文：给科研代码仓库逐项打分并给出依据，只读文件、不运行任何代码。
+**[repro-score](https://github.com/zch6a/repro-score)** — 别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码。
 
 ```bash
 uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo
@@ -120,7 +120,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 
 - **都用真实材料检验过。** 每个工具发布前都在真实的论文、代码仓库或公开数据上试过，README 里的数字就来自这些实测；各仓库的 POLISH_LOG 记录了试了什么、修了什么。
 - **不保存不属于你的东西。** 论文源码和数据集只在原处读取，或下载到临时目录、读完即删；网站只发布数量、标题和链接，不发布摘要，也不涉及审稿人。
-- **统一的做法。** Python 3.10+（gpu-budget 用 Node），可以用 `uvx` 直接从 GitHub 运行，MIT 许可，测试不联网，CI 覆盖 Linux、macOS 和 Windows，工作流的 action 固定到具体提交，令牌只读。
+- **统一的做法。** Python 3.10+（gpu-budget 用 Node），可以用 `uvx` 直接从 GitHub 运行，MIT 许可，测试不联网，CI 覆盖 Linux、macOS 和 Windows，工作流的 action 固定到具体提交，除了创建发布的那一步（它不运行项目代码）之外令牌都是只读的。
 
 ## 参与贡献
 

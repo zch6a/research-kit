@@ -71,7 +71,7 @@ npx github:zch6a/gpu-budget train llama-3.1-70b --gpus 64 --zero 3 --tokens 2e12
 uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --format markdown
 ```
 
-**[repro-score](https://github.com/zch6a/repro-score)** — Can someone reproduce your paper from your code? A score for a research code repository, item by item with evidence, read from the files with nothing run.
+**[repro-score](https://github.com/zch6a/repro-score)** — Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.
 
 ```bash
 uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo
@@ -127,7 +127,8 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **Nothing kept that is not yours.** Papers' sources and datasets are read where they are, or downloaded to a
   temporary folder and deleted; the sites publish counts, titles and links, never abstracts or reviewers.
 - **The same shape.** Python 3.10+ (gpu-budget: Node), installable with `uvx` from GitHub, MIT licensed, a test suite
-  that needs no network, CI on Linux, macOS and Windows, actions pinned to commits, read-only tokens.
+  that needs no network, CI on Linux, macOS and Windows, actions pinned to commits, read-only tokens but for the job
+  that makes a release (which runs nothing of the project).
 
 ## Contributing
 

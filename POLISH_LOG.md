@@ -27,3 +27,20 @@ the address; no console errors; no horizontal scroll at 390 px; long commands wr
 venues of seven; paper-impact two of five) and the two with live sites got them as their homepage.
 
 Next: the site published; a social card; a read-through of every tool's README for the same claims as here.
+
+### 2026-11-14 — polishing round 1
+
+**Each tool's sentence against its own README**: all thirteen say what their READMEs say; repro-score's now says the
+score is out of 100 and that each item has the file and line behind it. The claims under “How they are made” checked in
+all thirteen repositories' workflows: CI on Linux, macOS and Windows in every one, every action pinned to a commit
+(repro-score's one `@v0` is its own released Action, tested on purpose), and `contents: write` only in the job that makes
+a release — so the README now says “read-only tokens but for the job that makes a release”, in both languages.
+
+**The social card** (`docs/social-preview.png`, from `scripts/social-card.html`): the thirteen tools by stage.
+
+**A launch kit**, kept outside the repository with the others (`launch/research-kit.md`): an angle, a checklist before
+posting (the fourteen social previews, trying the marketplace once in Claude Code), and drafts for Hacker News
+(table-trace), r/MachineLearning (iclr-scores), a thread, a Chinese post and awesome-list lines; every number in them
+comes from a tool's own run. Posting is the owner's.
+
+Next: polishing round 2 (the site and READMEs read by someone else; the marketplace tried end to end if the owner adds it).

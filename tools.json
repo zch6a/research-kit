@@ -57,8 +57,8 @@
     },
     {
       "name": "repro-score", "stage": "experiment",
-      "en": "Can someone reproduce your paper from your code? A score for a research code repository, item by item with evidence, read from the files with nothing run.",
-      "zh": "别人能不能用你的代码复现论文：给科研代码仓库逐项打分并给出依据，只读文件、不运行任何代码。",
+      "en": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
+      "zh": "别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码。",
       "command": "uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo",
       "site": "",
       "tags": ["reproducibility", "code", "badge"]

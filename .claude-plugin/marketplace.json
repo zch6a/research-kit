@@ -150,7 +150,7 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Can someone reproduce your paper from your code? A score for a research code repository, item by item with evidence, read from the files with nothing run.",
+      "description": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
       "category": "research",
       "tags": [
         "reproducibility",
