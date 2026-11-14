@@ -169,7 +169,7 @@ def test_the_landscape_is_checked(tmp_path: Path) -> None:
 
 def test_the_repository_is_up_to_date() -> None:
     doc = render.load()
-    for path, text in render.outputs(doc, render.load_landscape(doc)).items():
+    for path, text in render.outputs(doc, render.load_landscape(doc), render.load_deadlines()).items():
         assert path.read_text(encoding="utf-8") == text, f"run python scripts/render.py ({path.name} is out of date)"
 
 
@@ -211,3 +211,40 @@ def test_skills_that_parse_and_skills_that_do_not() -> None:
     assert check_skills.check(MARKET, fake_github({"table-trace": bom}), lambda _: None) == []
     missing = check_skills.check(MARKET, fake_github({"table-trace": None}), lambda _: None)  # one unreadable file: said, not a crash
     assert missing and "could not read its SKILL.md" in missing[0]
+
+
+DEADLINES = {
+    "checked": "2026-11-14",
+    "sources": {"deadlines": {"repo": "ccfddl/ccf-deadlines", "commit": "0" * 40, "licence": "MIT"}, "rules": {"repo": "x", "ref": "v0"}},
+    "venues": [
+        {"name": "PastConf", "editions": [{"year": 2026, "link": "", "timezone": "UTC+0", "date": "", "place": "",
+                                           "timeline": [{"deadline": "2026-05-07 11:59:59"}]}], "rules": None},
+        {"name": "SoonConf", "editions": [{"year": 2027, "link": "https://soon.example", "timezone": "AoE", "date": "June", "place": "Kyoto",
+                                           "timeline": [{"deadline": "2026-10-01 23:59:59"}, {"abstract_deadline": "2026-12-01 23:59:59",
+                                                         "deadline": "2026-12-08 23:59:59", "comment": "full papers"}]}],
+         "rules": {"id": "soon2027", "name": "Soon", "pages": 8, "camera_ready": 9, "not_counted": [], "required": ["a checklist"],
+                   "source": "https://soon.example/cfp", "verified": "2026-11-13"}},
+    ],
+}  # fmt: skip
+
+
+def test_deadlines_next_one_first_with_rules(tmp_path: Path) -> None:
+    p = tmp_path / "deadlines.json"
+    p.write_text(json.dumps(DEADLINES), encoding="utf-8")
+    dl = render.load_deadlines(p)
+    rows = render.upcoming(dl)
+    assert [(v["name"], t["deadline"][:10]) for v, _, t, _ in rows] == [("SoonConf", "2026-12-08"), ("PastConf", "2026-05-07")]
+    md = render.deadlines_section(dl, "en")
+    assert "| [SoonConf 2027](https://soon.example) | abstract 2026-12-01, paper 2026-12-08 23:59 (full papers) | AoE |" in md
+    assert "8 (9) pages; requires a checklist" in md and "last: 2026-05-07" in md
+    html_ = render.site_deadlines(dl, "zh")[1]
+    assert 'data-utc="2026-12-09T11:59:59Z"' in html_ and "class=past" in html_
+
+
+def test_deadlines_bad_time_zone(tmp_path: Path) -> None:
+    bad = json.loads(json.dumps(DEADLINES))
+    bad["venues"][0]["editions"][0]["timezone"] = "PST"
+    p = tmp_path / "deadlines.json"
+    p.write_text(json.dumps(bad), encoding="utf-8")
+    with pytest.raises(SystemExit, match="time zone"):
+        render.load_deadlines(p)

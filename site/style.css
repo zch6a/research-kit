@@ -48,3 +48,5 @@ code { font-family: "Cascadia Mono", Consolas, ui-monospace, monospace; }
 .links { margin-top: auto; font-size: 14px; }
 a { color: var(--accent); }
 footer { color: var(--muted); font-size: 13px; padding: 24px 16px 32px; }
+tr.past td { opacity: .55 }
+.left { display: block; font-weight: 600; font-size: .85em }

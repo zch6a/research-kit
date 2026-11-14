@@ -173,3 +173,16 @@ The first two needs chosen from the list were built into paper-proof 0.2.0: cons
 local check of a submitted PDF that sends nothing. The consistency need is off the list (22 left); the reviewer need
 stays, marked as partly covered by paper-proof (a PDF's tables still cannot be compared with its claims).
 paper-proof's description and tags updated; its skill at v0 checked.
+
+### 2026-11-14 — Deadlines and venue rules
+
+One of the needs on the list: "a deadline tracker that also keeps each venue's rules". Rather than keep dates by hand,
+`scripts/refresh_deadlines.py` reads ccf-deadlines (MIT, 9.5k stars, updated daily) for 16 machine-learning venues at
+its current commit, and submit-check's rules at its v0 tag, into `deadlines.json` (dates, places, links; the commit
+recorded). `render.py` puts each venue's next deadline (or its last one, when the next edition has none yet) in both
+READMEs and on the site, with time zone, conference dates, page limits and required sections, each rule linked to its
+official page and to `submit-check --venue`. `site/deadlines.js` counts the days left from each deadline's UTC time
+(AoE is UTC-12). Checked: `load_deadlines` refuses dates that do not parse and time zones it does not know; two tests
+with made-up venues; the days-left script run on the page (CVPR 2027: 3 days left on 2026-11-14 in UTC-12).
+The gap stays on the list, partly covered: supplementary deadlines, rebuttal windows and LLM policies are not
+collected.

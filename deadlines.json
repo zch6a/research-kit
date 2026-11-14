@@ -1,0 +1,819 @@
+{
+  "checked": "2026-11-14",
+  "sources": {
+    "deadlines": {
+      "repo": "ccfddl/ccf-deadlines",
+      "commit": "dae323c710347eb3d7dd40c5a29acb07229bb4a5",
+      "licence": "MIT"
+    },
+    "rules": {
+      "repo": "zch6a/submit-check",
+      "ref": "v0"
+    }
+  },
+  "venues": [
+    {
+      "name": "NeurIPS",
+      "description": "Conference on Neural Information Processing Systems",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://neurips.cc/Conferences/2025",
+          "timezone": "AoE",
+          "date": "December 3-5 (San Diego and Mexico City), 2025",
+          "place": "San Diego Convention Center, USA; Mexico City, Mexico",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-05-11 23:59:59",
+              "deadline": "2025-05-15 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://neurips.cc/Conferences/2026",
+          "timezone": "UTC+0",
+          "date": "December 8-10 (Sydney), December 9-11 (Atlanta and Paris), 2026",
+          "place": "Sydney, Australia; Atlanta, USA; Paris, France",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-05-05 11:59:00",
+              "deadline": "2026-05-07 11:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "neurips2025",
+        "name": "NeurIPS 2025",
+        "pages": 9,
+        "camera_ready": 10,
+        "not_counted": [
+          "references",
+          "checklist",
+          "appendix"
+        ],
+        "required": [
+          "the NeurIPS paper checklist"
+        ],
+        "source": "https://neurips.cc/Conferences/2025/CallForPapers",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "ICML",
+      "description": "International Conference on Machine Learning",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://icml.cc/Conferences/2025",
+          "timezone": "UTC-12",
+          "date": "July 13-19, 2025",
+          "place": "Vancouver Convention Center, Vancouver, Canada",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-01-23 23:59:59",
+              "deadline": "2025-01-30 23:59:59",
+              "comment": "Paper Submissions Open on OpenReview Jan 08 2025 11:59 PM UTC"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://icml.cc/Conferences/2026",
+          "timezone": "UTC+0",
+          "date": "July 6-11, 2026",
+          "place": "Seoul, Korea",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-01-24 11:59:59",
+              "deadline": "2026-01-29 11:59:59",
+              "comment": "Paper Submissions Open on OpenReview Jan 08 2026 12:00AM UTC-0"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "icml2025",
+        "name": "ICML 2025",
+        "pages": 8,
+        "camera_ready": 9,
+        "not_counted": [
+          "references",
+          "impact statement",
+          "appendix"
+        ],
+        "required": [
+          "an Impact Statement section"
+        ],
+        "source": "https://icml.cc/Conferences/2025/CallForPapers",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "ICLR",
+      "description": "International Conference on Learning Representations",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://iclr.cc/Conferences/2025",
+          "timezone": "UTC-12",
+          "date": "April 24-26, 2025",
+          "place": "Singapore",
+          "timeline": [
+            {
+              "abstract_deadline": "2024-09-27 23:59:59",
+              "deadline": "2024-10-01 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://iclr.cc/Conferences/2026",
+          "timezone": "AoE",
+          "date": "April 23-25, 2026",
+          "place": "Rio de Janeiro, Brazil",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-09-19 23:59:59",
+              "deadline": "2025-09-24 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://iclr.cc/Conferences/2027",
+          "timezone": "AoE",
+          "date": "April 26-28, 2027",
+          "place": "San Francisco, CA, USA",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-09-18 23:59:59",
+              "deadline": "2026-09-25 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "iclr2026",
+        "name": "ICLR 2026",
+        "pages": 9,
+        "camera_ready": 10,
+        "not_counted": [
+          "references",
+          "appendix",
+          "ethics statement",
+          "reproducibility statement"
+        ],
+        "required": [
+          "a Reproducibility Statement (strongly encouraged)"
+        ],
+        "source": "https://iclr.cc/Conferences/2026/AuthorGuide",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "CVPR",
+      "description": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://cvpr.thecvf.com/Conferences/2025/CallForPapers",
+          "timezone": "UTC-8",
+          "date": "June 13-15, 2025",
+          "place": "Nashville, Tennessee, USA (Hybrid)",
+          "timeline": [
+            {
+              "abstract_deadline": "2024-11-07 23:59:59",
+              "deadline": "2024-11-14 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://cvpr.thecvf.com/Conferences/2026",
+          "timezone": "UTC-12",
+          "date": "June 5-7, 2026",
+          "place": "Denver, Colorado, United States (Hybrid)",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-11-07 23:59:59",
+              "deadline": "2025-11-13 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://cvpr.thecvf.com/Conferences/2027",
+          "timezone": "UTC-12",
+          "date": "June 22-25, 2027",
+          "place": "Seattle, WA, United States",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-11-10 23:59:59",
+              "deadline": "2026-11-16 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "cvpr2026",
+        "name": "CVPR 2026",
+        "pages": 8,
+        "camera_ready": null,
+        "not_counted": [
+          "references"
+        ],
+        "required": [],
+        "source": "https://cvpr.thecvf.com/Conferences/2026/AuthorGuidelines",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "ICCV",
+      "description": "IEEE International Conference on Computer Vision",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://iccv.thecvf.com/Conferences/2025",
+          "timezone": "UTC+0",
+          "date": "October 21-23, 2025",
+          "place": "Honolulu, Hawaii (Hybrid)",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-03-04 09:59:59",
+              "deadline": "2025-03-08 09:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": null
+    },
+    {
+      "name": "ECCV",
+      "description": "European Conference on Computer Vision",
+      "editions": [
+        {
+          "year": 2026,
+          "link": "https://eccv.ecva.net/",
+          "timezone": "UTC-8",
+          "date": "September 10-12, 2026",
+          "place": "Malmö, Sweden",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-02-26 14:00:00",
+              "deadline": "2026-03-05 14:00:00"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "eccv2026",
+        "name": "ECCV 2026",
+        "pages": 14,
+        "camera_ready": null,
+        "not_counted": [
+          "references"
+        ],
+        "required": [],
+        "source": "https://eccv.ecva.net/Conferences/2026/SubmissionPolicies",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "ACL",
+      "description": "Annual Meeting of the Association for Computational Linguistics",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://2025.aclweb.org/",
+          "timezone": "UTC-12",
+          "date": "July 28-30, 2025",
+          "place": "Vienna, Austria (Hybrid)",
+          "timeline": [
+            {
+              "deadline": "2025-02-15 23:59:59",
+              "comment": "ARR submission"
+            },
+            {
+              "deadline": "2025-04-20 23:59:59",
+              "comment": "ARR commitment; reviewed papers only"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://2026.aclweb.org/",
+          "timezone": "UTC-12",
+          "date": "July 5-7, 2026",
+          "place": "San Diego, California, United States (Hybrid)",
+          "timeline": [
+            {
+              "deadline": "2025-10-06 23:59:59",
+              "comment": "ARR October cycle"
+            },
+            {
+              "deadline": "2026-01-05 23:59:59",
+              "comment": "ARR January cycle"
+            },
+            {
+              "deadline": "2026-03-14 23:59:59",
+              "comment": "ARR commitment; reviewed papers only"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://2027.aclweb.org/",
+          "timezone": "UTC-12",
+          "date": "August 20-22, 2027",
+          "place": "Kyoto, Japan",
+          "timeline": [
+            {
+              "deadline": "2027-01-04 23:59:59",
+              "comment": "ARR Submission"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "acl-arr",
+        "name": "ACL Rolling Review (ACL, EMNLP, NAACL, ...), long papers",
+        "pages": 8,
+        "camera_ready": null,
+        "not_counted": [
+          "references",
+          "limitations",
+          "ethics",
+          "appendix"
+        ],
+        "required": [
+          "a section titled Limitations"
+        ],
+        "source": "https://aclrollingreview.org/cfp",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "EMNLP",
+      "description": "The annual Conference on Empirical Methods in Natural Language Processing",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://2025.emnlp.org/",
+          "timezone": "UTC-12",
+          "date": "November 5-7, 2025",
+          "place": "Suzhou, China (Hybrid)",
+          "timeline": [
+            {
+              "deadline": "2025-05-19 23:59:59",
+              "comment": "ARR Submission"
+            },
+            {
+              "deadline": "2025-08-01 23:59:59",
+              "comment": "Commitment deadline for papers reviewed by ARR"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://2026.emnlp.org/",
+          "timezone": "UTC-12",
+          "date": "October 25-27, 2026",
+          "place": "Budapest, Hungary (Hybrid)",
+          "timeline": [
+            {
+              "deadline": "2026-05-25 23:59:59",
+              "comment": "ARR Submission"
+            },
+            {
+              "deadline": "2026-08-02 23:59:59",
+              "comment": "Commitment deadline for papers with ARR reviews and meta-reviews"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "acl-arr",
+        "name": "ACL Rolling Review (ACL, EMNLP, NAACL, ...), long papers",
+        "pages": 8,
+        "camera_ready": null,
+        "not_counted": [
+          "references",
+          "limitations",
+          "ethics",
+          "appendix"
+        ],
+        "required": [
+          "a section titled Limitations"
+        ],
+        "source": "https://aclrollingreview.org/cfp",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "NAACL",
+      "description": "The Annual Conference of the North American Chapter of the Association for Computational Linguistics",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://2025.naacl.org/",
+          "timezone": "UTC-12",
+          "date": "April 30-May 2, 2025",
+          "place": "Albuquerque, New Mexico, USA (Hybrid)",
+          "timeline": [
+            {
+              "deadline": "2024-10-15 23:59:59",
+              "comment": "ARR Submission"
+            },
+            {
+              "deadline": "2024-12-16 23:59:59",
+              "comment": "Commitment deadline for papers reviewed by ARR"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://2027.naacl.org/",
+          "timezone": "UTC-12",
+          "date": "June 1-5, 2027",
+          "place": "San Francisco, California, USA",
+          "timeline": [
+            {
+              "deadline": "2026-10-12 23:59:59",
+              "comment": "ARR Submission"
+            },
+            {
+              "deadline": "2026-12-23 23:59:59",
+              "comment": "NAACL commitment after ARR meta-reviews; reviewed papers only"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "acl-arr",
+        "name": "ACL Rolling Review (ACL, EMNLP, NAACL, ...), long papers",
+        "pages": 8,
+        "camera_ready": null,
+        "not_counted": [
+          "references",
+          "limitations",
+          "ethics",
+          "appendix"
+        ],
+        "required": [
+          "a section titled Limitations"
+        ],
+        "source": "https://aclrollingreview.org/cfp",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "AAAI",
+      "description": "AAAI Conference on Artificial Intelligence",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://aaai.org/conference/aaai/aaai-25/",
+          "timezone": "UTC-12",
+          "date": "February 27-March 2, 2025",
+          "place": "PHILADELPHIA, PENNSYLVANIA, USA",
+          "timeline": [
+            {
+              "abstract_deadline": "2024-08-07 23:59:59",
+              "deadline": "2024-08-15 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://aaai.org/conference/aaai/aaai-26/",
+          "timezone": "UTC-12",
+          "date": "January 22-25, 2026",
+          "place": "Singapore EXPO",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-07-25 23:59:59",
+              "deadline": "2025-08-01 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://aaai.org/conference/aaai/aaai-27/",
+          "timezone": "UTC-12",
+          "date": "February 16-23, 2027",
+          "place": "Montréal, Québec, Canada",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-07-21 23:59:59",
+              "deadline": "2026-07-28 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "aaai2026",
+        "name": "AAAI-26",
+        "pages": 7,
+        "camera_ready": null,
+        "not_counted": [
+          "references",
+          "reproducibility checklist"
+        ],
+        "required": [
+          "the reproducibility checklist"
+        ],
+        "source": "https://aaai.org/conference/aaai/aaai-26/submission-instructions/",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "IJCAI",
+      "description": "International Joint Conference on Artificial Intelligence",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://2025.ijcai.org/",
+          "timezone": "UTC-12",
+          "date": "August 19-22, 2025",
+          "place": "Montreal, Canada.",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-01-16 23:59:59",
+              "deadline": "2025-01-23 23:59:59",
+              "comment": "Separate satellite event: August 29-31, 2025, Guangzhou, China"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://2026.ijcai.org/",
+          "timezone": "UTC-12",
+          "date": "August 18-21, 2026",
+          "place": "Bremen, Germany",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-01-12 23:59:59",
+              "deadline": "2026-01-19 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://2027.ijcai.org/",
+          "timezone": "AoE",
+          "date": "August 7-13, 2027",
+          "place": "Kyoto, Japan",
+          "timeline": [
+            {
+              "abstract_deadline": "2027-01-04 23:59:59",
+              "deadline": "2027-01-11 23:59:59",
+              "comment": "Separate satellite event: August 15-17, 2027, Hengqin, China"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "ijcai2026",
+        "name": "IJCAI-ECAI 2026, main track",
+        "pages": 7,
+        "camera_ready": null,
+        "not_counted": [
+          "references",
+          "ethics"
+        ],
+        "required": [],
+        "source": "https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "KDD",
+      "description": "ACM Knowledge Discovery and Data Mining",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://kdd2025.kdd.org/",
+          "timezone": "AoE",
+          "date": "August 3-7, 2025",
+          "place": "Toronto, ON, Canada",
+          "timeline": [
+            {
+              "abstract_deadline": "2024-08-01 23:59:59",
+              "deadline": "2024-08-08 23:59:59",
+              "comment": "first round"
+            },
+            {
+              "abstract_deadline": "2025-02-03 23:59:59",
+              "deadline": "2025-02-10 23:59:59",
+              "comment": "second round"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://kdd2026.kdd.org/",
+          "timezone": "AoE",
+          "date": "August 10-13, 2026",
+          "place": "Jeju, Korea",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-07-24 23:59:59",
+              "deadline": "2025-07-31 23:59:59",
+              "comment": "first round"
+            },
+            {
+              "abstract_deadline": "2026-02-01 23:59:59",
+              "deadline": "2026-02-08 23:59:59",
+              "comment": "second round"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://kdd2027.kdd.org/",
+          "timezone": "AoE",
+          "date": "August 1-5, 2027",
+          "place": "San Jose, California, USA",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-07-19 23:59:59",
+              "deadline": "2026-07-26 23:59:59",
+              "comment": "1st round of 2 total rounds"
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "id": "kdd2026",
+        "name": "KDD 2026, research track",
+        "pages": 8,
+        "camera_ready": 9,
+        "not_counted": [
+          "references",
+          "appendix"
+        ],
+        "required": [],
+        "source": "https://kdd2026.kdd.org/research-track-call-for-papers/",
+        "verified": "2026-11-13"
+      }
+    },
+    {
+      "name": "COLM",
+      "description": "Conference on Language Modeling",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://colmweb.org/2025/cfp.html",
+          "timezone": "AoE",
+          "date": "October 7-9, 2025",
+          "place": "Palais des Congrès Montreal, Canada",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-03-22 23:59:59",
+              "deadline": "2025-03-28 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://colm.cc/Conferences/2026/CallForPapers",
+          "timezone": "AoE",
+          "date": "October 6-8, 2026",
+          "place": "Hilton Union Square, San Francisco, USA",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-03-26 23:59:59",
+              "deadline": "2026-03-31 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": null
+    },
+    {
+      "name": "AISTATS",
+      "description": "International Conference on Artificial Intelligence and Statistics",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://aistats.org/aistats2025",
+          "timezone": "UTC-12",
+          "date": "May 3-5, 2025",
+          "place": "Mai Khao, Thailand",
+          "timeline": [
+            {
+              "abstract_deadline": "2024-10-03 23:59:59",
+              "deadline": "2024-10-10 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://virtual.aistats.org/Conferences/2026",
+          "timezone": "UTC-12",
+          "date": "May 2-4, 2026",
+          "place": "Tangier, Morocco",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-09-25 23:59:59",
+              "deadline": "2025-10-02 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://virtual.aistats.org/Conferences/2027",
+          "timezone": "UTC-12",
+          "date": "May 3-6, 2027",
+          "place": "Montréal, Canada",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-09-29 23:59:59",
+              "deadline": "2026-10-06 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": null
+    },
+    {
+      "name": "COLT",
+      "description": "Annual Conference on Learning Theory",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://learningtheory.org/colt2025/",
+          "timezone": "UTC-5",
+          "date": "July 1-4, 2025",
+          "place": "Lyon, France",
+          "timeline": [
+            {
+              "deadline": "2025-02-06 17:00:00"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://learningtheory.org/colt2026/",
+          "timezone": "AoE",
+          "date": "June 30 - July 3, 2026",
+          "place": "San Diego, California",
+          "timeline": [
+            {
+              "deadline": "2026-02-04 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2027,
+          "link": "https://learningtheory.org/colt2027/",
+          "timezone": "AoE",
+          "date": "June 28 - July 2, 2027",
+          "place": "Tokyo, Japan",
+          "timeline": [
+            {
+              "deadline": "2027-01-29 23:59:59",
+              "comment": "Expected rebuttal March 29 - April 2; author notification on or before May 3."
+            }
+          ]
+        }
+      ],
+      "rules": null
+    },
+    {
+      "name": "CoRL",
+      "description": "The Conference on Robot Learning",
+      "editions": [
+        {
+          "year": 2025,
+          "link": "https://2025.corl.org/",
+          "timezone": "AoE",
+          "date": "September 28-30, 2025",
+          "place": "Seoul, Korea",
+          "timeline": [
+            {
+              "abstract_deadline": "2025-04-23 23:59:59",
+              "deadline": "2025-04-30 23:59:59"
+            }
+          ]
+        },
+        {
+          "year": 2026,
+          "link": "https://www.corl.org/",
+          "timezone": "AoE",
+          "date": "November 9-11, 2026",
+          "place": "Austin, Texas, USA",
+          "timeline": [
+            {
+              "abstract_deadline": "2026-05-25 23:59:59",
+              "deadline": "2026-05-28 23:59:59"
+            }
+          ]
+        }
+      ],
+      "rules": null
+    }
+  ]
+}

@@ -2136,13 +2136,13 @@
       "section": "deadlines",
       "en": "A deadline tracker that also keeps each venue's rules: page limits, supplementary deadline, rebuttal window, LLM policy.",
       "zh": "截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。",
-      "missing_en": "Trackers store dates and links only; the rules sit in each year's call for papers.",
-      "missing_zh": "现有追踪只记日期和链接；规则散落在每年的征稿通知里。",
+      "missing_en": "Trackers store dates and links only; the rules sit in each year's call for papers. The deadline table here joins ccf-deadlines' dates with submit-check's page limits and required sections; supplementary deadlines, rebuttal windows and LLM policies are not collected yet.",
+      "missing_zh": "现有追踪工具只存日期和链接，规则散在每年的投稿说明里。本页的截稿表把 ccf-deadlines 的日期和 submit-check 的页数、必需章节放在一起；补充材料截止日、rebuttal 时间窗和大模型使用政策还没有收集。",
       "closest": [
         "ccfddl/ccf-deadlines",
         "huggingface/ai-deadlines"
       ],
-      "ours": null
+      "ours": "submit-check"
     },
     {
       "section": "review",

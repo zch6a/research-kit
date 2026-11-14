@@ -19,7 +19,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OWNER = "zch6a"
-MARKERS = {"tools": ("<!-- tools:start -->", "<!-- tools:end -->"), "gaps": ("<!-- gaps:start -->", "<!-- gaps:end -->")}
+MARKERS = {
+    "tools": ("<!-- tools:start -->", "<!-- tools:end -->"),
+    "gaps": ("<!-- gaps:start -->", "<!-- gaps:end -->"),
+    "deadlines": ("<!-- deadlines:start -->", "<!-- deadlines:end -->"),
+}
 START, END = MARKERS["tools"]
 EXAMPLE = "table-trace"  # the plugin installed as an example on the site and in the READMEs: it must be in the list
 
@@ -293,6 +297,145 @@ def gaps_section(doc: dict, land: dict, lang: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+TZ = re.compile(r"^(?:AoE|UTC([+-]\d{1,2})(?::?(\d{2}))?)$")
+
+
+def load_deadlines(path: Path | None = None) -> dict:
+    """deadlines.json (from scripts/refresh_deadlines.py), checked: dates that parse, time zones it knows."""
+    doc = json.loads((path or ROOT / "deadlines.json").read_text(encoding="utf-8"))
+    dt.date.fromisoformat(doc["checked"])
+    for v in doc["venues"]:
+        if not v.get("name"):
+            raise SystemExit("deadlines.json: a venue without a name")
+        for ed in v["editions"]:
+            if not TZ.match(ed["timezone"]):
+                raise SystemExit(f"deadlines.json: {v['name']} {ed['year']}: time zone {ed['timezone']!r}")
+            for t in ed["timeline"]:
+                for k in ("abstract_deadline", "deadline"):
+                    if k in t:
+                        utc(t[k], ed["timezone"])
+    return doc
+
+
+def utc(when: str, tz: str) -> dt.datetime:
+    """A deadline in its time zone ("AoE" is UTC-12), as UTC.
+
+    >>> utc("2026-05-07 23:59:59", "AoE").isoformat(), utc("2026-01-29 11:59:59", "UTC+0").isoformat()
+    ('2026-05-08T11:59:59', '2026-01-29T11:59:59')
+    """
+    m = TZ.match(tz)
+    if not m:
+        raise ValueError(tz)
+    hours = -12 if tz == "AoE" else int(m.group(1))
+    minutes = int(m.group(2) or 0) * (1 if hours >= 0 else -1)
+    local = dt.datetime.strptime(when, "%Y-%m-%d %H:%M:%S")
+    return local - dt.timedelta(hours=hours, minutes=minutes)
+
+
+def upcoming(dl: dict) -> list[tuple[dict, dict, dict, dt.datetime]]:
+    """(venue, edition, deadline, its time in UTC) for each venue's next deadline after the check date (or its last one,
+    when none is announced yet), soonest first; venues with nothing ahead come last."""
+    checked = dt.datetime.fromisoformat(dl["checked"])
+    rows = []
+    for v in dl["venues"]:
+        items = [(ed, t, utc(t["deadline"], ed["timezone"])) for ed in v["editions"] for t in ed["timeline"]]
+        if not items:
+            continue
+        ahead = sorted((x for x in items if x[2] >= checked), key=lambda x: x[2])
+        ed, t, when = ahead[0] if ahead else max(items, key=lambda x: x[2])
+        rows.append((v, ed, t, when))
+    return sorted(rows, key=lambda r: (r[3] < checked, abs((r[3] - checked).total_seconds())))
+
+
+def _rules_text(v: dict, lang: str) -> str:
+    r = v.get("rules")
+    if not r:
+        return "—"
+    pages = f"{r['pages']}" + (f" ({r['camera_ready']})" if r.get("camera_ready") else "")
+    req = ("; " + ("requires " if lang == "en" else "必需：") + ", ".join(r["required"])) if r["required"] else ""
+    unit = " pages" if lang == "en" else " 页"
+    return f"{pages}{unit}{req}"
+
+
+def deadlines_section(dl: dict, lang: str) -> str:
+    """The README's table: each venue's next deadline as of the check date, with its rules."""
+    checked = dt.datetime.fromisoformat(dl["checked"])
+    if lang == "en":
+        head = "| Venue | Next deadline | Time zone | Conference | Pages (camera-ready); required | Rules |\n|---|---|---|---|---|---|\n"
+    else:
+        head = "| 会议 | 下一个截稿日 | 时区 | 会议时间地点 | 页数（终稿）；必需 | 规则 |\n|---|---|---|---|---|---|\n"
+    rows = []
+    for v, ed, t, when in upcoming(dl):
+        date = t["deadline"][:16] + (f" ({t['comment']})" if t.get("comment") else "")
+        if "abstract_deadline" in t:
+            date = (f"abstract {t['abstract_deadline'][:10]}, paper " if lang == "en" else f"摘要 {t['abstract_deadline'][:10]}，全文 ") + date
+        if when < checked:
+            date = ("last: " if lang == "en" else "上一届：") + date
+        name = f"[{v['name']} {ed['year']}]({ed['link']})" if ed["link"] else f"{v['name']} {ed['year']}"
+        conf = md_cell(", ".join(x for x in (ed["date"], ed["place"]) if x))
+        r = v.get("rules")
+        rules = f"[`--venue {r['id']}`]({r['source']})" if r else "—"
+        rows.append(f"| {name} | {md_cell(date)} | {ed['timezone']} | {conf} | {md_cell(_rules_text(v, lang))} | {rules} |")
+    src = dl["sources"]["deadlines"]
+    if lang == "en":
+        note = (
+            f"\nDeadlines as of {dl['checked']}, from [ccf-deadlines](https://github.com/{src['repo']}) (MIT, commit "
+            f"`{src['commit'][:7]}`); always confirm on the venue's own page. Page limits and required sections are "
+            "submit-check's rules, each with the official page it comes from (`--venue` checks a paper against them; a "
+            "venue's rules are for the year in its id). The [site](https://zch6a.github.io/research-kit/#en-deadlines) "
+            "counts the days left.\n"
+        )
+    else:
+        note = (
+            f"\n截稿日期截至 {dl['checked']}，取自 [ccf-deadlines](https://github.com/{src['repo']})（MIT，提交 "
+            f"`{src['commit'][:7]}`），请以会议官网为准。页数和必需章节是 submit-check 的规则，每条都注明官方出处"
+            "（`--venue` 按它检查论文；规则对应 id 里的年份）。[网站](https://zch6a.github.io/research-kit/#zh-deadlines)上会显示剩余天数。\n"
+        )
+    return head + "\n".join(rows) + "\n" + note
+
+
+def site_deadlines(dl: dict, lang: str) -> tuple[str, str]:
+    """(nav link, section) for the site: the same table, with each deadline's UTC time for deadlines.js."""
+    e = html.escape
+    checked = dt.datetime.fromisoformat(dl["checked"])
+    title = "Deadlines and venue rules" if lang == "en" else "截稿日期与会议规则"
+    w = {
+        "en": ("Venue", "Next deadline", "Conference", "Pages (camera-ready); required", "Rules"),
+        "zh": ("会议", "下一个截稿日", "会议时间地点", "页数（终稿）；必需", "规则"),
+    }[lang]
+    rows = []
+    items = upcoming(dl)
+    for v, ed, t, when in items:
+        date = e(t["deadline"][:16]) + f" {e(ed['timezone'])}"
+        if t.get("comment"):
+            date += f" <span class='where'>{e(t['comment'])}</span>"
+        if "abstract_deadline" in t:
+            date = (("abstract " if lang == "en" else "摘要 ") + e(t["abstract_deadline"][:10]) + "<br>") + date
+        past = when < checked
+        name = f'<a href="{e(ed["link"])}">{e(v["name"])} {ed["year"]}</a>' if ed["link"] else f"{e(v['name'])} {ed['year']}"
+        r = v.get("rules")
+        rules = f'<a href="{e(r["source"])}"><code>--venue {e(r["id"])}</code></a>' if r else "—"
+        conf = e(", ".join(x for x in (ed["date"], ed["place"]) if x))
+        rows.append(
+            f'<tr{" class=past" if past else ""}><td>{name}</td><td><time data-utc="{when.isoformat()}Z">{date}</time>'
+            f'<span class="left"></span></td><td>{conf}</td><td>{e(_rules_text(v, lang))}</td><td>{rules}</td></tr>'
+        )
+    src = dl["sources"]["deadlines"]
+    note = (
+        f"Deadlines as of {dl['checked']} from <a href='https://github.com/{src['repo']}'>ccf-deadlines</a> (MIT); always confirm on the venue's page. "
+        "Page limits and required sections: submit-check's rules, with their official sources."
+        if lang == "en"
+        else f"截稿日期截至 {dl['checked']}，取自 <a href='https://github.com/{src['repo']}'>ccf-deadlines</a>（MIT），请以会议官网为准。页数和必需章节来自 submit-check 的规则，均注明官方出处。"
+    )
+    section = (
+        f'<section id="{lang}-deadlines"><h2>{title}</h2><p class="note">{note}</p><div class="table"><table><thead><tr>'
+        + "".join(f"<th>{x}</th>" for x in w)
+        + f"</tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>"
+    )
+    nav = f'<a href="#{lang}-deadlines">{title} <span>{len(items)}</span></a>'
+    return nav, section
+
+
 def fill(path: Path, section: str, which: str = "tools", text: str | None = None) -> str:
     start, end = MARKERS[which]
     text = path.read_text(encoding="utf-8") if text is None else text
@@ -302,7 +445,7 @@ def fill(path: Path, section: str, which: str = "tools", text: str | None = None
     return pattern.sub(lambda _: f"{start}\n{section}{end}", text)
 
 
-def site(doc: dict, land: dict) -> str:
+def site(doc: dict, land: dict, dl: dict | None = None) -> str:
     e = html.escape
     n_ours, n_others = len(doc["tools"]), len(land["projects"])
     body: dict[str, list[str]] = {"en": [], "zh": []}
@@ -354,6 +497,10 @@ def site(doc: dict, land: dict) -> str:
                 f'<li><strong>{e(g[lang])}</strong> <span class="where">{e(names[g["section"]])}</span>'
                 f"<br>{e(g['missing_' + lang])} {w['closest']}: {closest}.{ours}</li>"
             )
+        if dl is not None:
+            dl_nav, dl_section = site_deadlines(dl, lang)
+            nav[lang].append(dl_nav)
+            body[lang].append(dl_section)
         gap_title = "What nothing covers yet" if lang == "en" else "还没有工具覆盖的需求"
         nav[lang].append(f'<a href="#{lang}-gaps">{gap_title} <span>{len(land["gaps"])}</span></a>')
         body[lang].append(f'<section id="{lang}-gaps"><h2>{gap_title}</h2><ul class="gaps">{"".join(gap_items)}</ul></section>')
@@ -391,6 +538,7 @@ def site(doc: dict, land: dict) -> str:
 </main>
 <footer><p>MIT · <a href="https://github.com/{OWNER}/research-kit">github.com/{OWNER}/research-kit</a> · <span data-lang="en">suggest a project in an issue</span><span data-lang="zh" lang="zh-CN" hidden>推荐项目请提 issue</span></p></footer>
 <script src="lang.js"></script>
+<script src="deadlines.js"></script>
 </body>
 </html>
 """
@@ -412,19 +560,21 @@ def count(text: str, n: int, others: int | None = None) -> str:
     return text
 
 
-def readme(path: Path, doc: dict, land: dict, lang: str) -> str:
+def readme(path: Path, doc: dict, land: dict, lang: str, dl: dict | None = None) -> str:
     text = fill(path, readme_section(doc, land, lang), "tools")
     text = fill(path, gaps_section(doc, land, lang), "gaps", text)
+    if dl is not None:
+        text = fill(path, deadlines_section(dl, lang), "deadlines", text)
     return count(text, len(doc["tools"]), len(land["projects"]))
 
 
-def outputs(doc: dict, land: dict | None = None) -> dict[Path, str]:
+def outputs(doc: dict, land: dict | None = None, dl: dict | None = None) -> dict[Path, str]:
     land = land or load_landscape(doc)
     return {
         ROOT / ".claude-plugin" / "marketplace.json": marketplace(doc),
-        ROOT / "README.md": readme(ROOT / "README.md", doc, land, "en"),
-        ROOT / "README.zh-CN.md": readme(ROOT / "README.zh-CN.md", doc, land, "zh"),
-        ROOT / "site" / "index.html": site(doc, land),
+        ROOT / "README.md": readme(ROOT / "README.md", doc, land, "en", dl),
+        ROOT / "README.zh-CN.md": readme(ROOT / "README.zh-CN.md", doc, land, "zh", dl),
+        ROOT / "site" / "index.html": site(doc, land, dl),
     }
 
 
@@ -432,7 +582,7 @@ def main() -> int:
     check = "--check" in sys.argv[1:]
     stale = []
     doc = load()
-    files = outputs(doc, load_landscape(doc))
+    files = outputs(doc, load_landscape(doc), load_deadlines())
     for path, text in files.items():
         old = path.read_text(encoding="utf-8") if path.is_file() else None
         if old != text:

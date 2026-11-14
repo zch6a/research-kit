@@ -394,6 +394,31 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 | [theme-research-group](https://github.com/HugoBlox/theme-research-group) | 研究组网站的 Hugo 模板，含成员、论文、新闻和活动。 | 403 | MIT | 2024-10 |
 <!-- tools:end -->
 
+## 截稿日期与会议规则
+
+<!-- deadlines:start -->
+| 会议 | 下一个截稿日 | 时区 | 会议时间地点 | 页数（终稿）；必需 | 规则 |
+|---|---|---|---|---|---|
+| [CVPR 2027](https://cvpr.thecvf.com/Conferences/2027) | 摘要 2026-11-10，全文 2026-11-16 23:59 | UTC-12 | June 22-25, 2027, Seattle, WA, United States | 8 页 | [`--venue cvpr2026`](https://cvpr.thecvf.com/Conferences/2026/AuthorGuidelines) |
+| [NAACL 2027](https://2027.naacl.org/) | 2026-12-23 23:59 (NAACL commitment after ARR meta-reviews; reviewed papers only) | UTC-12 | June 1-5, 2027, San Francisco, California, USA | 8 页; 必需：a section titled Limitations | [`--venue acl-arr`](https://aclrollingreview.org/cfp) |
+| [ACL 2027](https://2027.aclweb.org/) | 2027-01-04 23:59 (ARR Submission) | UTC-12 | August 20-22, 2027, Kyoto, Japan | 8 页; 必需：a section titled Limitations | [`--venue acl-arr`](https://aclrollingreview.org/cfp) |
+| [IJCAI 2027](https://2027.ijcai.org/) | 摘要 2027-01-04，全文 2027-01-11 23:59 (Separate satellite event: August 15-17, 2027, Hengqin, China) | AoE | August 7-13, 2027, Kyoto, Japan | 7 页 | [`--venue ijcai2026`](https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/) |
+| [COLT 2027](https://learningtheory.org/colt2027/) | 2027-01-29 23:59 (Expected rebuttal March 29 - April 2; author notification on or before May 3.) | AoE | June 28 - July 2, 2027, Tokyo, Japan | — | — |
+| [AISTATS 2027](https://virtual.aistats.org/Conferences/2027) | 上一届：摘要 2026-09-29，全文 2026-10-06 23:59 | UTC-12 | May 3-6, 2027, Montréal, Canada | — | — |
+| [ICLR 2027](https://iclr.cc/Conferences/2027) | 上一届：摘要 2026-09-18，全文 2026-09-25 23:59 | AoE | April 26-28, 2027, San Francisco, CA, USA | 9 (10) 页; 必需：a Reproducibility Statement (strongly encouraged) | [`--venue iclr2026`](https://iclr.cc/Conferences/2026/AuthorGuide) |
+| [EMNLP 2026](https://2026.emnlp.org/) | 上一届：2026-08-02 23:59 (Commitment deadline for papers with ARR reviews and meta-reviews) | UTC-12 | October 25-27, 2026, Budapest, Hungary (Hybrid) | 8 页; 必需：a section titled Limitations | [`--venue acl-arr`](https://aclrollingreview.org/cfp) |
+| [AAAI 2027](https://aaai.org/conference/aaai/aaai-27/) | 上一届：摘要 2026-07-21，全文 2026-07-28 23:59 | UTC-12 | February 16-23, 2027, Montréal, Québec, Canada | 7 页; 必需：the reproducibility checklist | [`--venue aaai2026`](https://aaai.org/conference/aaai/aaai-26/submission-instructions/) |
+| [KDD 2027](https://kdd2027.kdd.org/) | 上一届：摘要 2026-07-19，全文 2026-07-26 23:59 (1st round of 2 total rounds) | AoE | August 1-5, 2027, San Jose, California, USA | 8 (9) 页 | [`--venue kdd2026`](https://kdd2026.kdd.org/research-track-call-for-papers/) |
+| [CoRL 2026](https://www.corl.org/) | 上一届：摘要 2026-05-25，全文 2026-05-28 23:59 | AoE | November 9-11, 2026, Austin, Texas, USA | — | — |
+| [NeurIPS 2026](https://neurips.cc/Conferences/2026) | 上一届：摘要 2026-05-05，全文 2026-05-07 11:59 | UTC+0 | December 8-10 (Sydney), December 9-11 (Atlanta and Paris), 2026, Sydney, Australia; Atlanta, USA; Paris, France | 9 (10) 页; 必需：the NeurIPS paper checklist | [`--venue neurips2025`](https://neurips.cc/Conferences/2025/CallForPapers) |
+| [COLM 2026](https://colm.cc/Conferences/2026/CallForPapers) | 上一届：摘要 2026-03-26，全文 2026-03-31 23:59 | AoE | October 6-8, 2026, Hilton Union Square, San Francisco, USA | — | — |
+| [ECCV 2026](https://eccv.ecva.net/) | 上一届：摘要 2026-02-26，全文 2026-03-05 14:00 | UTC-8 | September 10-12, 2026, Malmö, Sweden | 14 页 | [`--venue eccv2026`](https://eccv.ecva.net/Conferences/2026/SubmissionPolicies) |
+| [ICML 2026](https://icml.cc/Conferences/2026) | 上一届：摘要 2026-01-24，全文 2026-01-29 11:59 (Paper Submissions Open on OpenReview Jan 08 2026 12:00AM UTC-0) | UTC+0 | July 6-11, 2026, Seoul, Korea | 8 (9) 页; 必需：an Impact Statement section | [`--venue icml2025`](https://icml.cc/Conferences/2025/CallForPapers) |
+| [ICCV 2025](https://iccv.thecvf.com/Conferences/2025) | 上一届：摘要 2025-03-04，全文 2025-03-08 09:59 | UTC+0 | October 21-23, 2025, Honolulu, Hawaii (Hybrid) | — | — |
+
+截稿日期截至 2026-11-14，取自 [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines)（MIT，提交 `dae323c`），请以会议官网为准。页数和必需章节是 submit-check 的规则，每条都注明官方出处（`--venue` 按它检查论文；规则对应 id 里的年份）。[网站](https://zch6a.github.io/research-kit/#zh-deadlines)上会显示剩余天数。
+<!-- deadlines:end -->
+
 ## 还没有工具覆盖的需求
 
 逐个阶段调研时发现的需求，列出最接近的项目和它们的不足。其中一些是我们自己工具的下一步，其余尚无人做。
@@ -410,7 +435,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。
 - **能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。**（检查文字）不足之处：通用规则在公式多的文本上误报很多；学术写作规则要自己编写。最接近的：[languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale)。
 - **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
-- **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪只记日期和链接；规则散落在每年的征稿通知里。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。
+- **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪工具只存日期和链接，规则散在每年的投稿说明里。本页的截稿表把 ccf-deadlines 的日期和 submit-check 的页数、必需章节放在一起；补充材料截止日、rebuttal 时间窗和大模型使用政策还没有收集。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。**（审稿与 rebuttal）不足之处：现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。最接近的：[refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **逐条跟踪 rebuttal：每条意见的处理状态、需要补的实验、字数限制、分数变化。**（审稿与 rebuttal）不足之处：现有 rebuttal 工具只帮忙写文字，不提供与审稿意见对应的跟踪表。最接近的：[RebuttalStudio](https://github.com/runtsang/RebuttalStudio), [Paper2Rebuttal](https://github.com/AutoLab-SAI-SJTU/Paper2Rebuttal)。
 - **一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。**（发布代码与数据）不足之处：每个工具只管一样东西，GitHub、Zenodo 和 Hugging Face 之间的版本容易对不上。最接近的：[zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub)。
