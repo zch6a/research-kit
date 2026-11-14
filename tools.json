@@ -136,15 +136,17 @@
     {
       "name": "fig-check",
       "stage": "write",
-      "en": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font.",
-      "zh": "按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图。",
+      "en": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font; diagram turns a PyTorch model into an editable TikZ architecture figure.",
+      "zh": "按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图；diagram 把 PyTorch 模型画成可编辑的 TikZ 结构图。",
       "command": "uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/",
       "site": "",
       "tags": [
         "figures",
         "latex",
         "accessibility",
-        "matplotlib"
+        "matplotlib",
+        "tikz",
+        "architecture"
       ],
       "section": "figures"
     },

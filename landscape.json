@@ -2136,13 +2136,13 @@
       "section": "figures",
       "en": "Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.",
       "zh": "从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。",
-      "missing_en": "PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper.",
-      "missing_zh": "PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。",
+      "missing_en": "PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper. fig-check's diagram draws a model's blocks in order (repeats collapsed) as editable TikZ; branches and skip connections are not drawn.",
+      "missing_zh": "PlotNeuralNet 是为 CNN 手写的 TikZ；torchview 画出的图对论文来说太细。fig-check 的 diagram 按顺序画出模型的块（重复的合并），输出可编辑的 TikZ，但不画分支和残差连接。",
       "closest": [
         "HarisIqbal88/PlotNeuralNet",
         "mert-kurttutan/torchview"
       ],
-      "ours": null
+      "ours": "fig-check"
     },
     {
       "section": "deadlines",

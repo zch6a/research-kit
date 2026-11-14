@@ -175,13 +175,15 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font.",
+      "description": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font; diagram turns a PyTorch model into an editable TikZ architecture figure.",
       "category": "research",
       "tags": [
         "figures",
         "latex",
         "accessibility",
-        "matplotlib"
+        "matplotlib",
+        "tikz",
+        "architecture"
       ],
       "homepage": "https://github.com/zch6a/fig-check",
       "repository": "https://github.com/zch6a/fig-check",

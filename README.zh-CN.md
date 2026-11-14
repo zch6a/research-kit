@@ -226,7 +226,7 @@ uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --f
 
 #### 图表与示意图
 
-**[fig-check](https://github.com/zch6a/fig-check)** (我们的) — 按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图。
+**[fig-check](https://github.com/zch6a/fig-check)** (我们的) — 按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图；diagram 把 PyTorch 模型画成可编辑的 TikZ 结构图。
 
 ```bash
 uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
@@ -447,7 +447,7 @@ uvx --from git+https://github.com/zch6a/reading-group@v0 reading-group next --re
 - **小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。**（算力与环境）不足之处：Slurm 需要专人维护；task-spooler 只管一台机器的队列；dstack 能通过 SSH 管理多台机器，但需要部署它自己的服务端；都没有在几台课题组机器之间按人公平分配。最接近的：[slurm](https://github.com/SchedMD/slurm), [task-spooler](https://github.com/justanhduc/task-spooler), [dstack](https://github.com/dstackai/dstack)。
 - **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用的环境。submit-check move 列出换模板要改的地方（模板、旧模板的命令、栏数、章节、参考文献样式、页数），但不自动改文件，也不支持 LaTeX 转 Typst。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。**（检查文字）不足之处：通用规则在公式多的文本上误报很多。paper-proof 的文字细节检查能透过 LaTeX 读取，但只覆盖规则能抓到的笔误（同一个词写两遍、a/an、交叉引用的空格和名称、缩写的句点）；语法和措辞仍要靠 LanguageTool 或 Vale。最接近的：[languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
-- **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
+- **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 是为 CNN 手写的 TikZ；torchview 画出的图对论文来说太细。fig-check 的 diagram 按顺序画出模型的块（重复的合并），输出可编辑的 TikZ，但不画分支和残差连接。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。部分已由我们的工具覆盖：[fig-check](https://github.com/zch6a/fig-check)。
 - **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪工具只存日期和链接，规则散在每年的投稿说明里。本页的截稿表把 ccf-deadlines 的日期和 submit-check 的规则放在一起，包括各官方页面对大模型使用、补充材料和作者回复的规定，覆盖有规则的 9 个会议；其余会议和每年的新规则仍要人工阅读。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。**（审稿与 rebuttal）不足之处：现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。最接近的：[refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。**（发布代码与数据）不足之处：每个工具只管一种产物，GitHub、Zenodo 和 Hugging Face Hub 之间的版本会对不上。repro-score release 能找出仓库里的不一致（版本号、标签、CITATION.cff、DOI），但 Hub 上的权重和数据集不在检查范围内。最接近的：[zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub)。部分已由我们的工具覆盖：[repro-score](https://github.com/zch6a/repro-score)。
