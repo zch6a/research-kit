@@ -193,12 +193,14 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels.",
+      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
       "category": "research",
       "tags": [
         "references",
         "latex",
-        "checks"
+        "checks",
+        "consistency",
+        "peer-review"
       ],
       "homepage": "https://github.com/zch6a/paper-proof",
       "repository": "https://github.com/zch6a/paper-proof",

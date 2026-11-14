@@ -146,14 +146,16 @@
     {
       "name": "paper-proof",
       "stage": "submit",
-      "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels.",
-      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref）。",
+      "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
+      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref），以及整篇论文前后不一致的地方（同一缩写两种展开、同一个词两种写法）。加 --review 可供审稿人检查投稿的 PDF，不发送任何内容。",
       "command": "uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper",
       "site": "",
       "tags": [
         "references",
         "latex",
-        "checks"
+        "checks",
+        "consistency",
+        "peer-review"
       ],
       "section": "presubmit"
     },

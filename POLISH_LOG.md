@@ -165,3 +165,11 @@ listed.
 dates, nothing archived, every gap's closest projects in the list, every "ours" one of our tools, each of our tools'
 section in its stage); tests for both. Chinese descriptions checked for marketing words (two "一键" phrasings made
 plain). The site at 1280 px: no sideways scroll, 171 rows, 13 cards, 23 gaps; wide tables scroll inside their box.
+
+### 2026-11-14 — paper-proof 0.2.0 fills a gap
+
+The first two needs chosen from the list were built into paper-proof 0.2.0: consistency across a whole paper
+(acronyms, one term written two ways, British and American spelling, symbols with two meanings) and `--review`, a
+local check of a submitted PDF that sends nothing. The consistency need is off the list (22 left); the reviewer need
+stays, marked as partly covered by paper-proof (a PDF's tables still cannot be compared with its claims).
+paper-proof's description and tags updated; its skill at v0 checked.

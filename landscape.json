@@ -2122,18 +2122,6 @@
     },
     {
       "section": "language",
-      "en": "Check a whole paper for consistency: symbols defined twice or never, acronyms re-expanded, mixed terms.",
-      "zh": "检查整篇论文的一致性：符号重复定义或未定义、缩写反复展开、术语前后不一。",
-      "missing_en": "Checkers work sentence by sentence; none follows notation across sections and files.",
-      "missing_zh": "现有检查工具逐句进行，不会跨章节、跨文件跟踪记号和术语。",
-      "closest": [
-        "sylvainhalle/textidote",
-        "vale-cli/vale"
-      ],
-      "ours": null
-    },
-    {
-      "section": "language",
       "en": "Style checking for academic writing that understands LaTeX math and works offline.",
       "zh": "能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。",
       "missing_en": "General rules give many false alarms on math-heavy text; academic rule sets must be written by hand.",
@@ -2206,13 +2194,13 @@
       "section": "review",
       "en": "Help for reviewers that runs locally: check a submission's references, tables and claims without uploading it.",
       "zh": "在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。",
-      "missing_en": "Review generators write whole reviews (most venues forbid that) and call hosted models.",
-      "missing_zh": "现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。",
+      "missing_en": "Review generators write whole reviews (most venues forbid that) and call hosted models. paper-proof --review checks a PDF locally (consistency, numbers in sentences, references on request), but a PDF's tables cannot be compared with its claims.",
+      "missing_zh": "现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。",
       "closest": [
         "markrussinovich/refchecker",
         "Ahren09/AgentReview"
       ],
-      "ours": null
+      "ours": "paper-proof"
     },
     {
       "section": "review",
