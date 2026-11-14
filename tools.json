@@ -236,6 +236,20 @@
         "alerts"
       ],
       "section": "sharing"
+    },
+    {
+      "name": "reading-group",
+      "stage": "after",
+      "en": "A reading group run from one GitHub repository: papers suggested as issues and voted with a thumbs-up, the schedule and notes in the repository, a page and a calendar built by a GitHub Action.",
+      "zh": "用一个 GitHub 仓库办读书会：用 issue 推荐论文、点赞投票，日程和笔记放在仓库里，GitHub Action 生成网页和日历。",
+      "command": "uvx --from git+https://github.com/zch6a/reading-group@v0 reading-group next --repo OWNER/NAME",
+      "site": "https://zch6a.github.io/reading-group/",
+      "tags": [
+        "reading-group",
+        "journal-club",
+        "github-actions"
+      ],
+      "section": "lab"
     }
   ]
 }

@@ -2,10 +2,10 @@
 
 # research-kit
 
-**科研每个阶段可用的开源工具，从跟踪新论文到论文发表之后。** 我们自己的 14 个工具，每个都是一条命令和一个智能体技能；再加上按阶段挑选的 GitHub 上最好的其他项目，以及目前没有工具覆盖的需求。我们的工具靠规则和公开数据，不用大语言模型（venue-atlas 用一个小型嵌入模型给论文定位），给出的每个结果都标明出处。
+**科研每个阶段可用的开源工具，从跟踪新论文到论文发表之后。** 我们自己的 15 个工具，每个都是一条命令和一个智能体技能；再加上按阶段挑选的 GitHub 上最好的其他项目，以及目前没有工具覆盖的需求。我们的工具靠规则和公开数据，不用大语言模型（venue-atlas 用一个小型嵌入模型给论文定位），给出的每个结果都标明出处。
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
-<img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
+<img alt="15 tools" src="https://img.shields.io/badge/tools-15-2ea44f">
 <img alt="172 projects" src="https://img.shields.io/badge/projects-172-8250df">
 
 [English](README.md) · **简体中文** · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
@@ -392,6 +392,12 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 
 #### 课题组网站、读书会与教学
 
+**[reading-group](https://github.com/zch6a/reading-group)** (我们的) · [网站](https://zch6a.github.io/reading-group/) — 用一个 GitHub 仓库办读书会：用 issue 推荐论文、点赞投票，日程和笔记放在仓库里，GitHub Action 生成网页和日历。
+
+```bash
+uvx --from git+https://github.com/zch6a/reading-group@v0 reading-group next --repo OWNER/NAME
+```
+
 | 项目 | 用途 | 星数 | 许可证 | 更新 |
 |---|---|--:|---|---|
 | [jupyter-book](https://github.com/jupyter-book/jupyter-book) | 用 Markdown 和 Notebook 构建课程讲义和书，代码可执行。 | 4.3k | BSD-3-Clause | 2026-11 |
@@ -431,7 +437,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 逐个阶段调研时发现的需求，列出最接近的项目和它们的不足。其中一些是我们自己工具的下一步，其余尚无人做。
 
 <!-- gaps:start -->
-- **按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。**（跟踪新论文）不足之处：现有推荐只按与你研究方向的相似度打分。最接近的：[zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced)。部分已由我们的工具覆盖：[paper-impact](https://github.com/zch6a/paper-impact)。
+- **按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。**（跟踪新论文）不足之处：推荐工具只按与你研究方向的接近程度打分。paper-impact today 按是否已接收、是否有代码和早期引用给某个分类的最新 arXiv 论文排序，但还没有和你自己的研究方向结合。最接近的：[zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced)。部分已由我们的工具覆盖：[paper-impact](https://github.com/zch6a/paper-impact)。
 - **看到一篇论文为什么被引用（使用、对比还是反驳），以及后来哪些结果超过了它。**（检索文献）不足之处：开源工具只显示谁引用了谁，不显示怎么引用。scholar-cards cited 给出 Semantic Scholar 收录的引用句（Mamba 约四分之三的引用有），并按规则加标签，与人工阅读约三分之二一致；可靠的引用意图以及哪些后续结果超过了它，仍只在付费服务里。最接近的：[LocalCitationNetwork.github.io](https://github.com/LocalCitationNetwork/LocalCitationNetwork.github.io), [semanticscholar](https://github.com/danielnsilva/semanticscholar)。部分已由我们的工具覆盖：[scholar-cards](https://github.com/zch6a/scholar-cards)。
 - **找出 .bib 里不存在或信息有误的参考文献，并把预印本更新为正式发表的版本。**（管理参考文献）不足之处：rebiber 只对照 DBLP 和 ACL Anthology；betterbib 不会标出查无此文的条目。最接近的：[rebiber](https://github.com/yuchenlin/rebiber), [betterbib](https://github.com/texworld/betterbib)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **从 LaTeX 源码翻译论文，公式、引用和图都保持原样。**（阅读与笔记）不足之处：现有翻译工具基于 PDF 版面，遇到密集的公式和表格仍会出错。最接近的：[PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate), [gpt_academic](https://github.com/binary-husky/gpt_academic)。
@@ -439,14 +445,13 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **检查一个研究想法是否新颖，并列出与之重叠的已有论文。**（AI 科研助手）不足之处：现有的新颖性检查只是几次检索加大模型判断。最接近的：[AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2), [ai2-scholarqa-lib](https://github.com/allenai/ai2-scholarqa-lib)。
 - **判断论文里的基准分数能否与你的直接比较：评测框架、提示词、样例数、解码设置是否一致。**（数据与评测）不足之处：不同评测框架对同一任务给出的分数不同，论文又很少写明设置。最接近的：[lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness), [opencompass](https://github.com/open-compass/opencompass)。部分已由我们的工具覆盖：[table-trace](https://github.com/zch6a/table-trace)。
 - **小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。**（算力与环境）不足之处：Slurm 需要专人维护；task-spooler 只管一台机器的队列；dstack 能通过 SSH 管理多台机器，但需要部署它自己的服务端；都没有在几台课题组机器之间按人公平分配。最接近的：[slurm](https://github.com/SchedMD/slurm), [task-spooler](https://github.com/justanhduc/task-spooler), [dstack](https://github.com/dstackai/dstack)。
-- **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。
+- **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用的环境。submit-check move 列出换模板要改的地方（模板、旧模板的命令、栏数、章节、参考文献样式、页数），但不自动改文件，也不支持 LaTeX 转 Typst。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。**（检查文字）不足之处：通用规则在公式多的文本上误报很多。paper-proof 的文字细节检查能透过 LaTeX 读取，但只覆盖规则能抓到的笔误（同一个词写两遍、a/an、交叉引用的空格和名称、缩写的句点）；语法和措辞仍要靠 LanguageTool 或 Vale。最接近的：[languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
 - **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪工具只存日期和链接，规则散在每年的投稿说明里。本页的截稿表把 ccf-deadlines 的日期和 submit-check 的页数、必需章节放在一起；补充材料截止日、rebuttal 时间窗和大模型使用政策还没有收集。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。**（审稿与 rebuttal）不足之处：现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。最接近的：[refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。**（发布代码与数据）不足之处：每个工具只管一种产物，GitHub、Zenodo 和 Hugging Face Hub 之间的版本会对不上。repro-score release 能找出仓库里的不一致（版本号、标签、CITATION.cff、DOI），但 Hub 上的权重和数据集不在检查范围内。最接近的：[zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub)。部分已由我们的工具覆盖：[repro-score](https://github.com/zch6a/repro-score)。
 - **Papers with Code 于 2025 年关闭后，一个把论文与代码和结果关联起来的开放索引。**（发布代码与数据）不足之处：Hugging Face 的论文页面不是开放、可自建的结果索引。最接近的：[huggingface_hub](https://github.com/huggingface/huggingface_hub), [releasing-research-code](https://github.com/paperswithcode/releasing-research-code)。部分已由我们的工具覆盖：[table-trace](https://github.com/zch6a/table-trace)。
-- **在一个可自建的地方组织读书会：推荐与投票、主讲轮换、日程、共享笔记。**（课题组网站、读书会与教学）不足之处：每个工具只覆盖一部分，读书会仍靠表格和聊天群拼凑。最接近的：[h](https://github.com/hypothesis/h), [arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite)。
 <!-- gaps:end -->
 
 ## 清单是怎么选的

@@ -2015,8 +2015,8 @@
       "section": "follow",
       "en": "Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.",
       "zh": "按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。",
-      "missing_en": "Recommenders score closeness to your topics only.",
-      "missing_zh": "现有推荐只按与你研究方向的相似度打分。",
+      "missing_en": "Recommenders score closeness to your topics only. paper-impact today ranks a category's newest arXiv papers by acceptance, code and early citations; it does not combine this with your own topics.",
+      "missing_zh": "推荐工具只按与你研究方向的接近程度打分。paper-impact today 按是否已接收、是否有代码和早期引用给某个分类的最新 arXiv 论文排序，但还没有和你自己的研究方向结合。",
       "closest": [
         "TideDra/zotero-arxiv-daily",
         "dw-dengwei/daily-arXiv-ai-enhanced"
@@ -2112,13 +2112,13 @@
       "section": "writing",
       "en": "Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.",
       "zh": "在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。",
-      "missing_en": "Pandoc loses custom macros and venue environments; nothing knows page limits or style-file quirks.",
-      "missing_zh": "Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。",
+      "missing_en": "Pandoc loses custom macros and venue environments. submit-check move lists what a move involves (template, the old template's commands, columns, sections, bibliography style, pages); it does not rewrite the files, and LaTeX to Typst is not covered.",
+      "missing_zh": "Pandoc 会丢掉自定义宏和会议专用的环境。submit-check move 列出换模板要改的地方（模板、旧模板的命令、栏数、章节、参考文献样式、页数），但不自动改文件，也不支持 LaTeX 转 Typst。",
       "closest": [
         "jgm/pandoc",
         "quarto-dev/quarto-cli"
       ],
-      "ours": null
+      "ours": "submit-check"
     },
     {
       "section": "language",
@@ -2191,18 +2191,6 @@
         "paperswithcode/releasing-research-code"
       ],
       "ours": "table-trace"
-    },
-    {
-      "section": "lab",
-      "en": "Run a reading group in one self-hosted place: suggestions and votes, presenters, schedule, shared notes.",
-      "zh": "在一个可自建的地方组织读书会：推荐与投票、主讲轮换、日程、共享笔记。",
-      "missing_en": "Each tool covers one piece; groups still glue spreadsheets and chats together.",
-      "missing_zh": "每个工具只覆盖一部分，读书会仍靠表格和聊天群拼凑。",
-      "closest": [
-        "hypothesis/h",
-        "karpathy/arxiv-sanity-lite"
-      ],
-      "ours": null
     }
   ]
 }

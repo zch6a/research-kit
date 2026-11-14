@@ -326,6 +326,28 @@
       "author": {
         "name": "zch6a"
       }
+    },
+    {
+      "name": "reading-group",
+      "source": {
+        "source": "git-subdir",
+        "url": "zch6a/reading-group",
+        "path": "plugin",
+        "ref": "v0"
+      },
+      "description": "A reading group run from one GitHub repository: papers suggested as issues and voted with a thumbs-up, the schedule and notes in the repository, a page and a calendar built by a GitHub Action.",
+      "category": "research",
+      "tags": [
+        "reading-group",
+        "journal-club",
+        "github-actions"
+      ],
+      "homepage": "https://zch6a.github.io/reading-group/",
+      "repository": "https://github.com/zch6a/reading-group",
+      "license": "MIT",
+      "author": {
+        "name": "zch6a"
+      }
     }
   ]
 }

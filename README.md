@@ -2,13 +2,13 @@
 
 # research-kit
 
-**Open-source tools for every stage of research work, from following new papers to after publication.** Fourteen
+**Open-source tools for every stage of research work, from following new papers to after publication.** Fifteen
 of ours, each a command and an agent skill, and the best of the rest on GitHub, chosen stage by stage, with what
 nothing covers yet. Ours run on rules and published data, without a large language model (venue-atlas places
 papers with a small embedding model), and what they report says where it comes from.
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
-<img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
+<img alt="15 tools" src="https://img.shields.io/badge/tools-15-2ea44f">
 <img alt="172 projects" src="https://img.shields.io/badge/projects-172-8250df">
 
 **English** · [简体中文](README.zh-CN.md) · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
@@ -400,6 +400,12 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 
 #### Lab websites, reading groups, teaching
 
+**[reading-group](https://github.com/zch6a/reading-group)** (ours) · [site](https://zch6a.github.io/reading-group/) — A reading group run from one GitHub repository: papers suggested as issues and voted with a thumbs-up, the schedule and notes in the repository, a page and a calendar built by a GitHub Action.
+
+```bash
+uvx --from git+https://github.com/zch6a/reading-group@v0 reading-group next --repo OWNER/NAME
+```
+
 | Project | What it does | Stars | Licence | Updated |
 |---|---|--:|---|---|
 | [jupyter-book](https://github.com/jupyter-book/jupyter-book) | Builds course notes and books from Markdown and notebooks, with executable code. | 4.3k | BSD-3-Clause | 2026-11 |
@@ -440,7 +446,7 @@ Needs that came up while surveying each stage, with the closest projects and wha
 for our own tools; the rest are open.
 
 <!-- gaps:start -->
-- **Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.** (Keeping up with new papers) What they miss: Recommenders score closeness to your topics only. Closest: [zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced). Partly covered by our [paper-impact](https://github.com/zch6a/paper-impact).
+- **Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.** (Keeping up with new papers) What they miss: Recommenders score closeness to your topics only. paper-impact today ranks a category's newest arXiv papers by acceptance, code and early citations; it does not combine this with your own topics. Closest: [zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced). Partly covered by our [paper-impact](https://github.com/zch6a/paper-impact).
 - **See why a paper is cited (uses it, compares with it, disputes it) and which later results beat it.** (Searching the literature) What they miss: Open tools show who cites whom, not how. scholar-cards cited shows the citing sentences Semantic Scholar has (about three quarters of Mamba's) with rule-based labels that match a reader about two times in three; reliable intent, and which later results beat a paper, are still in paid services. Closest: [LocalCitationNetwork.github.io](https://github.com/LocalCitationNetwork/LocalCitationNetwork.github.io), [semanticscholar](https://github.com/danielnsilva/semanticscholar). Partly covered by our [scholar-cards](https://github.com/zch6a/scholar-cards).
 - **Find references in a .bib file that do not exist or have wrong metadata, and update preprints to their published versions.** (Managing references) What they miss: rebiber matches only DBLP and the ACL Anthology; betterbib does not flag entries that match nothing. Closest: [rebiber](https://github.com/yuchenlin/rebiber), [betterbib](https://github.com/texworld/betterbib). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
 - **Translate a paper from its LaTeX source, keeping formulas, references and figures exact.** (Reading and taking notes) What they miss: Translators work from the PDF and still break on dense formulas and tables. Closest: [PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate), [gpt_academic](https://github.com/binary-husky/gpt_academic).
@@ -448,14 +454,13 @@ for our own tools; the rest are open.
 - **Check a research idea for novelty against prior work, showing the overlapping papers.** (AI research assistants) What they miss: Existing novelty steps are a few search queries judged by a language model. Closest: [AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2), [ai2-scholarqa-lib](https://github.com/allenai/ai2-scholarqa-lib).
 - **Know whether a benchmark score in a paper is comparable to yours: same harness, prompts, shots, decoding.** (Data and evaluation) What they miss: Each harness gives different numbers for one task, and papers rarely state their settings. Closest: [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness), [opencompass](https://github.com/open-compass/opencompass). Partly covered by our [table-trace](https://github.com/zch6a/table-trace).
 - **Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.** (Compute and environments) What they miss: Slurm needs an administrator; task-spooler queues jobs on one machine only; dstack runs fleets of machines over SSH but needs its own server; none keeps per-person fair shares across a few lab machines. Closest: [slurm](https://github.com/SchedMD/slurm), [task-spooler](https://github.com/justanhduc/task-spooler), [dstack](https://github.com/dstackai/dstack).
-- **Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.** (Writing and typesetting) What they miss: Pandoc loses custom macros and venue environments; nothing knows page limits or style-file quirks. Closest: [pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli).
+- **Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.** (Writing and typesetting) What they miss: Pandoc loses custom macros and venue environments. submit-check move lists what a move involves (template, the old template's commands, columns, sections, bibliography style, pages); it does not rewrite the files, and LaTeX to Typst is not covered. Closest: [pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli). Partly covered by our [submit-check](https://github.com/zch6a/submit-check).
 - **Style checking for academic writing that understands LaTeX math and works offline.** (Checking the text) What they miss: General rules give many false alarms on math-heavy text. paper-proof's style check reads through the LaTeX but covers only slips that rules can catch (a word twice, a/an, reference spacing and naming, abbreviation periods); grammar and wording are still left to LanguageTool or Vale. Closest: [languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
 - **Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.** (Figures and diagrams) What they miss: PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper. Closest: [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview).
 - **A deadline tracker that also keeps each venue's rules: page limits, supplementary deadline, rebuttal window, LLM policy.** (Deadlines and submission) What they miss: Trackers store dates and links only; the rules sit in each year's call for papers. The deadline table here joins ccf-deadlines' dates with submit-check's page limits and required sections; supplementary deadlines, rebuttal windows and LLM policies are not collected yet. Closest: [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines). Partly covered by our [submit-check](https://github.com/zch6a/submit-check).
 - **Help for reviewers that runs locally: check a submission's references, tables and claims without uploading it.** (Peer review and rebuttal) What they miss: Review generators write whole reviews (most venues forbid that) and call hosted models. paper-proof --review checks a PDF locally (consistency, numbers in sentences, references on request), but a PDF's tables cannot be compared with its claims. Closest: [refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
 - **One release step that keeps the code tag, weights, dataset, citation file and DOI in step.** (Releasing code and data) What they miss: Each tool covers one artefact; versions drift between GitHub, Zenodo and the Hugging Face Hub. repro-score release finds the drift in a repository (version, tags, CITATION.cff, DOIs); the weights and datasets on the Hub are not checked. Closest: [zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub). Partly covered by our [repro-score](https://github.com/zch6a/repro-score).
 - **An open index linking papers to their code and results, now that Papers with Code has shut down (2025).** (Releasing code and data) What they miss: Hugging Face paper pages are not an open, self-hostable index of results. Closest: [huggingface_hub](https://github.com/huggingface/huggingface_hub), [releasing-research-code](https://github.com/paperswithcode/releasing-research-code). Partly covered by our [table-trace](https://github.com/zch6a/table-trace).
-- **Run a reading group in one self-hosted place: suggestions and votes, presenters, schedule, shared notes.** (Lab websites, reading groups, teaching) What they miss: Each tool covers one piece; groups still glue spreadsheets and chats together. Closest: [h](https://github.com/hypothesis/h), [arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite).
 <!-- gaps:end -->
 
 ## How the list is chosen
