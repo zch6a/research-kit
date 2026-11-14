@@ -74,14 +74,15 @@
     {
       "name": "arxiv-diff",
       "stage": "read",
-      "en": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references.",
-      "zh": "论文两个版本之间改了什么：表格里按行列对应的结果数字，以及正文、摘要、作者、图和参考文献。",
+      "en": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references. arxiv-diff watch tells you which arXiv papers in your .bib posted a new version.",
+      "zh": "论文两个版本之间改了什么：表格里按行列对应的结果数字，以及正文、摘要、作者、图和参考文献。arxiv-diff watch 告诉你 .bib 里哪些 arXiv 论文发了新版本。",
       "command": "uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685",
       "site": "",
       "tags": [
         "arxiv",
         "versions",
-        "diff"
+        "diff",
+        "alerts"
       ],
       "section": "follow"
     },
@@ -132,14 +133,15 @@
     {
       "name": "fig-check",
       "stage": "write",
-      "en": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project.",
-      "zh": "按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。",
+      "en": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font.",
+      "zh": "按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图。",
       "command": "uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/",
       "site": "",
       "tags": [
         "figures",
         "latex",
-        "accessibility"
+        "accessibility",
+        "matplotlib"
       ],
       "section": "figures"
     },
@@ -162,14 +164,16 @@
     {
       "name": "submit-check",
       "stage": "submit",
-      "en": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs).",
-      "zh": "别因为疏忽被直接拒稿：按会议规定检查 LaTeX 论文（双盲信息泄露、模板模式、页数、必需章节、PDF 字体、残留的 TODO）。",
+      "en": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs), the supplementary zip checked for names, paths, .git and file metadata, and a camera-ready for what the review version left behind.",
+      "zh": "别因为疏忽被直接拒稿：按会议规定检查 LaTeX 论文（双盲信息泄露、模板模式、页数、必需章节、PDF 字体、残留的 TODO），检查补充材料压缩包里的名字、路径、.git 和文件元数据，以及终稿里评审版留下的东西。",
       "command": "uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/paper",
       "site": "",
       "tags": [
         "submission",
         "double-blind",
-        "latex"
+        "latex",
+        "supplementary",
+        "camera-ready"
       ],
       "section": "presubmit"
     },

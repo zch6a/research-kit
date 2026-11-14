@@ -81,12 +81,13 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references.",
+      "description": "What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references. arxiv-diff watch tells you which arXiv papers in your .bib posted a new version.",
       "category": "research",
       "tags": [
         "arxiv",
         "versions",
-        "diff"
+        "diff",
+        "alerts"
       ],
       "homepage": "https://github.com/zch6a/arxiv-diff",
       "repository": "https://github.com/zch6a/arxiv-diff",
@@ -171,12 +172,13 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project.",
+      "description": "A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font.",
       "category": "research",
       "tags": [
         "figures",
         "latex",
-        "accessibility"
+        "accessibility",
+        "matplotlib"
       ],
       "homepage": "https://github.com/zch6a/fig-check",
       "repository": "https://github.com/zch6a/fig-check",
@@ -217,12 +219,14 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs).",
+      "description": "Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs), the supplementary zip checked for names, paths, .git and file metadata, and a camera-ready for what the review version left behind.",
       "category": "research",
       "tags": [
         "submission",
         "double-blind",
-        "latex"
+        "latex",
+        "supplementary",
+        "camera-ready"
       ],
       "homepage": "https://github.com/zch6a/submit-check",
       "repository": "https://github.com/zch6a/submit-check",

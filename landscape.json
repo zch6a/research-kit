@@ -2002,18 +2002,6 @@
   "gaps": [
     {
       "section": "follow",
-      "en": "Hear when a paper you follow or cite posts a new version, and what changed in it.",
-      "zh": "关注或引用的论文出了新版本时得到通知，并知道改了什么。",
-      "missing_en": "Feeds track new submissions only; none watches your library for new versions.",
-      "missing_zh": "现有订阅只看新投稿，不会盯着你文献库里的论文出新版本。",
-      "closest": [
-        "karpathy/arxiv-sanity-lite",
-        "TideDra/zotero-arxiv-daily"
-      ],
-      "ours": "arxiv-diff"
-    },
-    {
-      "section": "follow",
       "en": "Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.",
       "zh": "按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。",
       "missing_en": "Recommenders score closeness to your topics only.",
@@ -2134,17 +2122,6 @@
     },
     {
       "section": "figures",
-      "en": "Export Matplotlib figures at the venue's exact column width, with fonts matching the paper.",
-      "zh": "按会议的栏宽导出 Matplotlib 图，字体与正文一致。",
-      "missing_en": "Style packages set looks, not column widths; tikzplotlib is unmaintained.",
-      "missing_zh": "样式包只管外观，不管栏宽；tikzplotlib 已无人维护。",
-      "closest": [
-        "garrettj403/SciencePlots"
-      ],
-      "ours": "fig-check"
-    },
-    {
-      "section": "figures",
       "en": "Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.",
       "zh": "从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。",
       "missing_en": "PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper.",
@@ -2154,29 +2131,6 @@
         "mert-kurttutan/torchview"
       ],
       "ours": null
-    },
-    {
-      "section": "presubmit",
-      "en": "Anonymize everything submitted, not just the PDF: supplementary zips, code, metadata, videos.",
-      "zh": "匿名检查覆盖所有提交材料，而不只是 PDF：补充材料压缩包、代码、元数据、视频。",
-      "missing_en": "anonymous_github hides names in a hosted view only; no tool scans supplementary material.",
-      "missing_zh": "anonymous_github 只在托管的页面里隐藏名字；没有工具扫描补充材料。",
-      "closest": [
-        "tdurieux/anonymous_github",
-        "google-research/arxiv-latex-cleaner"
-      ],
-      "ours": "submit-check"
-    },
-    {
-      "section": "presubmit",
-      "en": "Camera-ready checks for ML venues beyond ACL: checklist, extra page, fonts, author block.",
-      "zh": "ACL 以外的机器学习会议的终稿检查：检查表、额外页数、字体、作者信息。",
-      "missing_en": "aclpubcheck covers the ACL template only.",
-      "missing_zh": "aclpubcheck 只支持 ACL 模板。",
-      "closest": [
-        "acl-org/aclpubcheck"
-      ],
-      "ours": "submit-check"
     },
     {
       "section": "deadlines",

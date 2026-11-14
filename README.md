@@ -49,7 +49,7 @@ Stars, licences and update months of the other projects: GitHub API, 2026-11-14.
 
 #### Keeping up with new papers
 
-**[arxiv-diff](https://github.com/zch6a/arxiv-diff)** (ours) — What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references.
+**[arxiv-diff](https://github.com/zch6a/arxiv-diff)** (ours) — What changed between two versions of a paper: the result numbers in its tables by row and column, and the text, abstract, authors, figures and references. arxiv-diff watch tells you which arXiv papers in your .bib posted a new version.
 
 ```bash
 uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685
@@ -233,7 +233,7 @@ uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --f
 
 #### Figures and diagrams
 
-**[fig-check](https://github.com/zch6a/fig-check)** (ours) — A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project.
+**[fig-check](https://github.com/zch6a/fig-check)** (ours) — A paper's figures as they will print: text size at the printed scale, colours that collapse for colour-blind readers, raster resolution; for every figure of a LaTeX project. paper_style makes matplotlib figures at the column width, in the paper's font.
 
 ```bash
 uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
@@ -262,7 +262,7 @@ uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
 uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper
 ```
 
-**[submit-check](https://github.com/zch6a/submit-check)** (ours) — Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs).
+**[submit-check](https://github.com/zch6a/submit-check)** (ours) — Don't get desk-rejected for a slip: a LaTeX paper checked against the venue's rules (double-blind leaks, template mode, page limit, required sections, PDF fonts, leftover TODOs), the supplementary zip checked for names, paths, .git and file metadata, and a camera-ready for what the review version left behind.
 
 ```bash
 uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/paper
@@ -408,7 +408,6 @@ Needs that came up while surveying each stage, with the closest projects and wha
 for our own tools; the rest are open.
 
 <!-- gaps:start -->
-- **Hear when a paper you follow or cite posts a new version, and what changed in it.** (Keeping up with new papers) What they miss: Feeds track new submissions only; none watches your library for new versions. Closest: [arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite), [zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily). Partly covered by our [arxiv-diff](https://github.com/zch6a/arxiv-diff).
 - **Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.** (Keeping up with new papers) What they miss: Recommenders score closeness to your topics only. Closest: [zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced). Partly covered by our [paper-impact](https://github.com/zch6a/paper-impact).
 - **See why a paper is cited (uses it, compares with it, disputes it) and which later results beat it.** (Searching the literature) What they miss: Open tools show who cites whom, not how; citation intent is only in paid services. Closest: [LocalCitationNetwork.github.io](https://github.com/LocalCitationNetwork/LocalCitationNetwork.github.io), [semanticscholar](https://github.com/danielnsilva/semanticscholar).
 - **Find references in a .bib file that do not exist or have wrong metadata, and update preprints to their published versions.** (Managing references) What they miss: rebiber matches only DBLP and the ACL Anthology; betterbib does not flag entries that match nothing. Closest: [rebiber](https://github.com/yuchenlin/rebiber), [betterbib](https://github.com/texworld/betterbib). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
@@ -419,10 +418,7 @@ for our own tools; the rest are open.
 - **Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.** (Compute and environments) What they miss: Slurm needs an administrator; GPU monitors only show who is using a card. Closest: [slurm](https://github.com/SchedMD/slurm), [nvitop](https://github.com/XuehaiPan/nvitop).
 - **Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.** (Writing and typesetting) What they miss: Pandoc loses custom macros and venue environments; nothing knows page limits or style-file quirks. Closest: [pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli).
 - **Style checking for academic writing that understands LaTeX math and works offline.** (Checking the text) What they miss: General rules give many false alarms on math-heavy text; academic rule sets must be written by hand. Closest: [languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale).
-- **Export Matplotlib figures at the venue's exact column width, with fonts matching the paper.** (Figures and diagrams) What they miss: Style packages set looks, not column widths; tikzplotlib is unmaintained. Closest: [SciencePlots](https://github.com/garrettj403/SciencePlots). Partly covered by our [fig-check](https://github.com/zch6a/fig-check).
 - **Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.** (Figures and diagrams) What they miss: PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper. Closest: [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview).
-- **Anonymize everything submitted, not just the PDF: supplementary zips, code, metadata, videos.** (Checking before submission) What they miss: anonymous_github hides names in a hosted view only; no tool scans supplementary material. Closest: [anonymous_github](https://github.com/tdurieux/anonymous_github), [arxiv-latex-cleaner](https://github.com/google-research/arxiv-latex-cleaner). Partly covered by our [submit-check](https://github.com/zch6a/submit-check).
-- **Camera-ready checks for ML venues beyond ACL: checklist, extra page, fonts, author block.** (Checking before submission) What they miss: aclpubcheck covers the ACL template only. Closest: [aclpubcheck](https://github.com/acl-org/aclpubcheck). Partly covered by our [submit-check](https://github.com/zch6a/submit-check).
 - **A deadline tracker that also keeps each venue's rules: page limits, supplementary deadline, rebuttal window, LLM policy.** (Deadlines and submission) What they miss: Trackers store dates and links only; the rules sit in each year's call for papers. Closest: [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines).
 - **Help for reviewers that runs locally: check a submission's references, tables and claims without uploading it.** (Peer review and rebuttal) What they miss: Review generators write whole reviews (most venues forbid that) and call hosted models. paper-proof --review checks a PDF locally (consistency, numbers in sentences, references on request), but a PDF's tables cannot be compared with its claims. Closest: [refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
 - **Track a rebuttal point by point: status, the experiment each point needs, character limits, score changes.** (Peer review and rebuttal) What they miss: Rebuttal tools draft text; none keeps a tracker tied to the review threads. Closest: [RebuttalStudio](https://github.com/runtsang/RebuttalStudio), [Paper2Rebuttal](https://github.com/AutoLab-SAI-SJTU/Paper2Rebuttal).

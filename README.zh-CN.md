@@ -41,7 +41,7 @@
 
 #### 跟踪新论文
 
-**[arxiv-diff](https://github.com/zch6a/arxiv-diff)** (我们的) — 论文两个版本之间改了什么：表格里按行列对应的结果数字，以及正文、摘要、作者、图和参考文献。
+**[arxiv-diff](https://github.com/zch6a/arxiv-diff)** (我们的) — 论文两个版本之间改了什么：表格里按行列对应的结果数字，以及正文、摘要、作者、图和参考文献。arxiv-diff watch 告诉你 .bib 里哪些 arXiv 论文发了新版本。
 
 ```bash
 uvx --from git+https://github.com/zch6a/arxiv-diff@v0 arxiv-diff 2106.09685
@@ -225,7 +225,7 @@ uvx --from git+https://github.com/zch6a/exp-tables@v0 exp-tables results.csv --f
 
 #### 图表与示意图
 
-**[fig-check](https://github.com/zch6a/fig-check)** (我们的) — 按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。
+**[fig-check](https://github.com/zch6a/fig-check)** (我们的) — 按论文印出来的样子检查每张图：印刷后的字号、色觉异常读者分不清的颜色、位图分辨率；覆盖 LaTeX 工程里的所有图。paper_style 按栏宽、用论文的字体做 matplotlib 图。
 
 ```bash
 uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
@@ -254,7 +254,7 @@ uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
 uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper
 ```
 
-**[submit-check](https://github.com/zch6a/submit-check)** (我们的) — 别因为疏忽被直接拒稿：按会议规定检查 LaTeX 论文（双盲信息泄露、模板模式、页数、必需章节、PDF 字体、残留的 TODO）。
+**[submit-check](https://github.com/zch6a/submit-check)** (我们的) — 别因为疏忽被直接拒稿：按会议规定检查 LaTeX 论文（双盲信息泄露、模板模式、页数、必需章节、PDF 字体、残留的 TODO），检查补充材料压缩包里的名字、路径、.git 和文件元数据，以及终稿里评审版留下的东西。
 
 ```bash
 uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/paper
@@ -399,7 +399,6 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 逐个阶段调研时发现的需求，列出最接近的项目和它们的不足。其中一些是我们自己工具的下一步，其余尚无人做。
 
 <!-- gaps:start -->
-- **关注或引用的论文出了新版本时得到通知，并知道改了什么。**（跟踪新论文）不足之处：现有订阅只看新投稿，不会盯着你文献库里的论文出新版本。最接近的：[arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite), [zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily)。部分已由我们的工具覆盖：[arxiv-diff](https://github.com/zch6a/arxiv-diff)。
 - **按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。**（跟踪新论文）不足之处：现有推荐只按与你研究方向的相似度打分。最接近的：[zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced)。部分已由我们的工具覆盖：[paper-impact](https://github.com/zch6a/paper-impact)。
 - **看到一篇论文为什么被引用（使用、对比还是反驳），以及后来哪些结果超过了它。**（检索文献）不足之处：开源工具只显示谁引用了谁，不显示怎么引用的；引用意图只有付费服务提供。最接近的：[LocalCitationNetwork.github.io](https://github.com/LocalCitationNetwork/LocalCitationNetwork.github.io), [semanticscholar](https://github.com/danielnsilva/semanticscholar)。
 - **找出 .bib 里不存在或信息有误的参考文献，并把预印本更新为正式发表的版本。**（管理参考文献）不足之处：rebiber 只对照 DBLP 和 ACL Anthology；betterbib 不会标出查无此文的条目。最接近的：[rebiber](https://github.com/yuchenlin/rebiber), [betterbib](https://github.com/texworld/betterbib)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
@@ -410,10 +409,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。**（算力与环境）不足之处：Slurm 需要专人维护；GPU 监控工具只能看到谁在用卡。最接近的：[slurm](https://github.com/SchedMD/slurm), [nvitop](https://github.com/XuehaiPan/nvitop)。
 - **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。
 - **能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。**（检查文字）不足之处：通用规则在公式多的文本上误报很多；学术写作规则要自己编写。最接近的：[languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale)。
-- **按会议的栏宽导出 Matplotlib 图，字体与正文一致。**（图表与示意图）不足之处：样式包只管外观，不管栏宽；tikzplotlib 已无人维护。最接近的：[SciencePlots](https://github.com/garrettj403/SciencePlots)。部分已由我们的工具覆盖：[fig-check](https://github.com/zch6a/fig-check)。
 - **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
-- **匿名检查覆盖所有提交材料，而不只是 PDF：补充材料压缩包、代码、元数据、视频。**（投稿前检查）不足之处：anonymous_github 只在托管的页面里隐藏名字；没有工具扫描补充材料。最接近的：[anonymous_github](https://github.com/tdurieux/anonymous_github), [arxiv-latex-cleaner](https://github.com/google-research/arxiv-latex-cleaner)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
-- **ACL 以外的机器学习会议的终稿检查：检查表、额外页数、字体、作者信息。**（投稿前检查）不足之处：aclpubcheck 只支持 ACL 模板。最接近的：[aclpubcheck](https://github.com/acl-org/aclpubcheck)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪只记日期和链接；规则散落在每年的征稿通知里。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。
 - **在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。**（审稿与 rebuttal）不足之处：现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。最接近的：[refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **逐条跟踪 rebuttal：每条意见的处理状态、需要补的实验、字数限制、分数变化。**（审稿与 rebuttal）不足之处：现有 rebuttal 工具只帮忙写文字，不提供与审稿意见对应的跟踪表。最接近的：[RebuttalStudio](https://github.com/runtsang/RebuttalStudio), [Paper2Rebuttal](https://github.com/AutoLab-SAI-SJTU/Paper2Rebuttal)。
