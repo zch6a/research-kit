@@ -129,7 +129,7 @@ def test_what_is_generated(tmp_path: Path) -> None:
     site = render.site(doc, land)
     assert "Reads &lt;b&gt;things&lt;/b&gt; &amp; more." in site and "<b>things" not in site  # text is escaped
     assert "splits &lt;i&gt;cells&lt;/i&gt;" in site
-    assert 'id="en-read"' in site and 'href="#en-read"' in site and 'id="en-write"' not in site and 'id="en-gaps"' in site
+    assert 'id="en-read"' in site and 'data-filter="read"' in site and 'id="en-write"' not in site and 'id="en-gaps"' in site
     assert "/plugin install table-trace@research-kit" in site and '<div data-lang="zh" lang="zh-CN" hidden>' in site
     assert '<span class="warn">none</span>' in site and "2026-11-14" in site
     readme = tmp_path / "README.md"

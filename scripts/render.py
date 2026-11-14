@@ -456,100 +456,238 @@ def fill(path: Path, section: str, which: str = "tools", text: str | None = None
     return pattern.sub(lambda _: f"{start}\n{section}{end}", text)
 
 
+TEASER = {
+    # real output from the tools' READMEs, for those without a screenshot
+    "table-trace": "$ table-trace compare 1512.03385 2201.03545 ...\n     20.74 (lower is better)  ResNet-50 | top-1 err.\n     76.13  2201.03545 Table 10: ResNet-50 (PyTorch)\n     78.82 ± 0.07  ResNet-50 (enhanced recipe)",
+    "repro-score": "$ repro-score path/to/repo\nrepro-score: paper-code: 65/100\nDependencies  11/20\n  ~ versions pinned (2 of 5)   4/7\n      requirements.txt:4: pyyaml",
+    "rebuttal-board": "$ rebuttal status\nRebuttal: SMA: 8 points, 1 done, 2 doing, 4 todo\nScores changed: Qm2t 6 -> 7 (+1)\nxK9p  rating 5  2/5 answered  reply 208 / 5,000",
+}
+STAGE_ICON = {  # 24x24 outline icons, drawn here (no icon font)
+    "read": '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/>',
+    "experiment": '<path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/><path d="M7.5 15h9"/>',
+    "write": '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+    "submit": '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/>',
+    "after": '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/>',
+}
+UI = {
+    "en": {
+        "tagline": "Open tools for every step of research",
+        "lead": "From following new papers to after publication: {n} tools of ours, each a command and an agent skill, and {m} of the best open projects on GitHub, chosen stage by stage. Rules and public data; no language model reads your paper.",
+        "browse": "Browse the tools",
+        "install": "Add to Claude Code",
+        "github": "GitHub",
+        "copy": "Copy",
+        "copied": "Copied",
+        "stat_tools": "tools of ours",
+        "stat_projects": "projects from GitHub",
+        "stat_venues": "venues with deadlines",
+        "stat_needs": "open needs",
+        "ours_title": "Our tools",
+        "ours_sub": "Each runs from one command with uv, needs no account, and comes with a skill for Claude Code and other agents.",
+        "all": "All",
+        "landscape": "The best of the rest",
+        "landscape_sub": "Open projects for each stage, with stars, licence and last update from the GitHub API on {checked}. A licence marked “none” means the repository has none: ask before reusing it.",
+        "search": "Filter projects…",
+        "nav_tools": "Tools",
+        "nav_landscape": "Landscape",
+        "nav_deadlines": "Deadlines",
+        "nav_needs": "Open needs",
+        "install_title": "Install as agent skills",
+        "install_body": "Our tools need uv (gpu-budget: Node 22+). In Claude Code, add the marketplace once, then install the tools you want by name:",
+        "needs_sub": "Needs that came up while surveying each stage, with the closest projects and what they miss. A badge marks those our tools partly cover.",
+        "footer": "MIT · suggest a project in an issue",
+        "noresults": "No project matches.",
+        "site": "Site",
+        "code": "Code",
+    },
+    "zh": {
+        "tagline": "科研每一步的开源工具",
+        "lead": "从跟踪新论文到论文发表之后：我们自己的 {n} 个工具（每个都是一条命令和一个智能体技能），以及按阶段挑选的 GitHub 上最好的 {m} 个开源项目。只用规则和公开数据，不让大模型读你的论文。",
+        "browse": "看看这些工具",
+        "install": "装进 Claude Code",
+        "github": "GitHub",
+        "copy": "复制",
+        "copied": "已复制",
+        "stat_tools": "个我们的工具",
+        "stat_projects": "个 GitHub 项目",
+        "stat_venues": "个会议的截稿日",
+        "stat_needs": "个待满足的需求",
+        "ours_title": "我们的工具",
+        "ours_sub": "每个工具都用 uv 一条命令运行，不需要注册账号，并附带给 Claude Code 等智能体用的技能。",
+        "all": "全部",
+        "landscape": "其他优秀项目",
+        "landscape_sub": "每个阶段可用的开源项目，星数、许可证和最近更新取自 GitHub API（{checked}）。许可证为“无”表示仓库没有许可证文件，复用前请先询问作者。",
+        "search": "筛选项目…",
+        "nav_tools": "工具",
+        "nav_landscape": "项目全景",
+        "nav_deadlines": "截稿日",
+        "nav_needs": "待满足的需求",
+        "install_title": "作为智能体技能安装",
+        "install_body": "我们的工具需要先装 uv（gpu-budget 需要 Node 22+）。在 Claude Code 里先添加一次插件市场，再按名字安装需要的工具：",
+        "needs_sub": "按阶段调研时发现、目前没有工具完全满足的需求，附最接近的项目和它们缺少的部分。带标记的是我们的工具已部分覆盖的。",
+        "footer": "MIT · 推荐项目请提 issue",
+        "noresults": "没有匹配的项目。",
+        "site": "网站",
+        "code": "代码",
+    },
+}
+
+
+def _icon(stage: str, size: int = 18) -> str:
+    return (f'<svg class="icon" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{STAGE_ICON.get(stage, "")}</svg>')  # fmt: skip
+
+
+def _picture(name: str) -> str:
+    """The tool's picture in site/img (made by scripts/thumbs.py), or a terminal card with real output."""
+    e = html.escape
+    for ext in ("webp", "svg", "png"):
+        if (ROOT / "site" / "img" / f"{name}.{ext}").is_file():
+            return f'<div class="shot"><img src="img/{name}.{ext}" alt="" loading="lazy" decoding="async"></div>'
+    if name in TEASER:
+        return f'<div class="shot term"><pre>{e(TEASER[name])}</pre></div>'
+    return '<div class="shot term"><pre></pre></div>'
+
+
+def _blurb(text: str) -> str:
+    """The description's first sentence (the card shows it whole; the rest is on the repository)."""
+    m = re.match(r"(.+?[.!?。])(?:\s|$)", text)
+    return m.group(1) if m and len(m.group(1)) > 40 else text
+
+
 def site(doc: dict, land: dict, dl: dict | None = None) -> str:
     e = html.escape
     n_ours, n_others = len(doc["tools"]), len(land["projects"])
+    n_venues = len(dl["venues"]) if dl else 0
+    stage_of = {s["key"]: s for s in doc["stages"]}
     body: dict[str, list[str]] = {"en": [], "zh": []}
-    nav: dict[str, list[str]] = {"en": [], "zh": []}
     for lang in ("en", "zh"):
-        w = WORDS[lang]
+        w, u = WORDS[lang], UI[lang]
+        # hero
+        stats = [(n_ours, u["stat_tools"]), (n_others, u["stat_projects"]), (n_venues, u["stat_venues"]), (len(land["gaps"]), u["stat_needs"])]
+        flow = "".join(
+            f'<button type="button" class="step" data-stage="{st["key"]}" data-s="{st["key"]}">{_icon(st["key"], 22)}'
+            f"<span>{e(st[lang])}</span><b>{sum(t['stage'] == st['key'] for t in doc['tools'])}</b></button>"
+            for st in doc["stages"]
+        )
+        body[lang].append(
+            f'<section class="hero"><p class="kicker">research-kit</p><h1>{e(u["tagline"])}</h1>'
+            f'<p class="lead">{e(u["lead"].format(n=n_ours, m=n_others))}</p>'
+            f'<div class="cta"><a class="btn primary" href="#{lang}-tools">{e(u["browse"])}</a>'
+            f'<button type="button" class="btn copy" data-copy="/plugin marketplace add {OWNER}/research-kit" data-done="{e(u["copied"])}">{e(u["install"])}</button>'
+            f'<a class="btn ghost" href="https://github.com/{OWNER}/research-kit">{e(u["github"])} ↗</a></div>'
+            f'<ul class="stats">{"".join(f"<li><b>{n}</b><span>{e(t)}</span></li>" for n, t in stats)}</ul>'
+            f'<div class="flow" role="group" aria-label="stages">{flow}</div></section>'
+        )
+        # our tools
+        cards = []
+        for t in doc["tools"]:
+            st = stage_of[t["stage"]]
+            links = [f'<a href="https://github.com/{OWNER}/{t["name"]}">{e(u["code"])}</a>']
+            if t["site"]:
+                links.append(f'<a href="{e(t["site"])}">{e(u["site"])} ↗</a>')
+            first = t["command"].split("\n")[0]
+            cards.append(
+                f'<article class="tool" data-stage="{t["stage"]}" data-s="{t["stage"]}">{_picture(t["name"])}'
+                f'<div class="body"><p class="stage">{_icon(t["stage"], 14)}{e(st[lang])}</p><h3>{e(t["name"])}</h3>'
+                f'<p class="desc">{e(t[lang])}</p>'
+                f'<div class="cmd"><code>{e(first)}</code><button type="button" class="mini copy" data-copy="{e(t["command"])}" '
+                f'data-done="{e(u["copied"])}" aria-label="{e(u["copy"])}">{e(u["copy"])}</button></div>'
+                f'<p class="links">{" · ".join(links)}</p></div></article>'
+            )
+        body[lang].append(
+            f'<section id="{lang}-tools" class="block"><div class="head"><h2>{e(u["ours_title"])}</h2><p>{e(u["ours_sub"])}</p></div>'
+            f'<div class="filters" role="tablist"><button type="button" class="chip on" data-filter="all">{e(u["all"])}</button>'
+            + "".join(
+                f'<button type="button" class="chip" data-filter="{st["key"]}" data-s="{st["key"]}">{e(st[lang])}</button>' for st in doc["stages"]
+            )
+            + f'</div><div class="tools">{"".join(cards)}</div>'
+            f'<div class="install"><h3>{e(u["install_title"])}</h3><p>{e(u["install_body"])}</p>'
+            f'<div class="cmd big"><code>/plugin marketplace add {OWNER}/research-kit<br>/plugin install {EXAMPLE}@research-kit</code>'
+            f'<button type="button" class="mini copy" data-copy="/plugin marketplace add {OWNER}/research-kit&#10;/plugin install {EXAMPLE}@research-kit" '
+            f'data-done="{e(u["copied"])}">{e(u["copy"])}</button></div></div></section>'
+        )
+        # the landscape
+        parts = []
         for stage, secs in by_section(doc, land):
-            total = sum(len(o) + len(x) for _, o, x in secs)
-            unit = " projects" if lang == "en" else " 个项目"
-            nav[lang].append(f'<a href="#{lang}-{stage["key"]}">{e(stage[lang])} <span>{total}<span class="sr">{unit}</span></span></a>')
-            parts = [f'<section id="{lang}-{stage["key"]}"><h2>{e(stage[lang])}</h2>']
-            for sec, ours, others in secs:
-                parts.append(f'<h3 id="{lang}-{stage["key"]}-{sec["key"]}">{e(sec[lang])}</h3>')
-                if ours:
-                    cards = []
-                    for t in ours:
-                        links = [f'<a href="https://github.com/{OWNER}/{t["name"]}">{w["code"]}</a>']
-                        if t["site"]:
-                            links.append(f'<a href="{e(t["site"])}">{w["site"]}</a>')
-                        cards.append(
-                            f'<article><h4>{e(t["name"])} <span class="ours">{w["ours"]}</span></h4><p>{e(t[lang])}</p>'
-                            f'<pre><code>{e(t["command"])}</code></pre><p class="links">{" · ".join(links)}</p></article>'
-                        )
-                    parts.append(f'<div class="grid">{"".join(cards)}</div>')
-                if others:
-                    rows = []
-                    for p in others:
-                        tag = f' <span class="tag">{w["list"]}</span>' if p.get("list") else ""
-                        lic = licence(p, lang)
-                        lic_html = f'<span class="warn">{e(lic)}</span>' if p.get("license") is None else e(lic)
-                        rows.append(
-                            f'<tr><td><a href="https://github.com/{e(p["repo"])}">{e(short(p["repo"]))}</a>{tag}</td><td>{e(p[lang])}</td>'
-                            f'<td class="num">{stars(p["stars"])}</td><td>{lic_html}</td><td class="num">{p["pushed_at"][:7]}</td></tr>'
-                        )
-                    parts.append(
-                        f'<div class="table"><table><thead><tr><th>{w["project"]}</th><th>{w["what"]}</th><th class="num">{w["stars"]}</th>'
-                        f'<th>{w["licence"]}</th><th class="num">{w["updated"]}</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+            rows = []
+            for sec, _ours, others in secs:
+                for p in others:
+                    tag = f' <span class="tag">{w["list"]}</span>' if p.get("list") else ""
+                    lic = licence(p, lang)
+                    lic_html = f'<span class="warn">{e(lic)}</span>' if p.get("license") is None else e(lic)
+                    rows.append(
+                        f'<tr data-stage="{stage["key"]}"><td><a href="https://github.com/{e(p["repo"])}">{e(short(p["repo"]))}</a>{tag}'
+                        f'<span class="sec">{e(sec[lang])}</span></td><td>{e(p[lang])}</td><td class="num">{stars(p["stars"])}</td>'
+                        f'<td>{lic_html}</td><td class="num">{p["pushed_at"][:7]}</td></tr>'
                     )
-            parts.append("</section>")
-            body[lang].append("".join(parts))
-        gap_items = []
-        names = {s["key"]: s[lang] for s in land["sections"]}
+            parts.append(
+                f'<section id="{lang}-{stage["key"]}" class="stagebox" data-stage="{stage["key"]}" data-s="{stage["key"]}">'
+                f'<h3>{_icon(stage["key"], 18)}{e(stage[lang])}</h3><div class="table"><table><thead><tr><th>{w["project"]}</th><th>{w["what"]}</th>'
+                f'<th class="num">{w["stars"]}</th><th>{w["licence"]}</th><th class="num">{w["updated"]}</th></tr></thead>'
+                f"<tbody>{''.join(rows)}</tbody></table></div></section>"
+            )
+        body[lang].append(
+            f'<section id="{lang}-landscape" class="block"><div class="head"><h2>{e(u["landscape"])}</h2>'
+            f"<p>{e(u['landscape_sub'].format(checked=land['checked']))}</p></div>"
+            f'<div class="toolbar"><input type="search" class="search" placeholder="{e(u["search"])}" aria-label="{e(u["search"])}">'
+            f'<div class="filters">'
+            + f'<button type="button" class="chip on" data-filter="all">{e(u["all"])}</button>'
+            + "".join(
+                f'<button type="button" class="chip" data-filter="{st["key"]}" data-s="{st["key"]}">{e(st[lang])}</button>' for st in doc["stages"]
+            )
+            + f'</div></div>{"".join(parts)}<p class="empty" hidden>{e(u["noresults"])}</p></section>'
+        )
+        # deadlines
+        if dl is not None:
+            _, dl_section = site_deadlines(dl, lang)
+            body[lang].append(dl_section.replace(f'<section id="{lang}-deadlines">', f'<section id="{lang}-deadlines" class="block">', 1))
+        # open needs
+        names = {sec["key"]: sec[lang] for sec in land["sections"]}
+        items = []
         for g in land["gaps"]:
             closest = ", ".join(f'<a href="https://github.com/{e(c)}">{e(short(c))}</a>' for c in g["closest"])
             ours = (
-                f' <span class="ours">{w["partly"]} <a href="https://github.com/{OWNER}/{g["ours"]}">{g["ours"]}</a></span>' if g.get("ours") else ""
+                f'<span class="ours">{w["partly"]} <a href="https://github.com/{OWNER}/{g["ours"]}">{g["ours"]}</a></span>' if g.get("ours") else ""
             )
-            gap_items.append(
-                f'<li><strong>{e(g[lang])}</strong> <span class="where">{e(names[g["section"]])}</span>'
-                f"<br>{e(g['missing_' + lang])} {w['closest']}: {closest}.{ours}</li>"
+            items.append(
+                f'<li><p class="where">{e(names[g["section"]])}</p><h4>{e(g[lang])}</h4><p>{e(g["missing_" + lang])}</p>'
+                f'<p class="small">{w["closest"]}: {closest}</p>{ours}</li>'
             )
-        if dl is not None:
-            dl_nav, dl_section = site_deadlines(dl, lang)
-            nav[lang].append(dl_nav)
-            body[lang].append(dl_section)
         gap_title = "What nothing covers yet" if lang == "en" else "还没有工具覆盖的需求"
-        nav[lang].append(f'<a href="#{lang}-gaps">{gap_title} <span>{len(land["gaps"])}</span></a>')
-        body[lang].append(f'<section id="{lang}-gaps"><h2>{gap_title}</h2><ul class="gaps">{"".join(gap_items)}</ul></section>')
-    checked = land["checked"]
+        body[lang].append(
+            f'<section id="{lang}-gaps" class="block"><div class="head"><h2>{gap_title}</h2><p>{e(u["needs_sub"])}</p></div>'
+            f'<ul class="gaps">{"".join(items)}</ul></section>'
+        )
+    nav = {lang: " ".join(f'<a href="#{lang}-{k}">{e(UI[lang]["nav_" + n])}</a>' for k, n in (("tools", "tools"), ("landscape", "landscape"), ("deadlines", "deadlines"), ("gaps", "needs")))
+           for lang in ("en", "zh")}  # fmt: skip
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
-<title>research-kit</title>
-<meta name="description" content="Open-source tools for every stage of research work: {n_ours} of ours and {n_others} more from GitHub, stage by stage, and what nothing covers yet.">
+<title>research-kit · open tools for every step of research</title>
+<meta name="description" content="Open-source tools for every stage of research work: {n_ours} of ours and {n_others} more from GitHub, stage by stage, with deadlines and what nothing covers yet.">
+<meta property="og:title" content="research-kit: open tools for every step of research">
+<meta property="og:description" content="{n_ours} open tools of ours and {n_others} of the best projects on GitHub, from following new papers to after publication.">
+<meta property="og:image" content="https://{OWNER}.github.io/research-kit/img/social.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M9 22V10h6a4 4 0 0 1 0 8h-6m6 0 5 4' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>research-kit</h1>
-  <p class="lead" data-lang="en">Open-source tools for every stage of research work, from following new papers to after publication: {n_ours} of ours (each a command and an agent skill) and {n_others} more from GitHub, chosen stage by stage, with what nothing covers yet.</p>
-  <p class="lead" data-lang="zh" lang="zh-CN" hidden>科研每个阶段可用的开源工具，从跟踪新论文到论文发表之后：我们自己的 {n_ours} 个（每个都是一条命令和一个智能体技能），以及按阶段挑选的 GitHub 上另外 {n_others} 个项目，还有目前没有工具覆盖的需求。</p>
-  <nav aria-label="Stages" data-lang="en" class="stages">{"".join(nav["en"])}</nav>
-  <nav aria-label="阶段" data-lang="zh" lang="zh-CN" class="stages" hidden>{"".join(nav["zh"])}</nav>
-  <p><button type="button" id="lang" lang="zh-CN" hidden>中文</button></p>
-  <div class="install">
-    <p data-lang="en">Our tools need <a href="https://docs.astral.sh/uv/">uv</a> (gpu-budget: Node 22+). As agent skills in Claude Code, add the marketplace once, then install the tools you want by name:</p>
-    <p data-lang="zh" lang="zh-CN" hidden>我们的工具需要先装 <a href="https://docs.astral.sh/uv/">uv</a>（gpu-budget 需要 Node 22+）。作为 Claude Code 的技能使用时，先添加一次插件市场，再按名字安装需要的工具：</p>
-    <pre><code>/plugin marketplace add {OWNER}/research-kit
-/plugin install {EXAMPLE}@research-kit</code></pre>
-    <p class="note" data-lang="en">Stars, licences and update months of the other projects are from the GitHub API on {checked}. A licence marked "none" means the repository has no licence file: ask before reusing it.</p>
-    <p class="note" data-lang="zh" lang="zh-CN" hidden>其他项目的星数、许可证和更新月份取自 GitHub API（{checked}）。许可证为“无”表示仓库没有许可证文件，复用前请先询问作者。</p>
-  </div>
-</header>
+<header class="bar"><div class="inner"><a class="brand" href="#">research-kit</a>
+<nav data-lang="en">{nav["en"]}</nav><nav data-lang="zh" lang="zh-CN" hidden>{nav["zh"]}</nav>
+<button type="button" id="lang" lang="zh-CN" hidden>中文</button></div></header>
 <main>
 <div data-lang="en">{"".join(body["en"])}</div>
 <div data-lang="zh" lang="zh-CN" hidden>{"".join(body["zh"])}</div>
 </main>
-<footer><p>MIT · <a href="https://github.com/{OWNER}/research-kit">github.com/{OWNER}/research-kit</a> · <span data-lang="en">suggest a project in an issue</span><span data-lang="zh" lang="zh-CN" hidden>推荐项目请提 issue</span></p></footer>
+<footer><p>MIT · <a href="https://github.com/{OWNER}/research-kit">github.com/{OWNER}/research-kit</a> · <span data-lang="en">{e(UI["en"]["footer"].split(" · ")[1])}</span><span data-lang="zh" lang="zh-CN" hidden>{e(UI["zh"]["footer"].split(" · ")[1])}</span></p></footer>
 <script src="lang.js"></script>
 <script src="deadlines.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
 """

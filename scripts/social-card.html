@@ -1,34 +1,45 @@
 <!doctype html>
-<!-- The repository's social preview (1280×640): docs/social-preview.png, rendered from this page with headless Chrome
-     at 1280×640. The tool names and stages are those of tools.json; change both together. -->
+<!-- The share image (1280×640): docs/social-preview.png (the repository's social preview, set in its settings) and
+     site/img/social.png (the site's og:image), rendered from this page with headless Chrome. The tool names and stages
+     are those of tools.json; change both together. -->
 <html>
 <head>
 <meta charset="utf-8">
 <style>
   html, body { margin: 0; width: 1280px; height: 640px; overflow: hidden; }
-  body { background: radial-gradient(1100px 700px at 12% 8%, #1a2440 0%, #10141b 55%, #0b0d11 100%); color: #e6edf3;
-    font-family: "Segoe UI", -apple-system, system-ui, sans-serif; display: grid; grid-template-columns: 430px 1fr; gap: 44px;
-    padding: 0 60px 0 70px; box-sizing: border-box; align-items: center; }
-  h1 { font-size: 60px; margin: 0 0 16px; letter-spacing: -1.5px; }
-  h1 span { color: #7c9bff; }
-  .tag { font-size: 29px; line-height: 1.22; margin: 0 0 20px; font-weight: 600; }
-  .sub { font-size: 18px; line-height: 1.5; color: #b1bac4; margin: 0 0 24px; }
-  .pills { display: flex; gap: 9px; flex-wrap: wrap; }
-  .pills span { font-size: 14.5px; border: 1px solid #30363d; background: #161b22; border-radius: 999px; padding: 6px 12px; color: #c9d1d9; }
+  body { background: #0f1114; color: #e8e8e6; font-family: "Segoe UI", -apple-system, system-ui, sans-serif; position: relative;
+    display: grid; grid-template-columns: 500px 1fr; gap: 48px; padding: 0 64px; box-sizing: border-box; align-items: center; }
+  body::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(520px 380px at 12% 18%, rgba(107,156,255,.22), transparent 70%),
+                radial-gradient(460px 360px at 88% 8%, rgba(244,114,182,.16), transparent 70%),
+                radial-gradient(420px 320px at 60% 95%, rgba(45,212,191,.14), transparent 70%); }
+  body > * { position: relative; }
+  .kicker { font-size: 18px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6b9cff; margin: 0 0 14px; }
+  h1 { font-size: 64px; line-height: 1.02; letter-spacing: -2px; margin: 0 0 22px; font-weight: 800; }
+  .sub { font-size: 21px; line-height: 1.45; color: #9ba1a8; margin: 0 0 28px; }
+  .stats { display: flex; gap: 30px; }
+  .stats b { display: block; font-size: 40px; letter-spacing: -1px; }
+  .stats span { font-size: 15px; color: #9ba1a8; }
   .flow { display: flex; flex-direction: column; gap: 12px; }
-  .stage { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 12px 16px; }
-  .stage h3 { margin: 0 0 8px; font-size: 15px; color: #8b949e; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; }
+  .stage { background: #171a1f; border: 1px solid #262a30; border-left: 4px solid var(--c); border-radius: 12px; padding: 12px 16px; }
+  .stage h3 { margin: 0 0 8px; font-size: 14px; color: var(--c); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .names { display: flex; gap: 8px; flex-wrap: wrap; }
-  .names span { font-family: "Cascadia Mono", Consolas, monospace; font-size: 17px; background: #1f2a44; color: #c8d6ff; border-radius: 7px; padding: 4px 10px; }
+  .names span { font-family: "Cascadia Mono", Consolas, monospace; font-size: 16.5px; background: #1e2228; color: #e8e8e6; border-radius: 7px; padding: 4px 10px; }
 </style>
 </head>
 <body>
   <div>
-    <h1>research-<span>kit</span></h1>
-    <p class="tag">Open tools for research work.</p>
-    <p class="sub">13 commands and agent skills, from reading papers to after publication. Rules and published data, each result with where it comes from.</p>
-    <div class="pills"><span>One plugin marketplace</span><span>No account, no API key</span><span>MIT</span></div>
+    <p class="kicker">research-kit</p>
+    <h1>Open tools for every step of research</h1>
+    <p class="sub">Commands and agent skills from reading papers to after publication, and the best open projects on GitHub, stage by stage.</p>
+    <div class="stats"><div><b>15</b><span>tools of ours</span></div><div><b>172</b><span>projects</span></div><div><b>16</b><span>venues' deadlines</span></div></div>
   </div>
-  <div class="flow"><div class="stage"><h3>Find and read</h3><div class="names"><span>venue-atlas</span><span>paper-impact</span><span>table-trace</span><span>arxiv-diff</span></div></div><div class="stage"><h3>Run experiments</h3><div class="names"><span>gpu-budget</span><span>exp-tables</span><span>repro-score</span></div></div><div class="stage"><h3>Write the paper</h3><div class="names"><span>fig-check</span><span>paper-proof</span></div></div><div class="stage"><h3>Submit</h3><div class="names"><span>submit-check</span><span>iclr-scores</span></div></div><div class="stage"><h3>After it is out</h3><div class="names"><span>paper-page</span><span>scholar-cards</span></div></div></div>
+  <div class="flow">
+    <div class="stage" style="--c:#6b9cff"><h3>Find and read</h3><div class="names"><span>venue-atlas</span><span>paper-impact</span><span>table-trace</span><span>arxiv-diff</span></div></div>
+    <div class="stage" style="--c:#a78bfa"><h3>Run experiments</h3><div class="names"><span>gpu-budget</span><span>exp-tables</span></div></div>
+    <div class="stage" style="--c:#2dd4bf"><h3>Write the paper</h3><div class="names"><span>fig-check</span></div></div>
+    <div class="stage" style="--c:#fbbf24"><h3>Submit</h3><div class="names"><span>paper-proof</span><span>submit-check</span><span>iclr-scores</span><span>rebuttal-board</span></div></div>
+    <div class="stage" style="--c:#f472b6"><h3>After it is out</h3><div class="names"><span>paper-page</span><span>scholar-cards</span><span>repro-score</span><span>reading-group</span></div></div>
+  </div>
 </body>
 </html>
