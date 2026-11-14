@@ -2,13 +2,13 @@
 
 # research-kit
 
-**Open-source tools for every stage of research work, from following new papers to after publication.** Thirteen
+**Open-source tools for every stage of research work, from following new papers to after publication.** Fourteen
 of ours, each a command and an agent skill, and the best of the rest on GitHub, chosen stage by stage, with what
 nothing covers yet. Ours run on rules and published data, without a large language model (venue-atlas places
 papers with a small embedding model), and what they report says where it comes from.
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
-<img alt="13 tools" src="https://img.shields.io/badge/tools-13-2ea44f">
+<img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
 <img alt="171 projects" src="https://img.shields.io/badge/projects-171-8250df">
 
 **English** · [简体中文](README.zh-CN.md) · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
@@ -297,6 +297,12 @@ uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/pap
 uvx --from git+https://github.com/zch6a/iclr-scores@v0 iclr-scores odds 6 6 8 5 --year 2025
 ```
 
+**[rebuttal-board](https://github.com/zch6a/rebuttal-board)** (ours) — A rebuttal tracked point by point: reviews pasted from OpenReview or CMT split into points, a Markdown tracker with each point's status, experiment and answer, each reply's length against the limit, and score changes. Offline.
+
+```bash
+uvx --from git+https://github.com/zch6a/rebuttal-board@v0 rebuttal init reviews.txt
+```
+
 | Project | What it does | Stars | Licence | Updated |
 |---|---|--:|---|---|
 | [paperlists](https://github.com/papercopilot/paperlists) | Cleaned per-venue lists of submissions with review scores and decisions, collected from OpenReview and other sources. | 967 | none | 2026-11 |
@@ -446,7 +452,6 @@ for our own tools; the rest are open.
 - **Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.** (Figures and diagrams) What they miss: PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper. Closest: [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview).
 - **A deadline tracker that also keeps each venue's rules: page limits, supplementary deadline, rebuttal window, LLM policy.** (Deadlines and submission) What they miss: Trackers store dates and links only; the rules sit in each year's call for papers. The deadline table here joins ccf-deadlines' dates with submit-check's page limits and required sections; supplementary deadlines, rebuttal windows and LLM policies are not collected yet. Closest: [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines). Partly covered by our [submit-check](https://github.com/zch6a/submit-check).
 - **Help for reviewers that runs locally: check a submission's references, tables and claims without uploading it.** (Peer review and rebuttal) What they miss: Review generators write whole reviews (most venues forbid that) and call hosted models. paper-proof --review checks a PDF locally (consistency, numbers in sentences, references on request), but a PDF's tables cannot be compared with its claims. Closest: [refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview). Partly covered by our [paper-proof](https://github.com/zch6a/paper-proof).
-- **Track a rebuttal point by point: status, the experiment each point needs, character limits, score changes.** (Peer review and rebuttal) What they miss: Rebuttal tools draft text; none keeps a tracker tied to the review threads. Closest: [RebuttalStudio](https://github.com/runtsang/RebuttalStudio), [Paper2Rebuttal](https://github.com/AutoLab-SAI-SJTU/Paper2Rebuttal).
 - **One release step that keeps the code tag, weights, dataset, citation file and DOI in step.** (Releasing code and data) What they miss: Each tool covers one artefact; versions drift between GitHub, Zenodo and the Hugging Face Hub. Closest: [zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub).
 - **An open index linking papers to their code and results, now that Papers with Code has shut down (2025).** (Releasing code and data) What they miss: Hugging Face paper pages are not an open, self-hostable index of results. Closest: [huggingface_hub](https://github.com/huggingface/huggingface_hub), [releasing-research-code](https://github.com/paperswithcode/releasing-research-code). Partly covered by our [table-trace](https://github.com/zch6a/table-trace).
 - **A free alert of who cited your paper and what they said about it.** (Sharing and tracking citations) What they miss: Trackers give counts; scraping Google Scholar breaks when it is blocked. Closest: [pyalex](https://github.com/J535D165/pyalex), [scholarly](https://github.com/scholarly-python-package/scholarly). Partly covered by our [scholar-cards](https://github.com/zch6a/scholar-cards).

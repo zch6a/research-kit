@@ -2,10 +2,10 @@
 
 # research-kit
 
-**科研每个阶段可用的开源工具，从跟踪新论文到论文发表之后。** 我们自己的 13 个工具，每个都是一条命令和一个智能体技能；再加上按阶段挑选的 GitHub 上最好的其他项目，以及目前没有工具覆盖的需求。我们的工具靠规则和公开数据，不用大语言模型（venue-atlas 用一个小型嵌入模型给论文定位），给出的每个结果都标明出处。
+**科研每个阶段可用的开源工具，从跟踪新论文到论文发表之后。** 我们自己的 14 个工具，每个都是一条命令和一个智能体技能；再加上按阶段挑选的 GitHub 上最好的其他项目，以及目前没有工具覆盖的需求。我们的工具靠规则和公开数据，不用大语言模型（venue-atlas 用一个小型嵌入模型给论文定位），给出的每个结果都标明出处。
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
-<img alt="13 tools" src="https://img.shields.io/badge/tools-13-2ea44f">
+<img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
 <img alt="171 projects" src="https://img.shields.io/badge/projects-171-8250df">
 
 [English](README.md) · **简体中文** · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
@@ -289,6 +289,12 @@ uvx --from git+https://github.com/zch6a/submit-check@v0 submit-check path/to/pap
 uvx --from git+https://github.com/zch6a/iclr-scores@v0 iclr-scores odds 6 6 8 5 --year 2025
 ```
 
+**[rebuttal-board](https://github.com/zch6a/rebuttal-board)** (我们的) — 逐条跟踪 rebuttal：把从 OpenReview 或 CMT 粘贴的审稿意见拆成意见点，生成 Markdown 跟踪表（每点的状态、需要的实验、回复），检查每份回复的长度是否超限，记录分数变化。离线运行。
+
+```bash
+uvx --from git+https://github.com/zch6a/rebuttal-board@v0 rebuttal init reviews.txt
+```
+
 | 项目 | 用途 | 星数 | 许可证 | 更新 |
 |---|---|--:|---|---|
 | [paperlists](https://github.com/papercopilot/paperlists) | 按会议整理好的投稿列表，含审稿分数和录用结果，来源于 OpenReview 等。 | 967 | 无 | 2026-11 |
@@ -437,7 +443,6 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
 - **截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。**（截稿日期与投稿）不足之处：现有追踪工具只存日期和链接，规则散在每年的投稿说明里。本页的截稿表把 ccf-deadlines 的日期和 submit-check 的页数、必需章节放在一起；补充材料截止日、rebuttal 时间窗和大模型使用政策还没有收集。最接近的：[ccf-deadlines](https://github.com/ccfddl/ccf-deadlines), [ai-deadlines](https://github.com/huggingface/ai-deadlines)。部分已由我们的工具覆盖：[submit-check](https://github.com/zch6a/submit-check)。
 - **在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。**（审稿与 rebuttal）不足之处：现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。paper-proof --review 可在本地检查 PDF（一致性、句子里的数字，需要时查参考文献），但 PDF 里的表格无法与正文结论对照。最接近的：[refchecker](https://github.com/markrussinovich/refchecker), [AgentReview](https://github.com/Ahren09/AgentReview)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
-- **逐条跟踪 rebuttal：每条意见的处理状态、需要补的实验、字数限制、分数变化。**（审稿与 rebuttal）不足之处：现有 rebuttal 工具只帮忙写文字，不提供与审稿意见对应的跟踪表。最接近的：[RebuttalStudio](https://github.com/runtsang/RebuttalStudio), [Paper2Rebuttal](https://github.com/AutoLab-SAI-SJTU/Paper2Rebuttal)。
 - **一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。**（发布代码与数据）不足之处：每个工具只管一样东西，GitHub、Zenodo 和 Hugging Face 之间的版本容易对不上。最接近的：[zenodo-rdm](https://github.com/zenodo/zenodo-rdm), [huggingface_hub](https://github.com/huggingface/huggingface_hub)。
 - **Papers with Code 于 2025 年关闭后，一个把论文与代码和结果关联起来的开放索引。**（发布代码与数据）不足之处：Hugging Face 的论文页面不是开放、可自建的结果索引。最接近的：[huggingface_hub](https://github.com/huggingface/huggingface_hub), [releasing-research-code](https://github.com/paperswithcode/releasing-research-code)。部分已由我们的工具覆盖：[table-trace](https://github.com/zch6a/table-trace)。
 - **免费提醒：谁引用了你的论文，以及他们是怎么说的。**（传播与引用跟踪）不足之处：现有工具只给引用数；抓取 Google Scholar 的方法常被封锁而失效。最接近的：[pyalex](https://github.com/J535D165/pyalex), [scholarly](https://github.com/scholarly-python-package/scholarly)。部分已由我们的工具覆盖：[scholar-cards](https://github.com/zch6a/scholar-cards)。

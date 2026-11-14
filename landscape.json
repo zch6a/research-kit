@@ -2157,18 +2157,6 @@
       "ours": "paper-proof"
     },
     {
-      "section": "review",
-      "en": "Track a rebuttal point by point: status, the experiment each point needs, character limits, score changes.",
-      "zh": "逐条跟踪 rebuttal：每条意见的处理状态、需要补的实验、字数限制、分数变化。",
-      "missing_en": "Rebuttal tools draft text; none keeps a tracker tied to the review threads.",
-      "missing_zh": "现有 rebuttal 工具只帮忙写文字，不提供与审稿意见对应的跟踪表。",
-      "closest": [
-        "runtsang/RebuttalStudio",
-        "AutoLab-SAI-SJTU/Paper2Rebuttal"
-      ],
-      "ours": null
-    },
-    {
       "section": "release",
       "en": "One release step that keeps the code tag, weights, dataset, citation file and DOI in step.",
       "zh": "一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。",

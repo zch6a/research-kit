@@ -192,6 +192,20 @@
       "section": "review"
     },
     {
+      "name": "rebuttal-board",
+      "stage": "submit",
+      "en": "A rebuttal tracked point by point: reviews pasted from OpenReview or CMT split into points, a Markdown tracker with each point's status, experiment and answer, each reply's length against the limit, and score changes. Offline.",
+      "zh": "逐条跟踪 rebuttal：把从 OpenReview 或 CMT 粘贴的审稿意见拆成意见点，生成 Markdown 跟踪表（每点的状态、需要的实验、回复），检查每份回复的长度是否超限，记录分数变化。离线运行。",
+      "command": "uvx --from git+https://github.com/zch6a/rebuttal-board@v0 rebuttal init reviews.txt",
+      "site": "",
+      "tags": [
+        "rebuttal",
+        "peer-review",
+        "openreview"
+      ],
+      "section": "review"
+    },
+    {
       "name": "paper-page",
       "stage": "after",
       "en": "A project page for your paper from its arXiv id: links, teaser, abstract, BibTeX, Google Scholar and link-preview tags, in one static HTML file for GitHub Pages.",
