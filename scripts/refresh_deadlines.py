@@ -90,6 +90,7 @@ def venue(name: str, data: list[dict], rules_id: str, rules: dict, today: dt.dat
             "required": [r["what"] for r in rules.get("required", [])],
             "source": v["source"],
             "verified": v["verified"],
+            "policy": {k: str(x) for k, x in rules.get("policy", {}).items() if str(x)},  # LLM use, supplementary, author response
         }
     return out
 

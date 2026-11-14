@@ -57,7 +57,12 @@
           "the NeurIPS paper checklist"
         ],
         "source": "https://neurips.cc/Conferences/2025/CallForPapers",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "follow the NeurIPS LLM policy (https://neurips.cc/Conferences/2025/LLM)",
+          "supplementary": "May 22, 2025 AoE (a week after the paper), up to 100 MB, one ZIP",
+          "rebuttal": "one week to respond to the initial reviews"
+        }
       }
     },
     {
@@ -107,7 +112,11 @@
           "an Impact Statement section"
         ],
         "source": "https://icml.cc/Conferences/2025/CallForPapers",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "allowed, to assist in writing or research",
+          "supplementary": "no separate deadline: with the paper"
+        }
       }
     },
     {
@@ -169,7 +178,13 @@
           "a Reproducibility Statement (strongly encouraged)"
         ],
         "source": "https://iclr.cc/Conferences/2026/AuthorGuide",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "allowed; significant use described in a separate section on LLM usage",
+          "llm_disclose": "a separate section on LLM usage (it can be in the appendix)",
+          "supplementary": "with the paper",
+          "rebuttal": "comments on OpenReview, revisions until the end of the discussion period"
+        }
       }
     },
     {
@@ -226,7 +241,11 @@
         ],
         "required": [],
         "source": "https://cvpr.thecvf.com/Conferences/2026/AuthorGuidelines",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "any tools; the authors are responsible for the content",
+          "rebuttal": "a one-page PDF"
+        }
       }
     },
     {
@@ -277,7 +296,12 @@
         ],
         "required": [],
         "source": "https://eccv.ecva.net/Conferences/2026/SubmissionPolicies",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "any tools; citing non-existent material leads to rejection",
+          "supplementary": "Mar 12, 2026, 11:00 PM CET (a week after the paper)",
+          "rebuttal": "a one-page PDF including references"
+        }
       }
     },
     {
@@ -351,7 +375,12 @@
           "a section titled Limitations"
         ],
         "source": "https://aclrollingreview.org/cfp",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "use for writing or coding disclosed in the Responsible NLP Checklist",
+          "llm_disclose": "the Responsible NLP Checklist",
+          "supplementary": "software and data as two .tgz or .zip archives, anonymized"
+        }
       }
     },
     {
@@ -408,7 +437,12 @@
           "a section titled Limitations"
         ],
         "source": "https://aclrollingreview.org/cfp",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "use for writing or coding disclosed in the Responsible NLP Checklist",
+          "llm_disclose": "the Responsible NLP Checklist",
+          "supplementary": "software and data as two .tgz or .zip archives, anonymized"
+        }
       }
     },
     {
@@ -465,7 +499,12 @@
           "a section titled Limitations"
         ],
         "source": "https://aclrollingreview.org/cfp",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "use for writing or coding disclosed in the Responsible NLP Checklist",
+          "llm_disclose": "the Responsible NLP Checklist",
+          "supplementary": "software and data as two .tgz or .zip archives, anonymized"
+        }
       }
     },
     {
@@ -525,7 +564,11 @@
           "the reproducibility checklist"
         ],
         "source": "https://aaai.org/conference/aaai/aaai-26/submission-instructions/",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "supplementary": "August 4, 2025, 11:59 PM UTC-12 (three days after the paper)",
+          "rebuttal": "author feedback window October 7-13, 2025"
+        }
       }
     },
     {
@@ -585,7 +628,12 @@
         ],
         "required": [],
         "source": "https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "allowed; the authors take full responsibility for all content",
+          "supplementary": "with the paper, up to 50 MB, PDF or ZIP",
+          "rebuttal": "April 7-10, 2026"
+        }
       }
     },
     {
@@ -656,7 +704,12 @@
         ],
         "required": [],
         "source": "https://kdd2026.kdd.org/research-track-call-for-papers/",
-        "verified": "2026-11-13"
+        "verified": "2026-11-13",
+        "policy": {
+          "llm": "any use of generative AI disclosed in the submission form (ACM policy)",
+          "llm_disclose": "the submission form",
+          "rebuttal": "Apr 4-17, 2026 (February cycle); October 4-18, 2025 (July cycle)"
+        }
       }
     },
     {

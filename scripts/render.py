@@ -357,13 +357,21 @@ def _rules_text(v: dict, lang: str) -> str:
     return f"{pages}{unit}{req}"
 
 
+def _policy_text(v: dict, lang: str) -> str:
+    """LLM use, supplementary material, author response: what the venue's page says (English, as quoted)."""
+    pol = (v.get("rules") or {}).get("policy") or {}
+    labels = {"llm": ("LLMs", "大模型"), "supplementary": ("supplementary", "补充材料"), "rebuttal": ("response", "回复")}
+    parts = [f"{labels[k][0 if lang == 'en' else 1]}: {pol[k]}" for k in ("llm", "supplementary", "rebuttal") if pol.get(k)]
+    return "; ".join(parts) or "—"
+
+
 def deadlines_section(dl: dict, lang: str) -> str:
     """The README's table: each venue's next deadline as of the check date, with its rules."""
     checked = dt.datetime.fromisoformat(dl["checked"])
     if lang == "en":
-        head = "| Venue | Next deadline | Time zone | Conference | Pages (camera-ready); required | Rules |\n|---|---|---|---|---|---|\n"
+        head = "| Venue | Next deadline | Time zone | Conference | Pages (camera-ready); required | LLM use, supplementary, response | Rules |\n|---|---|---|---|---|---|---|\n"
     else:
-        head = "| 会议 | 下一个截稿日 | 时区 | 会议时间地点 | 页数（终稿）；必需 | 规则 |\n|---|---|---|---|---|---|\n"
+        head = "| 会议 | 下一个截稿日 | 时区 | 会议时间地点 | 页数（终稿）；必需 | 大模型、补充材料、回复 | 规则 |\n|---|---|---|---|---|---|---|\n"
     rows = []
     for v, ed, t, when in upcoming(dl):
         date = t["deadline"][:16] + (f" ({t['comment']})" if t.get("comment") else "")
@@ -375,20 +383,21 @@ def deadlines_section(dl: dict, lang: str) -> str:
         conf = md_cell(", ".join(x for x in (ed["date"], ed["place"]) if x))
         r = v.get("rules")
         rules = f"[`--venue {r['id']}`]({r['source']})" if r else "—"
-        rows.append(f"| {name} | {md_cell(date)} | {ed['timezone']} | {conf} | {md_cell(_rules_text(v, lang))} | {rules} |")
+        rows.append(f"| {name} | {md_cell(date)} | {ed['timezone']} | {conf} | {md_cell(_rules_text(v, lang))} | {md_cell(_policy_text(v, lang))} | {rules} |")
     src = dl["sources"]["deadlines"]
     if lang == "en":
         note = (
             f"\nDeadlines as of {dl['checked']}, from [ccf-deadlines](https://github.com/{src['repo']}) (MIT, commit "
             f"`{src['commit'][:7]}`); always confirm on the venue's own page. Page limits and required sections are "
-            "submit-check's rules, each with the official page it comes from (`--venue` checks a paper against them; a "
+            "submit-check's rules, each with the official page it comes from, as are the LLM policies, supplementary material and author "
+            "response (`--venue` checks a paper against them; a "
             "venue's rules are for the year in its id). The [site](https://zch6a.github.io/research-kit/#en-deadlines) "
             "counts the days left.\n"
         )
     else:
         note = (
             f"\n截稿日期截至 {dl['checked']}，取自 [ccf-deadlines](https://github.com/{src['repo']})（MIT，提交 "
-            f"`{src['commit'][:7]}`），请以会议官网为准。页数和必需章节是 submit-check 的规则，每条都注明官方出处"
+            f"`{src['commit'][:7]}`），请以会议官网为准。页数、必需章节、大模型政策、补充材料和作者回复来自 submit-check 的规则，每条都注明官方出处"
             "（`--venue` 按它检查论文；规则对应 id 里的年份）。[网站](https://zch6a.github.io/research-kit/#zh-deadlines)上会显示剩余天数。\n"
         )
     return head + "\n".join(rows) + "\n" + note
@@ -400,8 +409,8 @@ def site_deadlines(dl: dict, lang: str) -> tuple[str, str]:
     checked = dt.datetime.fromisoformat(dl["checked"])
     title = "Deadlines and venue rules" if lang == "en" else "截稿日期与会议规则"
     w = {
-        "en": ("Venue", "Next deadline", "Conference", "Pages (camera-ready); required", "Rules"),
-        "zh": ("会议", "下一个截稿日", "会议时间地点", "页数（终稿）；必需", "规则"),
+        "en": ("Venue", "Next deadline", "Conference", "Pages (camera-ready); required", "LLM use, supplementary, response", "Rules"),
+        "zh": ("会议", "下一个截稿日", "会议时间地点", "页数（终稿）；必需", "大模型、补充材料、回复", "规则"),
     }[lang]
     rows = []
     items = upcoming(dl)
@@ -418,7 +427,7 @@ def site_deadlines(dl: dict, lang: str) -> tuple[str, str]:
         conf = e(", ".join(x for x in (ed["date"], ed["place"]) if x))
         rows.append(
             f'<tr{" class=past" if past else ""}><td>{name}</td><td><time data-utc="{when.isoformat()}Z">{date}</time>'
-            f'<span class="left"></span></td><td>{conf}</td><td>{e(_rules_text(v, lang))}</td><td>{rules}</td></tr>'
+            f'<span class="left"></span></td><td>{conf}</td><td>{e(_rules_text(v, lang))}</td><td>{e(_policy_text(v, lang))}</td><td>{rules}</td></tr>'
         )
     src = dl["sources"]["deadlines"]
     note = (
