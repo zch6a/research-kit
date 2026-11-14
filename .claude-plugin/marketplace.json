@@ -58,13 +58,14 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side.",
+      "description": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side; table-trace settings shows how each paper evaluated on a benchmark (shots, chain of thought, decoding, harness) and what differs.",
       "category": "research",
       "tags": [
         "tables",
         "results",
         "reproducibility",
-        "arxiv"
+        "arxiv",
+        "evaluation"
       ],
       "homepage": "https://github.com/zch6a/table-trace",
       "repository": "https://github.com/zch6a/table-trace",

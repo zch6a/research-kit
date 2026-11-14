@@ -2087,8 +2087,8 @@
       "section": "evaluation",
       "en": "Know whether a benchmark score in a paper is comparable to yours: same harness, prompts, shots, decoding.",
       "zh": "判断论文里的基准分数能否与你的直接比较：评测框架、提示词、样例数、解码设置是否一致。",
-      "missing_en": "Each harness gives different numbers for one task, and papers rarely state their settings.",
-      "missing_zh": "不同评测框架对同一任务给出的分数不同，论文又很少写明设置。",
+      "missing_en": "Each harness gives different numbers for one task, and papers rarely state their settings. table-trace settings reads what each paper states (shots, chain of thought, decoding, harness, metric) and lists the differences; what a paper does not state, it cannot tell, and prompts are not compared.",
+      "missing_zh": "同一个任务用不同评测框架会得到不同分数，论文也很少写明设置。table-trace settings 读取每篇论文写明的设置（shot 数、思维链、解码、评测框架、指标）并列出不同之处；论文没写的它无从得知，提示词本身也不比较。",
       "closest": [
         "EleutherAI/lm-evaluation-harness",
         "open-compass/opencompass"

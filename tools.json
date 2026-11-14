@@ -59,15 +59,16 @@
     {
       "name": "table-trace",
       "stage": "read",
-      "en": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side.",
-      "zh": "论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型在同一基准上报告的结果并排列出来。",
+      "en": "Every number in a paper's tables, read from its LaTeX source and traced to its cell; and what papers report for the same model on the same benchmark, side by side; table-trace settings shows how each paper evaluated on a benchmark (shots, chain of thought, decoding, harness) and what differs.",
+      "zh": "论文表格里的每个数字都从 LaTeX 源码读出、标明在哪个单元格；还能把各篇论文对同一模型在同一基准上报告的结果并排列出来；table-trace settings 列出每篇论文在某个基准上的评测设置（shot 数、思维链、解码、评测框架）及不同之处。",
       "command": "uvx --from git+https://github.com/zch6a/table-trace@v0 table-trace compare 1512.03385 2201.03545 --row ResNet-50 --col top-1 --col acc",
       "site": "",
       "tags": [
         "tables",
         "results",
         "reproducibility",
-        "arxiv"
+        "arxiv",
+        "evaluation"
       ],
       "section": "reading"
     },
