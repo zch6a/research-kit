@@ -22,7 +22,26 @@ section { scroll-margin-top: 12px; }
 h2 { font-size: 19px; margin: 28px 0 10px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 12px; }
 article { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; }
-article h3 { margin: 0 0 6px; font-size: 16px; }
+article h4 { margin: 0 0 6px; font-size: 16px; }
+h3 { font-size: 16px; margin: 22px 0 8px; color: var(--fg); }
+.ours { font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 7px; margin-left: 4px; vertical-align: 2px; }
+.ours a { color: inherit; }
+.table { overflow-x: auto; margin: 10px 0 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }  /* wide tables scroll inside, never the page */
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+tbody tr:last-child td { border-bottom: none; }
+th { font-weight: 600; color: var(--muted); font-size: 13px; white-space: nowrap; }
+td:first-child { white-space: nowrap; font-weight: 500; }
+td:nth-child(2) { min-width: 260px; }
+td:nth-child(4) { white-space: nowrap; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tag { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 6px; margin-left: 4px; font-weight: 400; }
+.warn { color: #b3261e; }
+@media (prefers-color-scheme: dark) { .warn { color: #f2b8b5; } }
+.note { font-size: 13px; color: var(--muted); margin: 8px 0 0 !important; }
+.gaps { padding-left: 20px; max-width: 860px; }
+.gaps li { margin: 0 0 12px; }
+.where { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 7px; margin-left: 4px; }
 article p { margin: 0 0 10px; }
 pre { margin: 0 0 10px; background: var(--code); border-radius: 6px; padding: 8px 10px; font-size: 12.5px; white-space: pre-wrap; overflow-wrap: anywhere; }  /* the whole command shown: its end says what it does */
 code { font-family: "Cascadia Mono", Consolas, ui-monospace, monospace; }

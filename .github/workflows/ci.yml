@@ -27,6 +27,11 @@ jobs:
         run: uv run --no-project --python 3.12 --with pytest==9.0.2 --with pyyaml==6.0.3 python -m pytest -q tests
       - name: The marketplace, the READMEs' tool sections and the site are up to date
         run: uv run --no-project python scripts/render.py --check
+      - name: The other projects still exist, under the same name, not archived (weekly)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}   # read-only; only raises the API limit
+        run: uv run --no-project python scripts/refresh_landscape.py --check
       - name: Every tool's skill at v0 parses, with its name and a description
         env:
           GITHUB_TOKEN: ${{ github.token }}   # read-only (contents: read); GitHub's API limit without it is 60 an hour

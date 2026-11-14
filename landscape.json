@@ -1,0 +1,2278 @@
+{
+  "checked": "2026-11-14",
+  "sections": [
+    {
+      "key": "follow",
+      "en": "Keeping up with new papers",
+      "zh": "跟踪新论文",
+      "stage": "read"
+    },
+    {
+      "key": "search",
+      "en": "Searching the literature",
+      "zh": "检索文献",
+      "stage": "read"
+    },
+    {
+      "key": "refs",
+      "en": "Managing references",
+      "zh": "管理参考文献",
+      "stage": "read"
+    },
+    {
+      "key": "reading",
+      "en": "Reading and taking notes",
+      "zh": "阅读与笔记",
+      "stage": "read"
+    },
+    {
+      "key": "assistants",
+      "en": "AI research assistants",
+      "zh": "AI 科研助手",
+      "stage": "read"
+    },
+    {
+      "key": "tracking",
+      "en": "Running and tracking experiments",
+      "zh": "运行与记录实验",
+      "stage": "experiment"
+    },
+    {
+      "key": "compute",
+      "en": "Compute and environments",
+      "zh": "算力与环境",
+      "stage": "experiment"
+    },
+    {
+      "key": "evaluation",
+      "en": "Data and evaluation",
+      "zh": "数据与评测",
+      "stage": "experiment"
+    },
+    {
+      "key": "writing",
+      "en": "Writing and typesetting",
+      "zh": "写作与排版",
+      "stage": "write"
+    },
+    {
+      "key": "language",
+      "en": "Checking the text",
+      "zh": "检查文字",
+      "stage": "write"
+    },
+    {
+      "key": "figures",
+      "en": "Figures and diagrams",
+      "zh": "图表与示意图",
+      "stage": "write"
+    },
+    {
+      "key": "presubmit",
+      "en": "Checking before submission",
+      "zh": "投稿前检查",
+      "stage": "submit"
+    },
+    {
+      "key": "deadlines",
+      "en": "Deadlines and submission",
+      "zh": "截稿日期与投稿",
+      "stage": "submit"
+    },
+    {
+      "key": "review",
+      "en": "Peer review and rebuttal",
+      "zh": "审稿与 rebuttal",
+      "stage": "submit"
+    },
+    {
+      "key": "release",
+      "en": "Releasing code and data",
+      "zh": "发布代码与数据",
+      "stage": "after"
+    },
+    {
+      "key": "pages",
+      "en": "Project pages and homepages",
+      "zh": "项目主页与个人主页",
+      "stage": "after"
+    },
+    {
+      "key": "talks",
+      "en": "Posters, slides and talks",
+      "zh": "海报、幻灯片与报告",
+      "stage": "after"
+    },
+    {
+      "key": "sharing",
+      "en": "Sharing and tracking citations",
+      "zh": "传播与引用跟踪",
+      "stage": "after"
+    },
+    {
+      "key": "lab",
+      "en": "Lab websites, reading groups, teaching",
+      "zh": "课题组网站、读书会与教学",
+      "stage": "after"
+    }
+  ],
+  "projects": [
+    {
+      "repo": "TideDra/zotero-arxiv-daily",
+      "section": "follow",
+      "en": "Emails you a daily list of new arXiv papers ranked by similarity to the papers already in your Zotero library, with LLM-written TL;DRs.",
+      "zh": "按你 Zotero 文献库里已有论文的相似度，每天给你推荐当天新出的 arXiv 论文并附上大模型写的摘要，发到邮箱。",
+      "stars": 6152,
+      "pushed_at": "2026-11-01",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "dw-dengwei/daily-arXiv-ai-enhanced",
+      "section": "follow",
+      "en": "Crawls chosen arXiv categories every day, summarises each paper with an LLM and publishes a browsable GitHub Pages site.",
+      "zh": "每天抓取指定 arXiv 分类的新论文，用大模型逐篇总结，生成一个可浏览的 GitHub Pages 网站。",
+      "stars": 3048,
+      "pushed_at": "2026-09-08",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "karpathy/arxiv-sanity-lite",
+      "section": "follow",
+      "en": "Self-hosted arXiv browser where you tag papers you like and get recommendations of similar new papers.",
+      "zh": "自建的 arXiv 浏览站点：给喜欢的论文打标签，它据此推荐相似的新论文。",
+      "stars": 1721,
+      "pushed_at": "2023-06-19",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Vincentqyw/cv-arxiv-daily",
+      "section": "follow",
+      "en": "Template that keeps a Markdown table of new arXiv papers per keyword, updated daily by GitHub Actions, with code links.",
+      "zh": "一个模板：按关键词每天自动更新一张 arXiv 新论文表（带代码链接），由 GitHub Actions 维护。",
+      "stars": 1519,
+      "pushed_at": "2026-11-11",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "duanyytop/agents-radar",
+      "section": "follow",
+      "en": "Daily AI ecosystem digest merging GitHub, arXiv, Hugging Face, Hacker News and other sources into one report.",
+      "zh": "把 GitHub、arXiv、Hugging Face、Hacker News 等来源合成一份每日 AI 动态简报。",
+      "stars": 1160,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ziwenhahaha/daily-paper-reader",
+      "section": "follow",
+      "en": "Daily arXiv and OpenReview recommendations with AI reading and paper Q&A, deployed on GitHub Pages via Actions.",
+      "zh": "每天推荐 arXiv 和 OpenReview 新论文，并能用 AI 阅读和问答，通过 GitHub Actions 部署到 GitHub Pages。",
+      "stars": 979,
+      "pushed_at": "2026-10-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "bojone/papers.cool",
+      "section": "follow",
+      "en": "Code for Cool Papers, a fast feed of new arXiv papers and conference proceedings with one-click LLM explanations (Kimi) per paper.",
+      "zh": "Cool Papers 网站的代码：快速浏览 arXiv 新论文和会议论文集，每篇都可以让大模型（Kimi）讲解。",
+      "stars": 820,
+      "pushed_at": "2026-07-06",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Scriptbash/Wispar",
+      "section": "follow",
+      "en": "Mobile and desktop app that follows journals' table-of-contents feeds and new articles, with open-access lookup.",
+      "zh": "手机和桌面应用，订阅期刊目录更新和新文章，并查找开放获取版本。",
+      "stars": 226,
+      "pushed_at": "2026-11-11",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "blazickjp/arxiv-mcp-server",
+      "section": "search",
+      "en": "MCP server that lets an AI assistant search arXiv, read paper sections from the LaTeX source and fetch BibTeX.",
+      "zh": "MCP 服务：让 AI 助手检索 arXiv、按章节读论文 LaTeX 原文、获取 BibTeX。",
+      "stars": 3278,
+      "pushed_at": "2026-10-08",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "scholarly-python-package/scholarly",
+      "section": "search",
+      "en": "Fetches author profiles and publication data from Google Scholar from Python.",
+      "zh": "用 Python 从 Google Scholar 获取作者主页和论文信息。",
+      "stars": 1888,
+      "pushed_at": "2026-03-24",
+      "license": "Unlicense",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "AkariAsai/OpenScholar",
+      "section": "search",
+      "en": "Retrieval-augmented LLM that answers scientific questions with citations drawn from a 45M-paper open corpus.",
+      "zh": "检索增强的大模型，从 4500 万篇开放论文中检索并带引用地回答科研问题。",
+      "stars": 1690,
+      "pushed_at": "2025-08-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "bytedance/pasa",
+      "section": "search",
+      "en": "LLM agent that runs searches, reads papers and follows citations on its own to answer a detailed literature query.",
+      "zh": "大模型智能体：针对一个具体的文献查询，自己检索、读论文、顺着引用找，返回相关论文列表。",
+      "stars": 1675,
+      "pushed_at": "2025-05-27",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "lukasschwab/arxiv.py",
+      "section": "search",
+      "en": "Python wrapper for the arXiv API: query, page through results and download PDFs or source.",
+      "zh": "arXiv API 的 Python 封装：检索、翻页、下载 PDF 或源码。",
+      "stars": 1567,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "asreview/asreview",
+      "section": "search",
+      "en": "Active-learning screening for systematic reviews: you label a few titles/abstracts, it ranks the rest by likely relevance.",
+      "zh": "系统综述的主动学习筛选工具：你标几篇标题摘要，它把剩下的按相关可能性排序。",
+      "stars": 1072,
+      "pushed_at": "2026-11-09",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "danielnsilva/semanticscholar",
+      "section": "search",
+      "en": "Python client for the Semantic Scholar APIs: paper and author search, citations, references and recommendations.",
+      "zh": "Semantic Scholar API 的 Python 客户端：检索论文和作者、取引用与参考文献、获取推荐。",
+      "stars": 485,
+      "pushed_at": "2026-08-01",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "J535D165/pyalex",
+      "section": "search",
+      "en": "Python client for OpenAlex: works, authors, venues and citation links with filters and paging.",
+      "zh": "OpenAlex 的 Python 客户端：查论文、作者、期刊会议和引用关系，支持过滤和翻页。",
+      "stars": 432,
+      "pushed_at": "2026-10-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "allenai/ai2-scholarqa-lib",
+      "section": "search",
+      "en": "Library and app behind Ai2 Scholar QA: multi-step search over Semantic Scholar that writes a sectioned, cited literature answer.",
+      "zh": "Ai2 Scholar QA 的代码库：在 Semantic Scholar 上多步检索，生成分节、带引用的文献综述式回答。",
+      "stars": 289,
+      "pushed_at": "2026-10-26",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "LocalCitationNetwork/LocalCitationNetwork.github.io",
+      "section": "search",
+      "en": "Browser app that builds the citation network around a set of seed papers (OpenAlex, Semantic Scholar, Crossref) to find missing related work.",
+      "zh": "浏览器里运行：从几篇种子论文出发，用 OpenAlex/Semantic Scholar/Crossref 构建引用网络，帮你找漏掉的相关工作。",
+      "stars": 150,
+      "pushed_at": "2026-05-08",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "zotero/zotero",
+      "section": "refs",
+      "en": "Desktop reference manager that collects papers from the browser, stores PDFs, annotates and inserts citations into Word/LibreOffice.",
+      "zh": "桌面文献管理软件：从浏览器抓取论文、保存 PDF、做批注，并在 Word/LibreOffice 里插入引用。",
+      "stars": 15942,
+      "pushed_at": "2026-11-13",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "l0o0/jasminum",
+      "section": "refs",
+      "en": "Zotero plugin that fetches metadata for Chinese papers from CNKI and fixes Chinese name and attachment issues.",
+      "zh": "Zotero 插件：从知网抓取中文文献元数据，处理中文姓名和附件问题。",
+      "stars": 7375,
+      "pushed_at": "2026-11-12",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "retorquere/zotero-better-bibtex",
+      "section": "refs",
+      "en": "Zotero plugin that gives stable citation keys and keeps an auto-exported .bib file in sync for LaTeX.",
+      "zh": "Zotero 插件：生成稳定的引用键，并自动导出、同步 .bib 文件给 LaTeX 用。",
+      "stars": 7302,
+      "pushed_at": "2026-11-10",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "54yyyu/zotero-mcp",
+      "section": "refs",
+      "en": "MCP server that lets AI assistants search, read and annotate your Zotero library, including semantic search.",
+      "zh": "MCP 服务：让 AI 助手检索、阅读和批注你的 Zotero 文献库，支持语义检索。",
+      "stars": 5909,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "JabRef/jabref",
+      "section": "refs",
+      "en": "Desktop manager that edits .bib/.biblatex files directly, with DOI/arXiv lookup, duplicate detection and citation-key patterns.",
+      "zh": "直接编辑 .bib/.biblatex 文件的桌面文献管理器，支持按 DOI/arXiv 抓取、查重和引用键规则。",
+      "stars": 4895,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "yuchenlin/rebiber",
+      "section": "refs",
+      "en": "Replaces arXiv entries in a .bib file with their published versions from DBLP and the ACL Anthology.",
+      "zh": "把 .bib 中的 arXiv 条目替换为 DBLP 和 ACL Anthology 上的正式发表版本。",
+      "stars": 3044,
+      "pushed_at": "2026-11-09",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "papis/papis",
+      "section": "refs",
+      "en": "Command-line document and bibliography manager that stores papers as plain folders with YAML metadata.",
+      "zh": "命令行的文献和文档管理器，把论文存成普通文件夹加 YAML 元数据。",
+      "stars": 1803,
+      "pushed_at": "2026-11-02",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "FlamingTempura/bibtex-tidy",
+      "section": "refs",
+      "en": "Cleans and formats BibTeX files: sorts, removes duplicates, normalises fields; CLI and web page.",
+      "zh": "整理和格式化 BibTeX 文件：排序、去重、统一字段；有命令行和网页版。",
+      "stars": 1128,
+      "pushed_at": "2026-10-30",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "northword/zotero-format-metadata",
+      "section": "refs",
+      "en": "Zotero plugin that lints and normalises item metadata: title case, journal abbreviations, languages, duplicates.",
+      "zh": "Zotero 插件：检查并统一条目元数据，如标题大小写、期刊缩写、语言字段、重复项。",
+      "stars": 1088,
+      "pushed_at": "2026-11-13",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "texworld/betterbib",
+      "section": "refs",
+      "en": "Command-line tools that update .bib entries from Crossref/DBLP, fetch BibTeX from a DOI and sync fields.",
+      "zh": "命令行工具：用 Crossref/DBLP 更新 .bib 条目、按 DOI 获取 BibTeX、同步字段。",
+      "stars": 842,
+      "pushed_at": "2026-11-10",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "opendatalab/MinerU",
+      "section": "reading",
+      "en": "Converts PDFs, including formulas and tables, into Markdown/JSON for reading in other tools or feeding to an LLM.",
+      "zh": "把 PDF（含公式和表格）转成 Markdown/JSON，方便在别的工具里阅读或喂给大模型。",
+      "stars": 83637,
+      "pushed_at": "2026-11-13",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "binary-husky/gpt_academic",
+      "section": "reading",
+      "en": "LLM workbench with one-click paper actions: full-text PDF/LaTeX translation, summarisation, polishing and arXiv paper reading.",
+      "zh": "大模型工作台，内置论文相关功能：PDF/LaTeX 全文翻译、总结、润色、读 arXiv 论文。",
+      "stars": 71659,
+      "pushed_at": "2026-01-25",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "lfnovo/open-notebook",
+      "section": "reading",
+      "en": "Self-hosted NotebookLM alternative: add papers and sources, chat with them, take notes, make audio overviews.",
+      "zh": "自托管的 NotebookLM 替代品：导入论文等资料，与其对话、记笔记、生成播客式讲解。",
+      "stars": 41941,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "PDFMathTranslate/PDFMathTranslate",
+      "section": "reading",
+      "en": "Translates scientific PDFs while keeping formulas, figures and layout, outputting a translated or side-by-side bilingual PDF.",
+      "zh": "翻译科学论文 PDF，保留公式、图表和排版，输出译文版或双语对照版。",
+      "stars": 38409,
+      "pushed_at": "2026-11-14",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "windingwind/zotero-pdf-translate",
+      "section": "reading",
+      "en": "Zotero plugin that translates selected text, annotations, titles and abstracts with 20+ engines while reading.",
+      "zh": "Zotero 插件：阅读时划词翻译，也能翻译批注、标题和摘要，支持 20 多种翻译服务。",
+      "stars": 12286,
+      "pushed_at": "2026-11-13",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ahrm/sioyek",
+      "section": "reading",
+      "en": "Keyboard-driven PDF viewer for papers: previews references and figures on hover, smart jump, portals and searchable highlights.",
+      "zh": "面向论文的键盘驱动 PDF 阅读器：悬停预览参考文献和图表、智能跳转、高亮可检索。",
+      "stars": 10007,
+      "pushed_at": "2026-11-04",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Future-House/paper-qa",
+      "section": "reading",
+      "en": "Answers questions over a folder of papers with retrieval and cited, checked answers (PaperQA2).",
+      "zh": "对一批论文做问答：检索后给出带引用、经核对的答案（PaperQA2）。",
+      "stars": 9596,
+      "pushed_at": "2026-11-09",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "windingwind/zotero-better-notes",
+      "section": "reading",
+      "en": "Zotero plugin for linked notes, note templates, outlines and syncing notes to Markdown.",
+      "zh": "Zotero 插件：双向链接笔记、笔记模板、大纲视图，并能把笔记同步成 Markdown。",
+      "stars": 8453,
+      "pushed_at": "2026-11-10",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "guaguastandup/zotero-pdf2zh",
+      "section": "reading",
+      "en": "Zotero plugin that runs PDFMathTranslate on a paper and attaches the bilingual PDF back to the item.",
+      "zh": "Zotero 插件：对论文调用 PDFMathTranslate，把生成的双语 PDF 挂回条目。",
+      "stars": 8310,
+      "pushed_at": "2026-11-12",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "section": "reading",
+      "en": "Zotero plugin to chat with the open PDF or selected items using an LLM, and to summarise or tag them.",
+      "zh": "Zotero 插件：用大模型与当前 PDF 或选中条目对话，做总结或打标签。",
+      "stars": 7522,
+      "pushed_at": "2026-10-29",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "grobidOrg/grobid",
+      "section": "reading",
+      "en": "Extracts header metadata, sections and a parsed reference list from scholarly PDFs into TEI XML.",
+      "zh": "从学术 PDF 中抽取题录信息、章节结构和解析后的参考文献列表，输出 TEI XML。",
+      "stars": 5228,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "karpathy/autoresearch",
+      "section": "assistants",
+      "en": "Lets coding agents run many small single-GPU training experiments overnight and keep what improves the metric.",
+      "zh": "让编程智能体在单卡上自动跑大量小规模训练实验，保留能提升指标的改动。",
+      "stars": 100013,
+      "pushed_at": "2026-03-26",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "bytedance/deer-flow",
+      "section": "assistants",
+      "en": "Multi-agent harness that searches, runs code in a sandbox and writes reports for long research tasks.",
+      "zh": "多智能体框架：检索、在沙箱里跑代码、撰写报告，可处理耗时较长的研究任务。",
+      "stars": 85321,
+      "pushed_at": "2026-11-14",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "stanford-oval/storm",
+      "section": "assistants",
+      "en": "Researches a topic and writes a Wikipedia-style survey article with citations, useful as a first map of an unfamiliar area.",
+      "zh": "围绕一个主题检索资料，写出带引用的维基百科式综述，适合快速了解陌生领域。",
+      "stars": 31876,
+      "pushed_at": "2025-09-30",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "assafelovic/gpt-researcher",
+      "section": "assistants",
+      "en": "Deep-research agent that searches the web or your own documents and writes a cited report with any LLM provider.",
+      "zh": "深度研究智能体：检索网页或本地文档，用任意大模型写出带引用的报告。",
+      "stars": 30674,
+      "pushed_at": "2026-11-12",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "SakanaAI/AI-Scientist-v2",
+      "section": "assistants",
+      "en": "End-to-end 'AI scientist': proposes ideas, runs experiments via agentic tree search, and drafts a workshop-style paper.",
+      "zh": "端到端的“AI 科学家”：提出想法、用智能体树搜索跑实验，并写出研讨会水平的论文草稿。",
+      "stars": 7505,
+      "pushed_at": "2025-12-19",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ray-project/ray",
+      "section": "tracking",
+      "en": "Distributed compute framework whose Ray Tune module runs hyperparameter searches in parallel across GPUs and nodes.",
+      "zh": "分布式计算框架，其中 Ray Tune 能在多卡多机上并行跑超参数搜索。",
+      "stars": 44285,
+      "pushed_at": "2026-11-14",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "mlflow/mlflow",
+      "section": "tracking",
+      "en": "Logs parameters, metrics and artifacts of each run to a local or self-hosted server and lets you compare runs in a web UI.",
+      "zh": "把每次实验的参数、指标和产物记到本地或自建服务器上，在网页里对比不同运行。",
+      "stars": 28795,
+      "pushed_at": "2026-11-14",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "optuna/optuna",
+      "section": "tracking",
+      "en": "Hyperparameter search with pruning of bad trials, a define-by-run API and a dashboard for studies.",
+      "zh": "超参数搜索库，能提前剪掉差的试验，接口灵活，并有看板查看搜索过程。",
+      "stars": 15043,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "hydra-ecosystem/hydra",
+      "section": "tracking",
+      "en": "Composes experiment configs from YAML files and command-line overrides, and launches sweeps over them.",
+      "zh": "用 YAML 文件和命令行覆盖组合实验配置，并能按配置批量扫参。",
+      "stars": 10745,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "drivendataorg/cookiecutter-data-science",
+      "section": "tracking",
+      "en": "Generates a standard folder layout for a data-science or research project so data, code and results stay separated.",
+      "zh": "生成标准的数据科学/研究项目目录结构，让数据、代码和结果分开存放。",
+      "stars": 10143,
+      "pushed_at": "2026-11-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "clearml/clearml",
+      "section": "tracking",
+      "en": "Tracks experiments automatically and adds a task queue and agents so runs can be cloned and re-run on other machines.",
+      "zh": "自动记录实验，并带任务队列和执行代理，可以把一次运行复制到别的机器上重跑。",
+      "stars": 6939,
+      "pushed_at": "2026-11-03",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "aimhubio/aim",
+      "section": "tracking",
+      "en": "Self-hosted experiment tracker with a fast UI for querying and comparing thousands of runs and their metric curves.",
+      "zh": "可自建的实验记录工具，界面能快速查询、对比成千上万次运行的指标曲线。",
+      "stars": 6296,
+      "pushed_at": "2026-11-07",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ashleve/lightning-hydra-template",
+      "section": "tracking",
+      "en": "Project template combining PyTorch Lightning and Hydra with logging, testing and experiment-config conventions.",
+      "zh": "把 PyTorch Lightning 和 Hydra 结合好的项目模板，带日志、测试和实验配置约定。",
+      "stars": 5384,
+      "pushed_at": "2026-06-11",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "SwanHubX/SwanLab",
+      "section": "tracking",
+      "en": "Lightweight experiment tracker with a W&B-like API, offline or self-hosted dashboard, popular with Chinese labs.",
+      "zh": "轻量的实验记录工具，接口与 W&B 相近，可离线或自建看板，国内实验室用得多。",
+      "stars": 4381,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "gradio-app/trackio",
+      "section": "tracking",
+      "en": "Drop-in replacement for the wandb logging API that stores runs locally and can show the dashboard on a Hugging Face Space.",
+      "zh": "可直接替换 wandb 记录接口，运行数据存在本地，看板可放到 Hugging Face Space 上。",
+      "stars": 1779,
+      "pushed_at": "2026-11-12",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "astral-sh/uv",
+      "section": "compute",
+      "en": "Very fast Python package and environment manager with lockfiles, making research environments quick to recreate.",
+      "zh": "速度很快的 Python 包和环境管理器，带锁文件，研究环境能快速重建。",
+      "stars": 91978,
+      "pushed_at": "2026-11-14",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Syllo/nvtop",
+      "section": "compute",
+      "en": "htop-like GPU monitor that works for NVIDIA, AMD, Intel and Apple GPUs.",
+      "zh": "类似 htop 的 GPU 监控，支持 NVIDIA、AMD、Intel 和苹果 GPU。",
+      "stars": 11150,
+      "pushed_at": "2026-11-12",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "skypilot-org/skypilot",
+      "section": "compute",
+      "en": "Runs the same job YAML on any cloud, Kubernetes or Slurm cluster, picking the cheapest available GPUs and using spot instances.",
+      "zh": "同一份任务 YAML 可在各家云、Kubernetes 或 Slurm 上运行，自动挑最便宜的可用 GPU，支持抢占式实例。",
+      "stars": 10834,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "prefix-dev/pixi",
+      "section": "compute",
+      "en": "Conda-ecosystem package manager with per-project lockfiles, covering CUDA and non-Python dependencies.",
+      "zh": "基于 conda 生态的包管理器，按项目生成锁文件，能管 CUDA 等非 Python 依赖。",
+      "stars": 7981,
+      "pushed_at": "2026-11-13",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "XuehaiPan/nvitop",
+      "section": "compute",
+      "en": "Interactive GPU process viewer showing per-process memory, utilisation and owner, also usable as a Python library.",
+      "zh": "交互式 GPU 进程查看器，显示每个进程的显存、利用率和所属用户，也可作为 Python 库调用。",
+      "stars": 7256,
+      "pushed_at": "2026-11-12",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "SchedMD/slurm",
+      "section": "compute",
+      "en": "The batch job scheduler used on most university and national HPC clusters.",
+      "zh": "大多数高校和国家超算集群使用的作业调度系统。",
+      "stars": 4516,
+      "pushed_at": "2026-11-14",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "wookayin/gpustat",
+      "section": "compute",
+      "en": "One-line-per-GPU status of memory, utilisation and users, handy for scripts and checking who is using a shared box.",
+      "zh": "每块 GPU 一行显示显存、利用率和使用者，适合脚本里用或查看共享服务器谁在占卡。",
+      "stars": 4389,
+      "pushed_at": "2026-10-08",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "dstackai/dstack",
+      "section": "compute",
+      "en": "Open-source orchestrator for dev environments, training jobs and services on clouds and on-prem GPU fleets.",
+      "zh": "开源的 GPU 编排工具，在云上或自有机器上开开发环境、跑训练任务和部署服务。",
+      "stars": 2310,
+      "pushed_at": "2026-11-13",
+      "license": "MPL-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "apptainer/apptainer",
+      "section": "compute",
+      "en": "Container runtime (formerly Singularity) that runs images without root, the usual way to use containers on HPC clusters.",
+      "zh": "容器运行时（原 Singularity），无需 root 即可运行镜像，是超算集群上使用容器的常见方式。",
+      "stars": 2021,
+      "pushed_at": "2026-11-13",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "facebookincubator/submitit",
+      "section": "compute",
+      "en": "Submits Python functions as Slurm jobs and returns results like futures, so sweeps run on a cluster from plain Python.",
+      "zh": "把 Python 函数直接提交成 Slurm 作业并像 future 一样取回结果，用普通 Python 就能在集群上扫参。",
+      "stars": 1645,
+      "pushed_at": "2026-11-12",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "HumanSignal/label-studio",
+      "section": "evaluation",
+      "en": "Self-hosted labelling tool for text, images, audio, video and LLM outputs with configurable annotation interfaces.",
+      "zh": "可自建的标注工具，支持文本、图像、音频、视频和大模型输出，标注界面可配置。",
+      "stars": 28686,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "cvat-ai/cvat",
+      "section": "evaluation",
+      "en": "Annotation tool for images and video (boxes, polygons, tracks) with model-assisted labelling.",
+      "zh": "图像和视频标注工具（框、多边形、轨迹），支持模型辅助标注。",
+      "stars": 17136,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "treeverse/dvc",
+      "section": "evaluation",
+      "en": "Versions large datasets and models alongside Git and defines reproducible pipelines from data to metrics.",
+      "zh": "配合 Git 给大数据集和模型做版本管理，并定义从数据到指标的可复现流水线。",
+      "stars": 15973,
+      "pushed_at": "2026-11-09",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "EleutherAI/lm-evaluation-harness",
+      "section": "evaluation",
+      "en": "Runs language models on hundreds of standard benchmarks with fixed prompts so scores are comparable across papers.",
+      "zh": "在数百个标准基准上用固定提示评测语言模型，使不同论文的分数可比。",
+      "stars": 14462,
+      "pushed_at": "2026-11-04",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "open-compass/opencompass",
+      "section": "evaluation",
+      "en": "Evaluation platform covering many Chinese and English benchmarks for LLMs and multimodal models.",
+      "zh": "覆盖大量中英文基准的大模型和多模态模型评测平台。",
+      "stars": 7595,
+      "pushed_at": "2026-11-11",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "UKGovernmentBEIS/inspect_ai",
+      "section": "evaluation",
+      "en": "Framework for writing LLM and agent evaluations with solvers, tools, sandboxes and a log viewer.",
+      "zh": "编写大模型和智能体评测的框架，带求解器、工具调用、沙箱和日志查看器。",
+      "stars": 3242,
+      "pushed_at": "2026-11-14",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "stanford-crfm/helm",
+      "section": "evaluation",
+      "en": "Holistic evaluation of language models over many scenarios and metrics beyond accuracy, with a public leaderboard.",
+      "zh": "从多场景、多指标（不只准确率）全面评测语言模型，并有公开排行榜。",
+      "stars": 2970,
+      "pushed_at": "2026-09-01",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "huggingface/lighteval",
+      "section": "evaluation",
+      "en": "Fast LLM evaluation across several inference backends, with per-sample results saved for inspection.",
+      "zh": "支持多种推理后端的快速大模型评测，保存逐条样本结果便于检查。",
+      "stars": 2586,
+      "pushed_at": "2026-11-11",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "maximtrp/scikit-posthocs",
+      "section": "evaluation",
+      "en": "Post-hoc tests (Nemenyi, Conover, Dunn...) and critical-difference plots for comparing many methods over many datasets.",
+      "zh": "提供 Nemenyi、Conover、Dunn 等事后检验和临界差异图，用于在多个数据集上比较多种方法。",
+      "stars": 392,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Kaleidophon/deep-significance",
+      "section": "evaluation",
+      "en": "Significance tests for comparing deep-learning models over seeds, including Almost Stochastic Order and multiple-comparison correction.",
+      "zh": "比较多次随机种子下深度学习模型的显著性检验，含 ASO 检验和多重比较校正。",
+      "stars": 343,
+      "pushed_at": "2026-09-21",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "typst/typst",
+      "section": "writing",
+      "en": "Modern typesetting system with simple markup and fast incremental compiles; a growing alternative to LaTeX for papers and theses.",
+      "zh": "新一代排版系统，标记简单、增量编译快，正逐渐成为论文和学位论文中 LaTeX 的替代选择。",
+      "stars": 57181,
+      "pushed_at": "2026-11-06",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jgm/pandoc",
+      "section": "writing",
+      "en": "Universal document converter: Markdown, LaTeX, Word, HTML and more, with citeproc for references.",
+      "zh": "通用文档转换器：Markdown、LaTeX、Word、HTML 等互转，并支持 citeproc 处理参考文献。",
+      "stars": 46929,
+      "pushed_at": "2026-11-12",
+      "license": "GPL-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "overleaf/overleaf",
+      "section": "writing",
+      "en": "Source of the Overleaf collaborative LaTeX editor, so a lab can self-host it (Community Edition).",
+      "zh": "Overleaf 协作式 LaTeX 编辑器的源码，课题组可以自行部署（社区版）。",
+      "stars": 18340,
+      "pushed_at": "2026-09-17",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "James-Yu/LaTeX-Workshop",
+      "section": "writing",
+      "en": "VS Code extension for LaTeX: build, PDF preview with SyncTeX, autocompletion and linting.",
+      "zh": "VS Code 的 LaTeX 插件：编译、PDF 预览与正反向跳转、自动补全和检查。",
+      "stars": 12408,
+      "pushed_at": "2026-11-03",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "quarto-dev/quarto-cli",
+      "section": "writing",
+      "en": "Pandoc-based publishing system that turns Markdown/notebooks with live code into PDFs, journal formats and websites.",
+      "zh": "基于 Pandoc 的出版系统，把含可运行代码的 Markdown/Notebook 输出为 PDF、期刊格式和网页。",
+      "stars": 6177,
+      "pushed_at": "2026-11-13",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "tuna/thuthesis",
+      "section": "writing",
+      "en": "Tsinghua University LaTeX thesis template, a model for the many Chinese university thesis templates.",
+      "zh": "清华大学 LaTeX 学位论文模板，也是众多国内高校论文模板的代表。",
+      "stars": 5490,
+      "pushed_at": "2026-08-18",
+      "license": "LPPL-1.3c",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "tectonic-typesetting/tectonic",
+      "section": "writing",
+      "en": "Self-contained TeX engine that fetches packages on demand, so papers build reproducibly without a full TeX Live install.",
+      "zh": "自包含的 TeX 引擎，按需下载宏包，无需完整安装 TeX Live 也能可复现地编译论文。",
+      "stars": 5250,
+      "pushed_at": "2026-08-01",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "texstudio-org/texstudio",
+      "section": "writing",
+      "en": "Desktop LaTeX editor with built-in PDF viewer, completion, and structure view.",
+      "zh": "桌面 LaTeX 编辑器，自带 PDF 阅读、补全和文档结构视图。",
+      "stars": 3706,
+      "pushed_at": "2026-11-13",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "acl-org/acl-style-files",
+      "section": "writing",
+      "en": "Official LaTeX style files for ACL-family venues (ACL, EMNLP, NAACL, ...).",
+      "zh": "ACL 系列会议（ACL、EMNLP、NAACL 等）的官方 LaTeX 模板。",
+      "stars": 2103,
+      "pushed_at": "2026-06-29",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Leey21/awesome-ai-research-writing",
+      "section": "language",
+      "en": "Curated prompts and workflows for using LLMs to polish, translate and check research papers.",
+      "zh": "整理用大模型润色、翻译和检查论文的提示词与流程。",
+      "stars": 35858,
+      "pushed_at": "2026-08-19",
+      "license": null,
+      "archived": false,
+      "list": true
+    },
+    {
+      "repo": "languagetool-org/languagetool",
+      "section": "language",
+      "en": "Open-source grammar, style and spelling checker for 25+ languages; can run as a local server.",
+      "zh": "开源语法、风格和拼写检查器，支持 25 种以上语言，可本地部署为服务。",
+      "stars": 15257,
+      "pushed_at": "2026-11-13",
+      "license": "LGPL-2.1",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "vale-cli/vale",
+      "section": "language",
+      "en": "Markup-aware prose linter with configurable style rules (e.g. weasel words, passive voice).",
+      "zh": "可识别标记语法的文本检查器，可自定义风格规则（如空泛词、被动语态）。",
+      "stars": 6387,
+      "pushed_at": "2026-11-12",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "MLNLP-World/Paper-Writing-Tips",
+      "section": "language",
+      "en": "Checklist of common small mistakes in ML/NLP paper writing and submission (Chinese and English).",
+      "zh": "MLNLP 社区整理的论文写作与投稿常见小错误清单（中英文）。",
+      "stars": 4708,
+      "pushed_at": "2026-09-26",
+      "license": null,
+      "archived": false,
+      "list": true
+    },
+    {
+      "repo": "PaperDebugger/paperdebugger",
+      "section": "language",
+      "en": "Overleaf plugin with LLM agents that review and suggest edits inside the editor.",
+      "zh": "Overleaf 插件，用大模型智能体在编辑器内审阅论文并给出修改建议。",
+      "stars": 1555,
+      "pushed_at": "2026-07-03",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "cmhughes/latexindent.pl",
+      "section": "language",
+      "en": "Formats LaTeX source (indentation, line breaks, one sentence per line) for cleaner diffs and co-authoring.",
+      "zh": "格式化 LaTeX 源码（缩进、换行、一句一行），便于对比差异和多人协作。",
+      "stars": 1067,
+      "pushed_at": "2026-11-08",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "sylvainhalle/textidote",
+      "section": "language",
+      "en": "Spelling, grammar and style checks on LaTeX source with errors mapped back to the original lines.",
+      "zh": "对 LaTeX 源文件做拼写、语法和风格检查，错误能对应回原始行号。",
+      "stars": 1061,
+      "pushed_at": "2026-09-09",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ftilmann/latexdiff",
+      "section": "language",
+      "en": "Marks up the differences between two LaTeX versions as a compiled PDF, e.g. for rebuttal 'changes' files.",
+      "zh": "把两个 LaTeX 版本的差异标注出来并生成 PDF，常用于返修时提交修改对照稿。",
+      "stars": 680,
+      "pushed_at": "2026-10-27",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ltex-plus/ltex-ls-plus",
+      "section": "language",
+      "en": "Language server that runs LanguageTool on LaTeX and Markdown in your editor, skipping commands and math.",
+      "zh": "在编辑器中对 LaTeX 和 Markdown 运行 LanguageTool 的语言服务器，会跳过命令和公式。",
+      "stars": 263,
+      "pushed_at": "2026-11-09",
+      "license": "MPL-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "excalidraw/excalidraw",
+      "section": "figures",
+      "en": "Whiteboard for quick hand-drawn-style diagrams, often used for teaser and overview figures.",
+      "zh": "白板工具，快速画手绘风格示意图，常用于论文首图和概览图。",
+      "stars": 135644,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jgraph/drawio-desktop",
+      "section": "figures",
+      "en": "Desktop draw.io for pipeline and system diagrams, exporting vector PDF/SVG.",
+      "zh": "draw.io 桌面版，画流程图和系统框图，可导出 PDF/SVG 矢量图。",
+      "stars": 63984,
+      "pushed_at": "2026-11-05",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "HarisIqbal88/PlotNeuralNet",
+      "section": "figures",
+      "en": "LaTeX/TikZ code for drawing CNN-style neural network architecture diagrams.",
+      "zh": "用 LaTeX/TikZ 代码绘制 CNN 等神经网络结构图。",
+      "stars": 25092,
+      "pushed_at": "2023-08-21",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "rougier/scientific-visualization-book",
+      "section": "figures",
+      "en": "Open-access book with code on making clear scientific figures in Matplotlib.",
+      "zh": "开源的科学可视化书籍，附代码，讲解如何用 Matplotlib 画清晰的科研图。",
+      "stars": 11686,
+      "pushed_at": "2026-01-04",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "garrettj403/SciencePlots",
+      "section": "figures",
+      "en": "Matplotlib styles for journal and conference figures (IEEE, Nature, high-contrast and colour-blind-safe palettes).",
+      "zh": "适用于期刊和会议论文的 Matplotlib 样式（IEEE、Nature、高对比度与色盲友好配色）。",
+      "stars": 9401,
+      "pushed_at": "2026-06-23",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "dwzhu-pku/PaperBanana",
+      "section": "figures",
+      "en": "Agent pipeline that generates academic method diagrams and plots from a paper's text.",
+      "zh": "根据论文文本自动生成方法示意图和统计图的智能体流程。",
+      "stars": 7635,
+      "pushed_at": "2026-11-12",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "alexlenail/NN-SVG",
+      "section": "figures",
+      "en": "Web tool that draws FCNN, LeNet- and AlexNet-style architecture schematics and exports SVG.",
+      "zh": "网页工具，绘制全连接、LeNet 和 AlexNet 风格的网络结构示意图并导出 SVG。",
+      "stars": 5700,
+      "pushed_at": "2026-06-02",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "pgf-tikz/pgf",
+      "section": "figures",
+      "en": "Source of PGF/TikZ, the LaTeX graphics language used for most hand-built diagrams in papers (pgfplots lives alongside).",
+      "zh": "PGF/TikZ 的源码，论文中大多数手绘示意图所用的 LaTeX 绘图语言（pgfplots 在同一组织下）。",
+      "stars": 1373,
+      "pushed_at": "2026-11-09",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "mert-kurttutan/torchview",
+      "section": "figures",
+      "en": "Draws the actual graph of a PyTorch model (layers, shapes) with Graphviz.",
+      "zh": "用 Graphviz 画出 PyTorch 模型的真实计算图（层和张量形状）。",
+      "stars": 1091,
+      "pushed_at": "2026-02-26",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "1313e/CMasher",
+      "section": "figures",
+      "en": "Perceptually uniform, colour-blind-friendly colormaps for Matplotlib.",
+      "zh": "感知均匀、对色盲友好的 Matplotlib 色图。",
+      "stars": 500,
+      "pushed_at": "2026-10-23",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "google-research/arxiv-latex-cleaner",
+      "section": "presubmit",
+      "en": "Strips comments, unused files and oversized images from a LaTeX project so it can be uploaded to arXiv without leaking drafts.",
+      "zh": "清理 LaTeX 工程里的注释、未用文件和过大的图片，上传 arXiv 时不会把草稿内容一起公开。",
+      "stars": 7139,
+      "pushed_at": "2026-11-10",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "acl-org/aclpubcheck",
+      "section": "presubmit",
+      "en": "Checks an ACL-style PDF for margin overflows, page limits, fonts and paper size, and flags bad references.",
+      "zh": "检查 ACL 格式论文 PDF 的越界、页数、字体、纸张大小，并提示参考文献问题。",
+      "stars": 1062,
+      "pushed_at": "2026-11-04",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "markrussinovich/refchecker",
+      "section": "presubmit",
+      "en": "Checks each reference of a paper against Semantic Scholar, OpenAlex and arXiv and reports wrong authors, years, venues or references that do not exist.",
+      "zh": "把论文的每条参考文献与 Semantic Scholar、OpenAlex、arXiv 比对，指出作者、年份、会议错误或根本不存在的文献。",
+      "stars": 569,
+      "pushed_at": "2026-10-27",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "djsutherland/arxiv-collector",
+      "section": "presubmit",
+      "en": "Uses latexmk's dependency list to collect exactly the files a paper needs into an arXiv-ready archive, including the .bbl.",
+      "zh": "按 latexmk 的依赖记录收集论文真正用到的文件（含 .bbl），打包成可直接上传 arXiv 的压缩包。",
+      "stars": 385,
+      "pushed_at": "2025-07-05",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "chrisyangsong/citegate",
+      "section": "presubmit",
+      "en": "Runs BibTeX verification against Crossref and OpenAlex as a CI step, failing the build on hallucinated or mismatched entries.",
+      "zh": "把 BibTeX 与 Crossref、OpenAlex 的核对放进 CI，出现虚构或不匹配的条目就让构建失败。",
+      "stars": 101,
+      "pushed_at": "2026-08-30",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "misc0110/Paper-Linter",
+      "section": "presubmit",
+      "en": "Scans paper LaTeX for common mistakes such as wrong spacing before citations, inconsistent capitalisation and misused abbreviations.",
+      "zh": "扫描论文 LaTeX 源码里的常见错误，如引用前的空格、大小写不一致、缩写误用。",
+      "stars": 35,
+      "pushed_at": "2026-08-26",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "ccfddl/ccf-deadlines",
+      "section": "deadlines",
+      "en": "Community-maintained deadlines of CCF-ranked and other CS conferences, with a website, CLI and WeChat mini-program.",
+      "zh": "社区维护的 CCF 推荐及其他计算机会议截稿时间，有网站、命令行和微信小程序。",
+      "stars": 9541,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "paperswithcode/ai-deadlines",
+      "section": "deadlines",
+      "en": "The original AI deadline countdown site that many forks and field-specific trackers copy.",
+      "zh": "最早的 AI 截稿倒计时网站，许多分支和各领域的追踪站都由它而来。",
+      "stars": 6014,
+      "pushed_at": "2024-09-15",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "tdurieux/anonymous_github",
+      "section": "deadlines",
+      "en": "Serves an anonymised, read-only copy of a GitHub repository for double-blind review, hiding names in files and history.",
+      "zh": "为双盲评审提供匿名的只读 GitHub 仓库副本，隐藏文件和历史里的姓名。",
+      "stars": 2298,
+      "pushed_at": "2026-11-13",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "sec-deadlines/sec-deadlines.github.io",
+      "section": "deadlines",
+      "en": "Deadline countdowns for security and privacy conferences.",
+      "zh": "安全与隐私方向会议的截稿倒计时。",
+      "stars": 875,
+      "pushed_at": "2026-11-11",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "kohler/hotcrp",
+      "section": "deadlines",
+      "en": "Self-hosted conference review system for submissions, reviewer assignment, reviews and author responses.",
+      "zh": "可自建的会议评审系统，涵盖投稿、分配审稿人、审稿和作者回复。",
+      "stars": 442,
+      "pushed_at": "2026-11-13",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "huggingface/ai-deadlines",
+      "section": "deadlines",
+      "en": "Countdowns to AI conference deadlines, the maintained continuation of the Papers with Code list.",
+      "zh": "AI 会议截稿倒计时，是 Papers with Code 版本的持续维护版。",
+      "stars": 351,
+      "pushed_at": "2026-09-23",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "openreview/openreview-py",
+      "section": "deadlines",
+      "en": "Official Python client for OpenReview: fetch submissions, reviews and decisions, or script venue workflows.",
+      "zh": "OpenReview 官方 Python 客户端，可获取投稿、审稿意见和决定，也能脚本化会议流程。",
+      "stars": 273,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "papercopilot/paperlists",
+      "section": "review",
+      "en": "Cleaned per-venue lists of submissions with review scores and decisions, collected from OpenReview and other sources.",
+      "zh": "按会议整理好的投稿列表，含审稿分数和录用结果，来源于 OpenReview 等。",
+      "stars": 967,
+      "pushed_at": "2026-11-12",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Ahren09/AgentReview",
+      "section": "review",
+      "en": "Simulates reviewers, authors and area chairs with LLM agents to study biases in the review process.",
+      "zh": "用大模型智能体模拟审稿人、作者和领域主席，研究评审过程中的偏差。",
+      "stars": 718,
+      "pushed_at": "2026-05-10",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "AutoLab-SAI-SJTU/Paper2Rebuttal",
+      "section": "review",
+      "en": "Multi-agent system that reads the paper and reviews, plans responses point by point and drafts a rebuttal.",
+      "zh": "读入论文和审稿意见，逐条规划回应并起草 rebuttal 的多智能体系统。",
+      "stars": 565,
+      "pushed_at": "2026-08-04",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "TobiasLee/Rebuttal-Skill",
+      "section": "review",
+      "en": "Agent skill that guides a coding agent through structured rebuttal writing.",
+      "zh": "引导编程智能体按结构撰写 rebuttal 的技能包。",
+      "stars": 507,
+      "pushed_at": "2026-11-06",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "MLNLP-World/Paper-Rebuttal-Tips",
+      "section": "review",
+      "en": "List: collected advice and examples for writing rebuttals, from the Chinese MLNLP community.",
+      "zh": "清单：MLNLP 社区整理的 rebuttal 写作建议和示例。",
+      "stars": 436,
+      "pushed_at": "2026-10-06",
+      "license": null,
+      "archived": false,
+      "list": true
+    },
+    {
+      "repo": "allenai/PeerRead",
+      "section": "review",
+      "en": "Dataset of papers with peer reviews and accept/reject labels, plus baseline code for review research.",
+      "zh": "带审稿意见和录用标签的论文数据集，附研究审稿用的基线代码。",
+      "stars": 432,
+      "pushed_at": "2025-12-09",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "zhu-minjun/Researcher",
+      "section": "review",
+      "en": "Includes DeepReviewer, an open model that writes structured reviews and scores for ML papers.",
+      "zh": "包含 DeepReviewer：一个能为机器学习论文写结构化审稿意见和打分的开源模型。",
+      "stars": 409,
+      "pushed_at": "2026-03-05",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "guanyingc/cv_rebuttal_template",
+      "section": "review",
+      "en": "LaTeX templates for one-page CVPR/ICCV-style rebuttals with compact layouts.",
+      "zh": "CVPR/ICCV 风格一页 rebuttal 的 LaTeX 模板，排版紧凑。",
+      "stars": 308,
+      "pushed_at": "2024-05-19",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "runtsang/RebuttalStudio",
+      "section": "review",
+      "en": "Editor for writing rebuttals: organise reviewer points, draft answers and keep within length limits.",
+      "zh": "写 rebuttal 的编辑器：整理审稿人问题、起草回答并控制篇幅。",
+      "stars": 225,
+      "pushed_at": "2026-04-03",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "openreview/openreview-expertise",
+      "section": "review",
+      "en": "Computes reviewer-paper affinity scores from reviewers' past papers for the OpenReview matching system.",
+      "zh": "根据审稿人以往论文计算审稿人与投稿的匹配分数，供 OpenReview 分配使用。",
+      "stars": 51,
+      "pushed_at": "2026-11-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "huggingface/huggingface_hub",
+      "section": "release",
+      "en": "Uploads model weights, datasets and model/dataset cards to the Hugging Face Hub from Python or the command line.",
+      "zh": "用 Python 或命令行把模型权重、数据集及其说明卡片上传到 Hugging Face Hub。",
+      "stars": 4050,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "paperswithcode/releasing-research-code",
+      "section": "release",
+      "en": "Guide and README template for releasing ML code, the basis of the NeurIPS code submission checklist.",
+      "zh": "发布机器学习代码的指南和 README 模板，NeurIPS 代码提交清单的来源。",
+      "stars": 2971,
+      "pushed_at": "2023-05-19",
+      "license": "MIT",
+      "archived": false,
+      "list": true
+    },
+    {
+      "repo": "jupyterhub/binderhub",
+      "section": "release",
+      "en": "Powers mybinder.org, letting readers open a paper's notebooks in the browser from a single link.",
+      "zh": "mybinder.org 的底层，读者点一个链接就能在浏览器里运行论文的 notebook。",
+      "stars": 2671,
+      "pushed_at": "2026-11-02",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jupyterhub/repo2docker",
+      "section": "release",
+      "en": "Builds a runnable container from a repository's requirements or environment files without writing a Dockerfile.",
+      "zh": "根据仓库里的依赖或环境文件直接构建可运行的容器，不必写 Dockerfile。",
+      "stars": 1740,
+      "pushed_at": "2026-11-09",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "mlcommons/croissant",
+      "section": "release",
+      "en": "Metadata format and tools for describing ML datasets, required for the NeurIPS Datasets and Benchmarks track.",
+      "zh": "描述机器学习数据集的元数据格式和工具，NeurIPS 数据集与基准赛道要求使用。",
+      "stars": 921,
+      "pushed_at": "2026-11-09",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "CenterForOpenScience/osf.io",
+      "section": "release",
+      "en": "Source of the Open Science Framework for preregistration, project files, preprints and DOIs.",
+      "zh": "开放科学框架 OSF 的源码，用于预注册、项目文件、预印本和 DOI。",
+      "stars": 730,
+      "pushed_at": "2026-11-13",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "datalad/datalad",
+      "section": "release",
+      "en": "Version-controls and publishes datasets with git-annex and records which command produced each output for re-running.",
+      "zh": "基于 git-annex 管理和发布数据集，并记录每个输出由哪条命令生成，方便重跑。",
+      "stars": 677,
+      "pushed_at": "2026-11-12",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "citation-file-format/citation-file-format",
+      "section": "release",
+      "en": "Spec for CITATION.cff, which makes GitHub, Zenodo and Zotero show a correct citation for a repository.",
+      "zh": "CITATION.cff 规范，让 GitHub、Zenodo 和 Zotero 为仓库显示正确的引用格式。",
+      "stars": 562,
+      "pushed_at": "2026-09-29",
+      "license": "CC-BY-4.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "VIDA-NYU/reprozip",
+      "section": "release",
+      "en": "Traces a command's run and packs all files and libraries it used into a bundle others can replay.",
+      "zh": "追踪一次命令运行，把用到的所有文件和库打包，别人可以原样重放。",
+      "stars": 364,
+      "pushed_at": "2026-02-04",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "zenodo/zenodo-rdm",
+      "section": "release",
+      "en": "Source of Zenodo, which archives code, data and artefacts with a DOI and mints one per GitHub release.",
+      "zh": "Zenodo 的源码；Zenodo 为代码、数据等存档并分配 DOI，可在每次 GitHub 发布时自动生成。",
+      "stars": 351,
+      "pushed_at": "2026-11-13",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "academicpages/academicpages.github.io",
+      "section": "pages",
+      "en": "GitHub Pages template for a personal academic site with publications, talks, teaching and CV pages.",
+      "zh": "个人学术主页的 GitHub Pages 模板，含论文、报告、教学和简历页。",
+      "stars": 17819,
+      "pushed_at": "2026-11-12",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "alshedivat/al-folio",
+      "section": "pages",
+      "en": "Jekyll theme for academics with BibTeX-driven publication lists, project pages, blog and CV.",
+      "zh": "面向学者的 Jekyll 主题，用 BibTeX 生成论文列表，带项目页、博客和简历。",
+      "stars": 16344,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "eliahuhorwitz/Academic-project-page-template",
+      "section": "pages",
+      "en": "Fill-in-the-blanks HTML template for a paper's project page with teaser video, abstract, figures, poster and BibTeX.",
+      "zh": "填空式的论文项目主页 HTML 模板，含预告视频、摘要、图、海报和 BibTeX。",
+      "stars": 5331,
+      "pushed_at": "2025-09-04",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "HugoBlox/hugo-theme-academic-cv",
+      "section": "pages",
+      "en": "Hugo template (formerly Wowchemy/Hugo Academic) for an academic portfolio with BibTeX import.",
+      "zh": "Hugo 学术主页模板（原 Wowchemy / Hugo Academic），可导入 BibTeX。",
+      "stars": 5094,
+      "pushed_at": "2026-11-08",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "nerfies/nerfies.github.io",
+      "section": "pages",
+      "en": "The Nerfies project page that most ML paper pages are copied from.",
+      "zh": "Nerfies 的项目主页，大多数机器学习论文主页都由它改来。",
+      "stars": 4436,
+      "pushed_at": "2024-06-21",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jonbarron/jonbarron.github.io",
+      "section": "pages",
+      "en": "Jon Barron's plain HTML homepage, the source of the widely copied one-page researcher layout.",
+      "zh": "Jon Barron 的纯 HTML 主页，被大量复用的单页研究者主页样式出自这里。",
+      "stars": 3720,
+      "pushed_at": "2026-11-11",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "RayeRen/acad-homepage.github.io",
+      "section": "pages",
+      "en": "Single-page academic homepage template with automatic Google Scholar citation counts.",
+      "zh": "单页学术主页模板，可自动显示 Google Scholar 引用数。",
+      "stars": 2990,
+      "pushed_at": "2026-09-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "inukshuk/jekyll-scholar",
+      "section": "pages",
+      "en": "Jekyll plugin that renders publication lists and citations from BibTeX.",
+      "zh": "从 BibTeX 生成论文列表和引用的 Jekyll 插件。",
+      "stars": 1200,
+      "pushed_at": "2026-01-06",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "yaoyao-liu/minimal-light",
+      "section": "pages",
+      "en": "Minimal Jekyll theme for an academic homepage with a publication list.",
+      "zh": "带论文列表的极简 Jekyll 学术主页主题。",
+      "stars": 1053,
+      "pushed_at": "2026-10-18",
+      "license": "CC0-1.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "luost26/academic-homepage",
+      "section": "pages",
+      "en": "GitHub Pages template for an academic homepage with publication data kept in YAML.",
+      "zh": "学术主页 GitHub Pages 模板，论文信息存放在 YAML 中。",
+      "stars": 731,
+      "pushed_at": "2026-10-22",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "RomanHauksson/academic-project-astro-template",
+      "section": "pages",
+      "en": "Astro rebuild of the Nerfies page where content is written in Markdown/MDX with components for figures and videos.",
+      "zh": "用 Astro 重做的 Nerfies 式主页，内容用 Markdown/MDX 写，有图片和视频组件。",
+      "stars": 558,
+      "pushed_at": "2026-06-27",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "QuZhan51496/paper2anything",
+      "section": "pages",
+      "en": "Agent skills that turn a paper PDF into a web page, slides, a poster and social posts.",
+      "zh": "把论文 PDF 转成网页、幻灯片、海报和社交平台帖子的智能体技能包。",
+      "stars": 485,
+      "pushed_at": "2026-07-16",
+      "license": "Apache-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "JunyaoHu/academic-project-page-template-vue",
+      "section": "pages",
+      "en": "Vue-based project page template driven by a config file.",
+      "zh": "基于 Vue、由配置文件驱动的项目主页模板。",
+      "stars": 336,
+      "pushed_at": "2025-07-08",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "hakimel/reveal.js",
+      "section": "talks",
+      "en": "HTML presentation framework used underneath many Markdown and Quarto slide tools.",
+      "zh": "HTML 演示框架，许多 Markdown 和 Quarto 幻灯片工具都基于它。",
+      "stars": 72570,
+      "pushed_at": "2026-09-30",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "slidevjs/slidev",
+      "section": "talks",
+      "en": "Markdown slides with live code, LaTeX math and Vue components, exported to PDF.",
+      "zh": "用 Markdown 写幻灯片，支持实时代码、LaTeX 公式和 Vue 组件，可导出 PDF。",
+      "stars": 49462,
+      "pushed_at": "2026-11-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "marp-team/marp",
+      "section": "talks",
+      "en": "Writes slides in plain Markdown and exports them to PDF, HTML or PowerPoint.",
+      "zh": "用纯 Markdown 写幻灯片，导出 PDF、HTML 或 PowerPoint。",
+      "stars": 12741,
+      "pushed_at": "2026-11-07",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "matze/mtheme",
+      "section": "talks",
+      "en": "Metropolis, a clean modern Beamer theme.",
+      "zh": "Metropolis：简洁现代的 Beamer 主题。",
+      "stars": 6926,
+      "pushed_at": "2022-11-23",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Paper2Poster/Paper2Poster",
+      "section": "talks",
+      "en": "Multi-agent system that generates an editable poster from a paper PDF.",
+      "zh": "从论文 PDF 自动生成可编辑海报的多智能体系统。",
+      "stars": 4053,
+      "pushed_at": "2026-11-11",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "HKUDS/Paper2Slides",
+      "section": "talks",
+      "en": "Generates a slide deck from a paper in one step.",
+      "zh": "一步把论文生成幻灯片。",
+      "stars": 3859,
+      "pushed_at": "2026-05-20",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "touying-typ/touying",
+      "section": "talks",
+      "en": "Slide framework for Typst with themes and animations, compiling much faster than Beamer.",
+      "zh": "Typst 的幻灯片框架，有主题和动画，编译比 Beamer 快得多。",
+      "stars": 2442,
+      "pushed_at": "2026-11-13",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "showlab/Paper2Video",
+      "section": "talks",
+      "en": "Generates a presentation video with slides, subtitles and a talking presenter from a paper.",
+      "zh": "从论文生成带幻灯片、字幕和讲者形象的报告视频。",
+      "stars": 2424,
+      "pushed_at": "2026-03-05",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "martinbjeldbak/ultimate-beamer-theme-list",
+      "section": "talks",
+      "en": "List: screenshots and links of community Beamer themes, including many university themes.",
+      "zh": "清单：社区 Beamer 主题的截图和链接，含许多高校主题。",
+      "stars": 1828,
+      "pushed_at": "2026-11-09",
+      "license": null,
+      "archived": false,
+      "list": true
+    },
+    {
+      "repo": "josephwright/beamer",
+      "section": "talks",
+      "en": "The Beamer LaTeX class for slides, the default for math-heavy talks.",
+      "zh": "Beamer 幻灯片 LaTeX 文档类，公式多的报告的默认选择。",
+      "stars": 1736,
+      "pushed_at": "2026-08-21",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "anishathalye/gemini",
+      "section": "talks",
+      "en": "Clean beamerposter theme for LaTeX conference posters.",
+      "zh": "简洁的 LaTeX beamerposter 会议海报主题。",
+      "stars": 1282,
+      "pushed_at": "2026-11-04",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "brentthorne/posterdown",
+      "section": "talks",
+      "en": "Writes conference posters in R Markdown and renders them to PDF through HTML.",
+      "zh": "用 R Markdown 写会议海报，经 HTML 渲染为 PDF。",
+      "stars": 882,
+      "pushed_at": "2021-12-15",
+      "license": "NOASSERTION",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "Chenruishuo/posterly",
+      "section": "talks",
+      "en": "Builds a poster as one HTML/CSS file and prints it to a PDF of the right size with a headless browser.",
+      "zh": "把海报写成一个 HTML/CSS 文件，再用无头浏览器输出尺寸正确的 PDF。",
+      "stars": 440,
+      "pushed_at": "2026-11-08",
+      "license": "AGPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "deselaers/latex-beamerposter",
+      "section": "talks",
+      "en": "The beamerposter package that lets Beamer themes be used for large-format posters.",
+      "zh": "让 Beamer 主题可用于大幅海报的 beamerposter 宏包。",
+      "stars": 436,
+      "pushed_at": "2021-12-13",
+      "license": "GPL-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "rafaelbailo/betterposter-latex-template",
+      "section": "talks",
+      "en": "LaTeX version of Mike Morrison's #betterposter layout with one large central finding.",
+      "zh": "Mike Morrison #betterposter 版式的 LaTeX 模板，中间放一句核心结论。",
+      "stars": 326,
+      "pushed_at": "2019-09-02",
+      "license": "GPL-3.0",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jonaspleyer/peace-of-posters",
+      "section": "talks",
+      "en": "Typst package for scientific posters with themes and layout boxes.",
+      "zh": "用 Typst 做科研海报的宏包，带主题和版块布局。",
+      "stars": 123,
+      "pushed_at": "2026-09-17",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "LightChen233/AutoPR",
+      "section": "sharing",
+      "en": "Research code that turns a paper into platform-specific promotion posts and evaluates them.",
+      "zh": "把论文转成适合各社交平台的推广帖并评估效果的研究代码。",
+      "stars": 103,
+      "pushed_at": "2025-10-16",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "DreamH1gh/Scholar-Citation-Monitor",
+      "section": "sharing",
+      "en": "Browser extension that watches Google Scholar citation counts and notes changes.",
+      "zh": "监视 Google Scholar 引用数变化的浏览器扩展。",
+      "stars": 78,
+      "pushed_at": "2026-07-22",
+      "license": null,
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jupyter-book/jupyter-book",
+      "section": "lab",
+      "en": "Builds course notes and books from Markdown and notebooks, with executable code.",
+      "zh": "用 Markdown 和 Notebook 构建课程讲义和书，代码可执行。",
+      "stars": 4292,
+      "pushed_at": "2026-11-04",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "hypothesis/h",
+      "section": "lab",
+      "en": "Server behind Hypothesis web annotation, letting a reading group annotate papers together in private groups.",
+      "zh": "Hypothesis 网页批注的服务端，读书会可以在私有小组里一起批注论文。",
+      "stars": 3189,
+      "pushed_at": "2026-11-11",
+      "license": "BSD-2-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "jupyter/nbgrader",
+      "section": "lab",
+      "en": "Creates, distributes and grades notebook assignments.",
+      "zh": "创建、分发并批改 Notebook 作业。",
+      "stars": 1370,
+      "pushed_at": "2026-11-03",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "greenelab/lab-website-template",
+      "section": "lab",
+      "en": "Jekyll lab website template that builds the publication list automatically from DOIs, ORCID and other identifiers.",
+      "zh": "Jekyll 课题组网站模板，可根据 DOI、ORCID 等标识自动生成论文列表。",
+      "stars": 582,
+      "pushed_at": "2026-11-11",
+      "license": "BSD-3-Clause",
+      "archived": false,
+      "list": false
+    },
+    {
+      "repo": "HugoBlox/theme-research-group",
+      "section": "lab",
+      "en": "Hugo template for a research group site with people, publications, news and events.",
+      "zh": "研究组网站的 Hugo 模板，含成员、论文、新闻和活动。",
+      "stars": 403,
+      "pushed_at": "2024-10-12",
+      "license": "MIT",
+      "archived": false,
+      "list": false
+    }
+  ],
+  "gaps": [
+    {
+      "section": "follow",
+      "en": "Hear when a paper you follow or cite posts a new version, and what changed in it.",
+      "zh": "关注或引用的论文出了新版本时得到通知，并知道改了什么。",
+      "missing_en": "Feeds track new submissions only; none watches your library for new versions.",
+      "missing_zh": "现有订阅只看新投稿，不会盯着你文献库里的论文出新版本。",
+      "closest": [
+        "karpathy/arxiv-sanity-lite",
+        "TideDra/zotero-arxiv-daily"
+      ],
+      "ours": "arxiv-diff"
+    },
+    {
+      "section": "follow",
+      "en": "Rank the daily feed by signs that a paper will matter: accepted venue, released code, early citations.",
+      "zh": "按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。",
+      "missing_en": "Recommenders score closeness to your topics only.",
+      "missing_zh": "现有推荐只按与你研究方向的相似度打分。",
+      "closest": [
+        "TideDra/zotero-arxiv-daily",
+        "dw-dengwei/daily-arXiv-ai-enhanced"
+      ],
+      "ours": "paper-impact"
+    },
+    {
+      "section": "search",
+      "en": "See why a paper is cited (uses it, compares with it, disputes it) and which later results beat it.",
+      "zh": "看到一篇论文为什么被引用（使用、对比还是反驳），以及后来哪些结果超过了它。",
+      "missing_en": "Open tools show who cites whom, not how; citation intent is only in paid services.",
+      "missing_zh": "开源工具只显示谁引用了谁，不显示怎么引用的；引用意图只有付费服务提供。",
+      "closest": [
+        "LocalCitationNetwork/LocalCitationNetwork.github.io",
+        "danielnsilva/semanticscholar"
+      ],
+      "ours": null
+    },
+    {
+      "section": "refs",
+      "en": "Find references in a .bib file that do not exist or have wrong metadata, and update preprints to their published versions.",
+      "zh": "找出 .bib 里不存在或信息有误的参考文献，并把预印本更新为正式发表的版本。",
+      "missing_en": "rebiber matches only DBLP and the ACL Anthology; betterbib does not flag entries that match nothing.",
+      "missing_zh": "rebiber 只对照 DBLP 和 ACL Anthology；betterbib 不会标出查无此文的条目。",
+      "closest": [
+        "yuchenlin/rebiber",
+        "texworld/betterbib"
+      ],
+      "ours": "paper-proof"
+    },
+    {
+      "section": "reading",
+      "en": "Translate a paper from its LaTeX source, keeping formulas, references and figures exact.",
+      "zh": "从 LaTeX 源码翻译论文，公式、引用和图都保持原样。",
+      "missing_en": "Translators work from the PDF and still break on dense formulas and tables.",
+      "missing_zh": "现有翻译工具基于 PDF 版面，遇到密集的公式和表格仍会出错。",
+      "closest": [
+        "PDFMathTranslate/PDFMathTranslate",
+        "binary-husky/gpt_academic"
+      ],
+      "ours": null
+    },
+    {
+      "section": "assistants",
+      "en": "Check that each citation in an AI-written review actually supports the sentence it is attached to.",
+      "zh": "检查 AI 写的综述里，每条引用是否真的支持它所在的那句话。",
+      "missing_en": "Research agents attach citations while writing but never check a finished draft.",
+      "missing_zh": "科研智能体在生成时附上引用，但不会回头核对已有文稿。",
+      "closest": [
+        "Future-House/paper-qa",
+        "stanford-oval/storm"
+      ],
+      "ours": null
+    },
+    {
+      "section": "assistants",
+      "en": "Check a research idea for novelty against prior work, showing the overlapping papers.",
+      "zh": "检查一个研究想法是否新颖，并列出与之重叠的已有论文。",
+      "missing_en": "Existing novelty steps are a few search queries judged by a language model.",
+      "missing_zh": "现有的新颖性检查只是几次检索加大模型判断。",
+      "closest": [
+        "SakanaAI/AI-Scientist-v2",
+        "allenai/ai2-scholarqa-lib"
+      ],
+      "ours": null
+    },
+    {
+      "section": "evaluation",
+      "en": "Know whether a benchmark score in a paper is comparable to yours: same harness, prompts, shots, decoding.",
+      "zh": "判断论文里的基准分数能否与你的直接比较：评测框架、提示词、样例数、解码设置是否一致。",
+      "missing_en": "Each harness gives different numbers for one task, and papers rarely state their settings.",
+      "missing_zh": "不同评测框架对同一任务给出的分数不同，论文又很少写明设置。",
+      "closest": [
+        "EleutherAI/lm-evaluation-harness",
+        "open-compass/opencompass"
+      ],
+      "ours": "table-trace"
+    },
+    {
+      "section": "compute",
+      "en": "Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.",
+      "zh": "小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。",
+      "missing_en": "Slurm needs an administrator; GPU monitors only show who is using a card.",
+      "missing_zh": "Slurm 需要专人维护；GPU 监控工具只能看到谁在用卡。",
+      "closest": [
+        "SchedMD/slurm",
+        "XuehaiPan/nvitop"
+      ],
+      "ours": null
+    },
+    {
+      "section": "writing",
+      "en": "Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.",
+      "zh": "在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。",
+      "missing_en": "Pandoc loses custom macros and venue environments; nothing knows page limits or style-file quirks.",
+      "missing_zh": "Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。",
+      "closest": [
+        "jgm/pandoc",
+        "quarto-dev/quarto-cli"
+      ],
+      "ours": null
+    },
+    {
+      "section": "language",
+      "en": "Check a whole paper for consistency: symbols defined twice or never, acronyms re-expanded, mixed terms.",
+      "zh": "检查整篇论文的一致性：符号重复定义或未定义、缩写反复展开、术语前后不一。",
+      "missing_en": "Checkers work sentence by sentence; none follows notation across sections and files.",
+      "missing_zh": "现有检查工具逐句进行，不会跨章节、跨文件跟踪记号和术语。",
+      "closest": [
+        "sylvainhalle/textidote",
+        "vale-cli/vale"
+      ],
+      "ours": null
+    },
+    {
+      "section": "language",
+      "en": "Style checking for academic writing that understands LaTeX math and works offline.",
+      "zh": "能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。",
+      "missing_en": "General rules give many false alarms on math-heavy text; academic rule sets must be written by hand.",
+      "missing_zh": "通用规则在公式多的文本上误报很多；学术写作规则要自己编写。",
+      "closest": [
+        "languagetool-org/languagetool",
+        "vale-cli/vale"
+      ],
+      "ours": null
+    },
+    {
+      "section": "figures",
+      "en": "Export Matplotlib figures at the venue's exact column width, with fonts matching the paper.",
+      "zh": "按会议的栏宽导出 Matplotlib 图，字体与正文一致。",
+      "missing_en": "Style packages set looks, not column widths; tikzplotlib is unmaintained.",
+      "missing_zh": "样式包只管外观，不管栏宽；tikzplotlib 已无人维护。",
+      "closest": [
+        "garrettj403/SciencePlots"
+      ],
+      "ours": "fig-check"
+    },
+    {
+      "section": "figures",
+      "en": "Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.",
+      "zh": "从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。",
+      "missing_en": "PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper.",
+      "missing_zh": "PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。",
+      "closest": [
+        "HarisIqbal88/PlotNeuralNet",
+        "mert-kurttutan/torchview"
+      ],
+      "ours": null
+    },
+    {
+      "section": "presubmit",
+      "en": "Anonymize everything submitted, not just the PDF: supplementary zips, code, metadata, videos.",
+      "zh": "匿名检查覆盖所有提交材料，而不只是 PDF：补充材料压缩包、代码、元数据、视频。",
+      "missing_en": "anonymous_github hides names in a hosted view only; no tool scans supplementary material.",
+      "missing_zh": "anonymous_github 只在托管的页面里隐藏名字；没有工具扫描补充材料。",
+      "closest": [
+        "tdurieux/anonymous_github",
+        "google-research/arxiv-latex-cleaner"
+      ],
+      "ours": "submit-check"
+    },
+    {
+      "section": "presubmit",
+      "en": "Camera-ready checks for ML venues beyond ACL: checklist, extra page, fonts, author block.",
+      "zh": "ACL 以外的机器学习会议的终稿检查：检查表、额外页数、字体、作者信息。",
+      "missing_en": "aclpubcheck covers the ACL template only.",
+      "missing_zh": "aclpubcheck 只支持 ACL 模板。",
+      "closest": [
+        "acl-org/aclpubcheck"
+      ],
+      "ours": "submit-check"
+    },
+    {
+      "section": "deadlines",
+      "en": "A deadline tracker that also keeps each venue's rules: page limits, supplementary deadline, rebuttal window, LLM policy.",
+      "zh": "截稿日期追踪同时记录各会议的规则：页数限制、补充材料截止、rebuttal 时间、大模型使用政策。",
+      "missing_en": "Trackers store dates and links only; the rules sit in each year's call for papers.",
+      "missing_zh": "现有追踪只记日期和链接；规则散落在每年的征稿通知里。",
+      "closest": [
+        "ccfddl/ccf-deadlines",
+        "huggingface/ai-deadlines"
+      ],
+      "ours": null
+    },
+    {
+      "section": "review",
+      "en": "Help for reviewers that runs locally: check a submission's references, tables and claims without uploading it.",
+      "zh": "在本地运行的审稿辅助：检查投稿的参考文献、表格和结论，不上传稿件。",
+      "missing_en": "Review generators write whole reviews (most venues forbid that) and call hosted models.",
+      "missing_zh": "现有工具直接生成整篇审稿意见（多数会议禁止），而且调用在线模型。",
+      "closest": [
+        "markrussinovich/refchecker",
+        "Ahren09/AgentReview"
+      ],
+      "ours": null
+    },
+    {
+      "section": "review",
+      "en": "Track a rebuttal point by point: status, the experiment each point needs, character limits, score changes.",
+      "zh": "逐条跟踪 rebuttal：每条意见的处理状态、需要补的实验、字数限制、分数变化。",
+      "missing_en": "Rebuttal tools draft text; none keeps a tracker tied to the review threads.",
+      "missing_zh": "现有 rebuttal 工具只帮忙写文字，不提供与审稿意见对应的跟踪表。",
+      "closest": [
+        "runtsang/RebuttalStudio",
+        "AutoLab-SAI-SJTU/Paper2Rebuttal"
+      ],
+      "ours": null
+    },
+    {
+      "section": "release",
+      "en": "One release step that keeps the code tag, weights, dataset, citation file and DOI in step.",
+      "zh": "一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。",
+      "missing_en": "Each tool covers one artefact; versions drift between GitHub, Zenodo and the Hugging Face Hub.",
+      "missing_zh": "每个工具只管一样东西，GitHub、Zenodo 和 Hugging Face 之间的版本容易对不上。",
+      "closest": [
+        "zenodo/zenodo-rdm",
+        "huggingface/huggingface_hub"
+      ],
+      "ours": null
+    },
+    {
+      "section": "release",
+      "en": "An open index linking papers to their code and results, now that Papers with Code has shut down (2025).",
+      "zh": "Papers with Code 于 2025 年关闭后，一个把论文与代码和结果关联起来的开放索引。",
+      "missing_en": "Hugging Face paper pages are not an open, self-hostable index of results.",
+      "missing_zh": "Hugging Face 的论文页面不是开放、可自建的结果索引。",
+      "closest": [
+        "huggingface/huggingface_hub",
+        "paperswithcode/releasing-research-code"
+      ],
+      "ours": "table-trace"
+    },
+    {
+      "section": "sharing",
+      "en": "A free alert of who cited your paper and what they said about it.",
+      "zh": "免费提醒：谁引用了你的论文，以及他们是怎么说的。",
+      "missing_en": "Trackers give counts; scraping Google Scholar breaks when it is blocked.",
+      "missing_zh": "现有工具只给引用数；抓取 Google Scholar 的方法常被封锁而失效。",
+      "closest": [
+        "J535D165/pyalex",
+        "scholarly-python-package/scholarly"
+      ],
+      "ours": "scholar-cards"
+    },
+    {
+      "section": "lab",
+      "en": "Run a reading group in one self-hosted place: suggestions and votes, presenters, schedule, shared notes.",
+      "zh": "在一个可自建的地方组织读书会：推荐与投票、主讲轮换、日程、共享笔记。",
+      "missing_en": "Each tool covers one piece; groups still glue spreadsheets and chats together.",
+      "missing_zh": "每个工具只覆盖一部分，读书会仍靠表格和聊天群拼凑。",
+      "closest": [
+        "hypothesis/h",
+        "karpathy/arxiv-sanity-lite"
+      ],
+      "ours": null
+    }
+  ]
+}

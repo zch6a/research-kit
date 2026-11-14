@@ -39,7 +39,8 @@
         "conferences",
         "topics",
         "search"
-      ]
+      ],
+      "section": "search"
     },
     {
       "name": "paper-impact",
@@ -52,7 +53,8 @@
         "citations",
         "openalex",
         "conferences"
-      ]
+      ],
+      "section": "search"
     },
     {
       "name": "table-trace",
@@ -66,7 +68,8 @@
         "results",
         "reproducibility",
         "arxiv"
-      ]
+      ],
+      "section": "reading"
     },
     {
       "name": "arxiv-diff",
@@ -79,7 +82,8 @@
         "arxiv",
         "versions",
         "diff"
-      ]
+      ],
+      "section": "follow"
     },
     {
       "name": "gpu-budget",
@@ -93,7 +97,8 @@
         "memory",
         "cost",
         "llm"
-      ]
+      ],
+      "section": "compute"
     },
     {
       "name": "exp-tables",
@@ -107,11 +112,12 @@
         "tables",
         "statistics",
         "latex"
-      ]
+      ],
+      "section": "evaluation"
     },
     {
       "name": "repro-score",
-      "stage": "experiment",
+      "stage": "after",
       "en": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
       "zh": "别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码。",
       "command": "uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo",
@@ -120,7 +126,8 @@
         "reproducibility",
         "code",
         "badge"
-      ]
+      ],
+      "section": "release"
     },
     {
       "name": "fig-check",
@@ -133,11 +140,12 @@
         "figures",
         "latex",
         "accessibility"
-      ]
+      ],
+      "section": "figures"
     },
     {
       "name": "paper-proof",
-      "stage": "write",
+      "stage": "submit",
       "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels.",
       "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref）。",
       "command": "uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper",
@@ -146,7 +154,8 @@
         "references",
         "latex",
         "checks"
-      ]
+      ],
+      "section": "presubmit"
     },
     {
       "name": "submit-check",
@@ -159,7 +168,8 @@
         "submission",
         "double-blind",
         "latex"
-      ]
+      ],
+      "section": "presubmit"
     },
     {
       "name": "iclr-scores",
@@ -172,7 +182,8 @@
         "peer-review",
         "iclr",
         "statistics"
-      ]
+      ],
+      "section": "review"
     },
     {
       "name": "paper-page",
@@ -185,7 +196,8 @@
         "project-page",
         "github-pages",
         "arxiv"
-      ]
+      ],
+      "section": "pages"
     },
     {
       "name": "scholar-cards",
@@ -198,7 +210,8 @@
         "citations",
         "homepage",
         "openalex"
-      ]
+      ],
+      "section": "sharing"
     }
   ]
 }

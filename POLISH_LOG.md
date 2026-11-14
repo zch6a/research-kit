@@ -133,3 +133,35 @@ script runs (without it, it did nothing); the stage pills read "4 tools" to a sc
 has only its documented field; `claude plugin validate` passes. The README's contributing note lists tags.
 
 Tests cover each new check. Next: v0.1.0.
+
+### 2026-11-14 — every stage of the work: ours and the best of the rest
+
+The goal changed from "our tools" to "the whole chain of research work": what a researcher can use at each stage,
+whoever made it, and where nothing good exists yet.
+
+**The survey**: four parallel searches of GitHub, one per part of the work (finding and reading; AI assistants,
+writing and figures; experiments, compute, data and release; submission, review and after publication), from
+repository search, topics and each field's awesome lists, every candidate then checked on its own. 189 picks, 171
+after removing the ones two searches found; kept by the brief's rules (open-source, maintained or still the
+standard, in real use; no abandoned or archived projects, thin wrappers, paid services with an open shell, or link
+lists but the few a stage relies on). `scripts/refresh_landscape.py` then asked the GitHub API about all 171 again:
+none had moved, been archived or disappeared; the stars, last push and licence on the page are its numbers, with
+the date. It runs weekly in CI with `--check`, which fails on a project that has moved, been archived or gone.
+
+**The page**: five stages, nineteen sections (following papers, searching, references, reading, AI assistants,
+experiments, compute, evaluation, writing, checking the text, figures, checking before submission, deadlines,
+review and rebuttal, releasing code and data, project pages and homepages, posters and talks, sharing and citations,
+lab and reading groups). Each section shows our tools first (with their command), then a table of the others, most
+starred first, with licence and update month. A missing licence is shown as "none" in red, with a note to ask before
+reusing (the two most copied project-page templates have none). Our tools moved into sections; repro-score is now
+under releasing code (stage "after"). The marketplace still has only our tools.
+
+**What nothing covers yet**: 23 needs from the survey, each with its closest projects and what they miss, and
+which of ours covers part of it (nine do: arxiv-diff, paper-impact, paper-proof, table-trace twice, fig-check,
+submit-check twice, scholar-cards). Six more gaps the survey found are already filled by our tools, so they are not
+listed.
+
+**Checks**: `render.py` validates landscape.json (owner/name, no duplicates, none of ours, known sections, counts and
+dates, nothing archived, every gap's closest projects in the list, every "ours" one of our tools, each of our tools'
+section in its stage); tests for both. Chinese descriptions checked for marketing words (two "一键" phrasings made
+plain). The site at 1280 px: no sideways scroll, 171 rows, 13 cards, 23 gaps; wide tables scroll inside their box.
