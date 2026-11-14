@@ -9,7 +9,7 @@ papers with a small embedding model), and what they report says where it comes f
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
 <img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
-<img alt="171 projects" src="https://img.shields.io/badge/projects-171-8250df">
+<img alt="172 projects" src="https://img.shields.io/badge/projects-172-8250df">
 
 **English** · [简体中文](README.zh-CN.md) · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
 
@@ -179,6 +179,7 @@ npx github:zch6a/gpu-budget#v0 train llama-3.1-70b --gpus 64 --zero 3 --tokens 2
 | [dstack](https://github.com/dstackai/dstack) | Open-source orchestrator for dev environments, training jobs and services on clouds and on-prem GPU fleets. | 2.3k | MPL-2.0 | 2026-11 |
 | [apptainer](https://github.com/apptainer/apptainer) | Container runtime (formerly Singularity) that runs images without root, the usual way to use containers on HPC clusters. | 2k | other | 2026-11 |
 | [submitit](https://github.com/facebookincubator/submitit) | Submits Python functions as Slurm jobs and returns results like futures, so sweeps run on a cluster from plain Python. | 1.6k | MIT | 2026-11 |
+| [task-spooler](https://github.com/justanhduc/task-spooler) | A job queue for one machine: commands wait their turn and each gets free GPUs (ts -G). | 448 | GPL-2.0 | 2024-03 |
 
 #### Data and evaluation
 
@@ -446,7 +447,7 @@ for our own tools; the rest are open.
 - **Check that each citation in an AI-written review actually supports the sentence it is attached to.** (AI research assistants) What they miss: Research agents attach citations while writing but never check a finished draft. Closest: [paper-qa](https://github.com/Future-House/paper-qa), [storm](https://github.com/stanford-oval/storm).
 - **Check a research idea for novelty against prior work, showing the overlapping papers.** (AI research assistants) What they miss: Existing novelty steps are a few search queries judged by a language model. Closest: [AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2), [ai2-scholarqa-lib](https://github.com/allenai/ai2-scholarqa-lib).
 - **Know whether a benchmark score in a paper is comparable to yours: same harness, prompts, shots, decoding.** (Data and evaluation) What they miss: Each harness gives different numbers for one task, and papers rarely state their settings. Closest: [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness), [opencompass](https://github.com/open-compass/opencompass). Partly covered by our [table-trace](https://github.com/zch6a/table-trace).
-- **Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.** (Compute and environments) What they miss: Slurm needs an administrator; GPU monitors only show who is using a card. Closest: [slurm](https://github.com/SchedMD/slurm), [nvitop](https://github.com/XuehaiPan/nvitop).
+- **Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.** (Compute and environments) What they miss: Slurm needs an administrator; task-spooler queues jobs on one machine only; dstack runs fleets of machines over SSH but needs its own server; none keeps per-person fair shares across a few lab machines. Closest: [slurm](https://github.com/SchedMD/slurm), [task-spooler](https://github.com/justanhduc/task-spooler), [dstack](https://github.com/dstackai/dstack).
 - **Move a paper between venue templates (or from LaTeX to Typst) with a report of what breaks.** (Writing and typesetting) What they miss: Pandoc loses custom macros and venue environments; nothing knows page limits or style-file quirks. Closest: [pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli).
 - **Style checking for academic writing that understands LaTeX math and works offline.** (Checking the text) What they miss: General rules give many false alarms on math-heavy text; academic rule sets must be written by hand. Closest: [languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale).
 - **Editable, paper-style architecture diagrams generated from model code, beyond CNN layer stacks.** (Figures and diagrams) What they miss: PlotNeuralNet is hand-written TikZ for CNNs; torchview draws graphs too detailed for a paper. Closest: [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview).

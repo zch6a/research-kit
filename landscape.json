@@ -822,6 +822,17 @@
       "list": false
     },
     {
+      "repo": "justanhduc/task-spooler",
+      "section": "compute",
+      "en": "A job queue for one machine: commands wait their turn and each gets free GPUs (ts -G).",
+      "zh": "单台机器上的任务队列：命令依次排队，每个任务分到空闲的 GPU（ts -G）。",
+      "stars": 448,
+      "pushed_at": "2024-03-06",
+      "license": "GPL-2.0",
+      "archived": false,
+      "list": false
+    },
+    {
       "repo": "HumanSignal/label-studio",
       "section": "evaluation",
       "en": "Self-hosted labelling tool for text, images, audio, video and LLM outputs with configurable annotation interfaces.",
@@ -2088,11 +2099,12 @@
       "section": "compute",
       "en": "Share a small lab's few GPU machines fairly, with a job queue, without running Slurm.",
       "zh": "小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。",
-      "missing_en": "Slurm needs an administrator; GPU monitors only show who is using a card.",
-      "missing_zh": "Slurm 需要专人维护；GPU 监控工具只能看到谁在用卡。",
+      "missing_en": "Slurm needs an administrator; task-spooler queues jobs on one machine only; dstack runs fleets of machines over SSH but needs its own server; none keeps per-person fair shares across a few lab machines.",
+      "missing_zh": "Slurm 需要专人维护；task-spooler 只管一台机器的队列；dstack 能通过 SSH 管理多台机器，但需要部署它自己的服务端；都没有在几台课题组机器之间按人公平分配。",
       "closest": [
         "SchedMD/slurm",
-        "XuehaiPan/nvitop"
+        "justanhduc/task-spooler",
+        "dstackai/dstack"
       ],
       "ours": null
     },

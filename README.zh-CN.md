@@ -6,7 +6,7 @@
 
 <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue"></a>
 <img alt="14 tools" src="https://img.shields.io/badge/tools-14-2ea44f">
-<img alt="171 projects" src="https://img.shields.io/badge/projects-171-8250df">
+<img alt="172 projects" src="https://img.shields.io/badge/projects-172-8250df">
 
 [English](README.md) · **简体中文** · **[zch6a.github.io/research-kit](https://zch6a.github.io/research-kit/)**
 
@@ -171,6 +171,7 @@ npx github:zch6a/gpu-budget#v0 train llama-3.1-70b --gpus 64 --zero 3 --tokens 2
 | [dstack](https://github.com/dstackai/dstack) | 开源的 GPU 编排工具，在云上或自有机器上开开发环境、跑训练任务和部署服务。 | 2.3k | MPL-2.0 | 2026-11 |
 | [apptainer](https://github.com/apptainer/apptainer) | 容器运行时（原 Singularity），无需 root 即可运行镜像，是超算集群上使用容器的常见方式。 | 2k | 其他 | 2026-11 |
 | [submitit](https://github.com/facebookincubator/submitit) | 把 Python 函数直接提交成 Slurm 作业并像 future 一样取回结果，用普通 Python 就能在集群上扫参。 | 1.6k | MIT | 2026-11 |
+| [task-spooler](https://github.com/justanhduc/task-spooler) | 单台机器上的任务队列：命令依次排队，每个任务分到空闲的 GPU（ts -G）。 | 448 | GPL-2.0 | 2024-03 |
 
 #### 数据与评测
 
@@ -437,7 +438,7 @@ uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search "Y
 - **检查 AI 写的综述里，每条引用是否真的支持它所在的那句话。**（AI 科研助手）不足之处：科研智能体在生成时附上引用，但不会回头核对已有文稿。最接近的：[paper-qa](https://github.com/Future-House/paper-qa), [storm](https://github.com/stanford-oval/storm)。
 - **检查一个研究想法是否新颖，并列出与之重叠的已有论文。**（AI 科研助手）不足之处：现有的新颖性检查只是几次检索加大模型判断。最接近的：[AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2), [ai2-scholarqa-lib](https://github.com/allenai/ai2-scholarqa-lib)。
 - **判断论文里的基准分数能否与你的直接比较：评测框架、提示词、样例数、解码设置是否一致。**（数据与评测）不足之处：不同评测框架对同一任务给出的分数不同，论文又很少写明设置。最接近的：[lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness), [opencompass](https://github.com/open-compass/opencompass)。部分已由我们的工具覆盖：[table-trace](https://github.com/zch6a/table-trace)。
-- **小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。**（算力与环境）不足之处：Slurm 需要专人维护；GPU 监控工具只能看到谁在用卡。最接近的：[slurm](https://github.com/SchedMD/slurm), [nvitop](https://github.com/XuehaiPan/nvitop)。
+- **小课题组几台 GPU 机器的公平共享与排队，不用部署 Slurm。**（算力与环境）不足之处：Slurm 需要专人维护；task-spooler 只管一台机器的队列；dstack 能通过 SSH 管理多台机器，但需要部署它自己的服务端；都没有在几台课题组机器之间按人公平分配。最接近的：[slurm](https://github.com/SchedMD/slurm), [task-spooler](https://github.com/justanhduc/task-spooler), [dstack](https://github.com/dstackai/dstack)。
 - **在不同会议模板之间（或从 LaTeX 到 Typst）迁移论文，并报告哪里出了问题。**（写作与排版）不足之处：Pandoc 会丢掉自定义宏和会议专用环境；没有工具了解页数限制和模板细节。最接近的：[pandoc](https://github.com/jgm/pandoc), [quarto-cli](https://github.com/quarto-dev/quarto-cli)。
 - **能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。**（检查文字）不足之处：通用规则在公式多的文本上误报很多；学术写作规则要自己编写。最接近的：[languagetool](https://github.com/languagetool-org/languagetool), [vale](https://github.com/vale-cli/vale)。
 - **从模型代码生成可编辑、适合放进论文的结构图，不限于卷积网络的层堆叠。**（图表与示意图）不足之处：PlotNeuralNet 要手写 TikZ 且只适合卷积网络；torchview 画出的计算图对论文来说过于细碎。最接近的：[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet), [torchview](https://github.com/mert-kurttutan/torchview)。
