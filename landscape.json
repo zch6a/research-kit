@@ -2027,13 +2027,13 @@
       "section": "search",
       "en": "See why a paper is cited (uses it, compares with it, disputes it) and which later results beat it.",
       "zh": "看到一篇论文为什么被引用（使用、对比还是反驳），以及后来哪些结果超过了它。",
-      "missing_en": "Open tools show who cites whom, not how; citation intent is only in paid services.",
-      "missing_zh": "开源工具只显示谁引用了谁，不显示怎么引用的；引用意图只有付费服务提供。",
+      "missing_en": "Open tools show who cites whom, not how. scholar-cards cited shows the citing sentences Semantic Scholar has (about three quarters of Mamba's) with rule-based labels that match a reader about two times in three; reliable intent, and which later results beat a paper, are still in paid services.",
+      "missing_zh": "开源工具只显示谁引用了谁，不显示怎么引用。scholar-cards cited 给出 Semantic Scholar 收录的引用句（Mamba 约四分之三的引用有），并按规则加标签，与人工阅读约三分之二一致；可靠的引用意图以及哪些后续结果超过了它，仍只在付费服务里。",
       "closest": [
         "LocalCitationNetwork/LocalCitationNetwork.github.io",
         "danielnsilva/semanticscholar"
       ],
-      "ours": null
+      "ours": "scholar-cards"
     },
     {
       "section": "refs",
@@ -2124,13 +2124,13 @@
       "section": "language",
       "en": "Style checking for academic writing that understands LaTeX math and works offline.",
       "zh": "能理解 LaTeX 数学公式、可离线运行的学术写作风格检查。",
-      "missing_en": "General rules give many false alarms on math-heavy text; academic rule sets must be written by hand.",
-      "missing_zh": "通用规则在公式多的文本上误报很多；学术写作规则要自己编写。",
+      "missing_en": "General rules give many false alarms on math-heavy text. paper-proof's style check reads through the LaTeX but covers only slips that rules can catch (a word twice, a/an, reference spacing and naming, abbreviation periods); grammar and wording are still left to LanguageTool or Vale.",
+      "missing_zh": "通用规则在公式多的文本上误报很多。paper-proof 的文字细节检查能透过 LaTeX 读取，但只覆盖规则能抓到的笔误（同一个词写两遍、a/an、交叉引用的空格和名称、缩写的句点）；语法和措辞仍要靠 LanguageTool 或 Vale。",
       "closest": [
         "languagetool-org/languagetool",
         "vale-cli/vale"
       ],
-      "ours": null
+      "ours": "paper-proof"
     },
     {
       "section": "figures",
@@ -2172,13 +2172,13 @@
       "section": "release",
       "en": "One release step that keeps the code tag, weights, dataset, citation file and DOI in step.",
       "zh": "一步完成发布，让代码标签、模型权重、数据集、引用文件和 DOI 保持一致。",
-      "missing_en": "Each tool covers one artefact; versions drift between GitHub, Zenodo and the Hugging Face Hub.",
-      "missing_zh": "每个工具只管一样东西，GitHub、Zenodo 和 Hugging Face 之间的版本容易对不上。",
+      "missing_en": "Each tool covers one artefact; versions drift between GitHub, Zenodo and the Hugging Face Hub. repro-score release finds the drift in a repository (version, tags, CITATION.cff, DOIs); the weights and datasets on the Hub are not checked.",
+      "missing_zh": "每个工具只管一种产物，GitHub、Zenodo 和 Hugging Face Hub 之间的版本会对不上。repro-score release 能找出仓库里的不一致（版本号、标签、CITATION.cff、DOI），但 Hub 上的权重和数据集不在检查范围内。",
       "closest": [
         "zenodo/zenodo-rdm",
         "huggingface/huggingface_hub"
       ],
-      "ours": null
+      "ours": "repro-score"
     },
     {
       "section": "release",
@@ -2191,18 +2191,6 @@
         "paperswithcode/releasing-research-code"
       ],
       "ours": "table-trace"
-    },
-    {
-      "section": "sharing",
-      "en": "A free alert of who cited your paper and what they said about it.",
-      "zh": "免费提醒：谁引用了你的论文，以及他们是怎么说的。",
-      "missing_en": "Trackers give counts; scraping Google Scholar breaks when it is blocked.",
-      "missing_zh": "现有工具只给引用数；抓取 Google Scholar 的方法常被封锁而失效。",
-      "closest": [
-        "J535D165/pyalex",
-        "scholarly-python-package/scholarly"
-      ],
-      "ours": "scholar-cards"
     },
     {
       "section": "lab",

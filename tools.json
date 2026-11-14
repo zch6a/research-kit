@@ -119,14 +119,16 @@
     {
       "name": "repro-score",
       "stage": "after",
-      "en": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
-      "zh": "别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码。",
+      "en": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run; repro-score release checks that the version, tags, CITATION.cff and DOIs agree.",
+      "zh": "别人能不能用你的代码复现论文：给科研代码仓库打一个百分制的分，每一项都附上依据所在的文件和行号，只读文件、不运行任何代码；repro-score release 检查版本号、标签、CITATION.cff 和 DOI 是否一致。",
       "command": "uvx --from git+https://github.com/zch6a/repro-score@v0 repro-score github:owner/repo",
       "site": "",
       "tags": [
         "reproducibility",
         "code",
-        "badge"
+        "badge",
+        "release",
+        "citation-file"
       ],
       "section": "release"
     },
@@ -148,8 +150,8 @@
     {
       "name": "paper-proof",
       "stage": "submit",
-      "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
-      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref），以及整篇论文前后不一致的地方（同一缩写两种展开、同一个词两种写法）。加 --review 可供审稿人检查投稿的 PDF，不发送任何内容。",
+      "en": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways), and style slips seen through the LaTeX (a word twice, a/an, Figure~\\ref). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
+      "zh": "赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\\label/\\ref），以及整篇论文前后不一致的地方（同一缩写两种展开、同一个词两种写法），以及透过 LaTeX 看到的文字细节（同一个词写两遍、a/an、Figure~\\ref）。加 --review 可供审稿人检查投稿的 PDF，不发送任何内容。",
       "command": "uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper",
       "site": "",
       "tags": [
@@ -157,7 +159,8 @@
         "latex",
         "checks",
         "consistency",
-        "peer-review"
+        "peer-review",
+        "style"
       ],
       "section": "presubmit"
     },
@@ -222,14 +225,15 @@
     {
       "name": "scholar-cards",
       "stage": "after",
-      "en": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key.",
-      "zh": "把 OpenAlex 上你的引用数、h 指数和高被引论文做成 SVG 卡片，放进学术主页或 GitHub 个人页，由 GitHub Action 自动更新，不需要 API key。",
+      "en": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key; scholar-cards cited lists who cites a paper and what they say, new citations first.",
+      "zh": "把 OpenAlex 上你的引用数、h 指数和高被引论文做成 SVG 卡片，放进学术主页或 GitHub 个人页，由 GitHub Action 自动更新，不需要 API key；scholar-cards cited 列出谁引用了一篇论文、怎么说的，新引用排在前面。",
       "command": "uvx --from git+https://github.com/zch6a/scholar-cards@v0 scholar-cards search \"Your Name\"",
       "site": "",
       "tags": [
         "citations",
         "homepage",
-        "openalex"
+        "openalex",
+        "alerts"
       ],
       "section": "sharing"
     }

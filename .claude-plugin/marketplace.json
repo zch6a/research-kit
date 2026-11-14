@@ -150,12 +150,14 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run.",
+      "description": "Can someone reproduce your paper from your code? A score out of 100 for a research code repository, item by item with the file and line behind it, read from the files with nothing run; repro-score release checks that the version, tags, CITATION.cff and DOIs agree.",
       "category": "research",
       "tags": [
         "reproducibility",
         "code",
-        "badge"
+        "badge",
+        "release",
+        "citation-file"
       ],
       "homepage": "https://github.com/zch6a/repro-score",
       "repository": "https://github.com/zch6a/repro-score",
@@ -195,14 +197,15 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
+      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways), and style slips seen through the LaTeX (a word twice, a/an, Figure~\\ref). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
       "category": "research",
       "tags": [
         "references",
         "latex",
         "checks",
         "consistency",
-        "peer-review"
+        "peer-review",
+        "style"
       ],
       "homepage": "https://github.com/zch6a/paper-proof",
       "repository": "https://github.com/zch6a/paper-proof",
@@ -309,12 +312,13 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key.",
+      "description": "Your citations, h-index and most cited papers from OpenAlex as SVG cards for an academic homepage or a GitHub profile, kept fresh by a GitHub Action; no API key; scholar-cards cited lists who cites a paper and what they say, new citations first.",
       "category": "research",
       "tags": [
         "citations",
         "homepage",
-        "openalex"
+        "openalex",
+        "alerts"
       ],
       "homepage": "https://github.com/zch6a/scholar-cards",
       "repository": "https://github.com/zch6a/scholar-cards",
