@@ -2036,18 +2036,6 @@
       "ours": "scholar-cards"
     },
     {
-      "section": "refs",
-      "en": "Find references in a .bib file that do not exist or have wrong metadata, and update preprints to their published versions.",
-      "zh": "找出 .bib 里不存在或信息有误的参考文献，并把预印本更新为正式发表的版本。",
-      "missing_en": "rebiber matches only DBLP and the ACL Anthology; betterbib does not flag entries that match nothing.",
-      "missing_zh": "rebiber 只对照 DBLP 和 ACL Anthology；betterbib 不会标出查无此文的条目。",
-      "closest": [
-        "yuchenlin/rebiber",
-        "texworld/betterbib"
-      ],
-      "ours": "paper-proof"
-    },
-    {
       "section": "reading",
       "en": "Translate a paper from its LaTeX source, keeping formulas, references and figures exact.",
       "zh": "从 LaTeX 源码翻译论文，公式、引用和图都保持原样。",

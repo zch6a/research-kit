@@ -200,7 +200,7 @@
         "path": "plugin",
         "ref": "v0"
       },
-      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways), and style slips seen through the LaTeX (a word twice, a/an, Figure~\\ref). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
+      "description": "Check your paper before reviewers do: invented or wrong references, bold results that are not the best, claimed gains that do not add up, stale abstract numbers, broken labels, and the paper against itself (an acronym spelled out two ways, one term written two ways), and style slips seen through the LaTeX (a word twice, a/an, Figure~\\ref). With --fix, a corrected copy of the .bib (preprints replaced by their published versions, years and DOIs a Crossref record vouches for). With --review, points for a reviewer to check in a submitted PDF, sending nothing.",
       "category": "research",
       "tags": [
         "references",

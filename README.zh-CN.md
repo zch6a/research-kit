@@ -249,7 +249,7 @@ uvx --from git+https://github.com/zch6a/fig-check@v0 fig-check paper/
 
 #### 投稿前检查
 
-**[paper-proof](https://github.com/zch6a/paper-proof)** (我们的) — 赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\label/\ref），以及整篇论文前后不一致的地方（同一缩写两种展开、同一个词两种写法），以及透过 LaTeX 看到的文字细节（同一个词写两遍、a/an、Figure~\ref）。加 --review 可供审稿人检查投稿的 PDF，不发送任何内容。
+**[paper-proof](https://github.com/zch6a/paper-proof)** (我们的) — 赶在审稿人之前检查论文：编造或写错的参考文献、标粗却不是最好的结果、对不上的提升幅度、摘要里过时的数字、失效的交叉引用（\label/\ref），以及整篇论文前后不一致的地方（同一缩写两种展开、同一个词两种写法），以及透过 LaTeX 看到的文字细节（同一个词写两遍、a/an、Figure~\ref）。加 --fix 另写一份改好的 .bib（预印本换成正式发表版，补上 Crossref 能确认的年份和 DOI）；加 --review 可供审稿人检查投稿的 PDF，不发送任何内容。
 
 ```bash
 uvx --from git+https://github.com/zch6a/paper-proof@v0 paper-proof path/to/paper
@@ -439,7 +439,6 @@ uvx --from git+https://github.com/zch6a/reading-group@v0 reading-group next --re
 <!-- gaps:start -->
 - **按论文可能的影响给每日推荐排序：是否被会议接收、有没有开源代码、早期引用。**（跟踪新论文）不足之处：推荐工具只按与你研究方向的接近程度打分。paper-impact today 按是否已接收、是否有代码和早期引用给某个分类的最新 arXiv 论文排序，但还没有和你自己的研究方向结合。最接近的：[zotero-arxiv-daily](https://github.com/TideDra/zotero-arxiv-daily), [daily-arXiv-ai-enhanced](https://github.com/dw-dengwei/daily-arXiv-ai-enhanced)。部分已由我们的工具覆盖：[paper-impact](https://github.com/zch6a/paper-impact)。
 - **看到一篇论文为什么被引用（使用、对比还是反驳），以及后来哪些结果超过了它。**（检索文献）不足之处：开源工具只显示谁引用了谁，不显示怎么引用。scholar-cards cited 给出 Semantic Scholar 收录的引用句（Mamba 约四分之三的引用有），并按规则加标签，与人工阅读约三分之二一致；可靠的引用意图以及哪些后续结果超过了它，仍只在付费服务里。最接近的：[LocalCitationNetwork.github.io](https://github.com/LocalCitationNetwork/LocalCitationNetwork.github.io), [semanticscholar](https://github.com/danielnsilva/semanticscholar)。部分已由我们的工具覆盖：[scholar-cards](https://github.com/zch6a/scholar-cards)。
-- **找出 .bib 里不存在或信息有误的参考文献，并把预印本更新为正式发表的版本。**（管理参考文献）不足之处：rebiber 只对照 DBLP 和 ACL Anthology；betterbib 不会标出查无此文的条目。最接近的：[rebiber](https://github.com/yuchenlin/rebiber), [betterbib](https://github.com/texworld/betterbib)。部分已由我们的工具覆盖：[paper-proof](https://github.com/zch6a/paper-proof)。
 - **从 LaTeX 源码翻译论文，公式、引用和图都保持原样。**（阅读与笔记）不足之处：现有翻译工具基于 PDF 版面，遇到密集的公式和表格仍会出错。最接近的：[PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate), [gpt_academic](https://github.com/binary-husky/gpt_academic)。
 - **检查 AI 写的综述里，每条引用是否真的支持它所在的那句话。**（AI 科研助手）不足之处：科研智能体在生成时附上引用，但不会回头核对已有文稿。最接近的：[paper-qa](https://github.com/Future-House/paper-qa), [storm](https://github.com/stanford-oval/storm)。
 - **检查一个研究想法是否新颖，并列出与之重叠的已有论文。**（AI 科研助手）不足之处：现有的新颖性检查只是几次检索加大模型判断。最接近的：[AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2), [ai2-scholarqa-lib](https://github.com/allenai/ai2-scholarqa-lib)。
