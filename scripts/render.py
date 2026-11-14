@@ -383,7 +383,9 @@ def deadlines_section(dl: dict, lang: str) -> str:
         conf = md_cell(", ".join(x for x in (ed["date"], ed["place"]) if x))
         r = v.get("rules")
         rules = f"[`--venue {r['id']}`]({r['source']})" if r else "—"
-        rows.append(f"| {name} | {md_cell(date)} | {ed['timezone']} | {conf} | {md_cell(_rules_text(v, lang))} | {md_cell(_policy_text(v, lang))} | {rules} |")
+        rows.append(
+            f"| {name} | {md_cell(date)} | {ed['timezone']} | {conf} | {md_cell(_rules_text(v, lang))} | {md_cell(_policy_text(v, lang))} | {rules} |"
+        )
     src = dl["sources"]["deadlines"]
     if lang == "en":
         note = (
